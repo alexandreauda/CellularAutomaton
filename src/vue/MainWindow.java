@@ -9,7 +9,7 @@ public class MainWindow extends JFrame {
     /******ATTRIBUT******/
 	private JMenuBar m_menuBar = new JMenuBar();
 	private JMenu m_file = new JMenu("File");
-	//private JMenu test2 = new JMenu("Edition");
+	private JMenu m_edit = new JMenu("Edit");
 
 	private JMenuItem m_menuBarFileItem1 = new JMenuItem("New");
 	private JMenuItem m_menuBarFileItem2 = new JMenuItem("Open File");
@@ -18,6 +18,15 @@ public class MainWindow extends JFrame {
 	private JMenuItem m_menuBarFileItem5 = new JMenuItem("Save As");
 	private JMenuItem m_menuBarFileItem6 = new JMenuItem("Print");
 	private JMenuItem m_menuBarFileItem7 = new JMenuItem("Quit");
+	
+	private JMenuItem m_menuBarEditItem1 = new JMenuItem("Undo");
+	private JMenuItem m_menuBarEditItem2 = new JMenuItem("Redo");
+	private JMenuItem m_menuBarEditItem3 = new JMenuItem("Cut");
+	private JMenuItem m_menuBarEditItem4 = new JMenuItem("Copy");
+	private JMenuItem m_menuBarEditItem5 = new JMenuItem("Paste");
+	private JMenuItem m_menuBarEditItem6 = new JMenuItem("Select all");
+	private JMenuItem m_menuBarEditItem7 = new JMenuItem("Find");
+	private JMenuItem m_menuBarEditItem8 = new JMenuItem("Find Next");
     
     /******CONSTRUCTEUR******/
     public MainWindow (){
@@ -44,6 +53,18 @@ public class MainWindow extends JFrame {
         this.m_file.add(m_menuBarFileItem7);//Adding a tab "Quit" in MenuBar
         this.m_menuBar.add(m_file);//the File tab is added to MenuBar
         
+        //Construction of the tab "Edit" of menuBar
+        this.m_edit.add(m_menuBarEditItem1);//Adding a tab "Undo" in MenuBar
+        this.m_edit.add(m_menuBarEditItem2);//Adding a tab "Redo" in MenuBar
+        this.m_edit.addSeparator();//Adding a separator in tab Edit of the MenuBar
+        this.m_edit.add(m_menuBarEditItem3);//Adding a tab "Cut" in MenuBar
+        this.m_edit.add(m_menuBarEditItem4);//Adding a tab "Copy" in MenuBar
+        this.m_edit.add(m_menuBarEditItem5);//Adding a tab "Paste" in MenuBar
+        this.m_edit.addSeparator();//Adding a separator in tab Edit of the MenuBar
+        this.m_edit.add(m_menuBarEditItem6);//Adding a tab "Select all" in MenuBar
+        this.m_edit.add(m_menuBarEditItem7);//Adding a tab "Find" in MenuBar
+        this.m_edit.add(m_menuBarEditItem8);//Adding a tab "Find Next" in MenuBar
+        this.m_menuBar.add(m_edit);//the Edit tab is added to MenuBar
         
         this.setJMenuBar(m_menuBar);//the MenuBar tab is added to Window
         
