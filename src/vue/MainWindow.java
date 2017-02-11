@@ -12,6 +12,7 @@ public class MainWindow extends JFrame {
 	private JMenu m_menuEdit = new JMenu("Edit");
 	private JMenu m_menuRun = new JMenu("Run");
 	private JMenu m_menuOption = new JMenu("Option");
+	private JMenu m_menuView = new JMenu("View");
 
 	private JMenuItem m_menuBarFileItem1 = new JMenuItem("New");
 	private JMenuItem m_menuBarFileItem2 = new JMenuItem("Open File");
@@ -31,10 +32,16 @@ public class MainWindow extends JFrame {
 	private JMenuItem m_menuBarEditItem8 = new JMenuItem("Find Next");
 	
 	private JMenuItem m_menuBarRunItem1 = new JMenuItem("Run Current Simulation");
-	private JMenuItem m_menuBarRunItem2 = new JMenuItem("Run External Simulation");
+	private JMenuItem m_menuBarRunItem2 = new JMenuItem("Run specific screen");
+	private JMenuItem m_menuBarRunItem3 = new JMenuItem("Run External Simulation");
 	
 	private JMenuItem m_menuBarOptionItem1 = new JMenuItem("Bookmarks");
 	private JMenuItem m_menuBarOptionItem2 = new JMenuItem("Setting By Default");
+	
+	private JMenuItem m_menuBarViewItem1 = new JMenuItem("View By Default");
+	private JMenuItem m_menuBarViewItem2 = new JMenuItem("Split Screen By");
+	private JCheckBoxMenuItem m_menuBarViewItem3 = new JCheckBoxMenuItem("Show Toolbars");
+	private JMenuItem m_menuBarViewItem4 = new JMenuItem("Customize View");
     
     /******CONSTRUCTEUR******/
     public MainWindow (){
@@ -76,15 +83,25 @@ public class MainWindow extends JFrame {
         
         //Construction of the tab "Run" of menuBar
         this.m_menuRun.add(m_menuBarRunItem1);//Adding a tab "Run Current Simulation" in MenuBar
+        this.m_menuRun.add(m_menuBarRunItem2);//Adding a tab "Run specific screen" in MenuBar
         this.m_menuRun.addSeparator();//Adding a separator in tab Run of the MenuBar
-        this.m_menuRun.add(m_menuBarRunItem2);//Adding a tab "Run External Simulation" in MenuBar
+        this.m_menuRun.add(m_menuBarRunItem3);//Adding a tab "Run External Simulation" in MenuBar
         this.m_menuBar.add(m_menuRun);//the Run tab is added to MenuBar
         
-      //Construction of the tab "Option" of menuBar
+        //Construction of the tab "Option" of menuBar
         this.m_menuOption.add(m_menuBarOptionItem1);//Adding a tab "Bookmarks" in MenuBar
-        this.m_menuOption.addSeparator();//Adding a separator in tab Run of the MenuBar
+        this.m_menuOption.addSeparator();//Adding a separator in tab Option of the MenuBar
         this.m_menuOption.add(m_menuBarOptionItem2);//Adding a tab "Setting By Default" in MenuBar
-        this.m_menuBar.add(m_menuOption);//the Run tab is added to MenuBar
+        this.m_menuBar.add(m_menuOption);//the Option tab is added to MenuBar
+        
+        //Construction of the tab "View" of menuBar
+        this.m_menuView.add(m_menuBarViewItem1);//Adding a tab "View By Default" in MenuBar
+        this.m_menuView.add(m_menuBarViewItem2);//Adding a tab "Split Screen By" in MenuBar
+        this.m_menuView.addSeparator();//Adding a separator in tab View of the MenuBar
+        this.m_menuView.add(m_menuBarViewItem3);//Adding a tab "Show Toolbars" in MenuBar
+        this.m_menuView.addSeparator();//Adding a separator in tab View of the MenuBar
+        this.m_menuView.add(m_menuBarViewItem4);//Adding a tab "Customize View" in MenuBar
+        this.m_menuBar.add(m_menuView);//the View tab is added to MenuBar
         
         this.setJMenuBar(m_menuBar);//the MenuBar tab is added to Window
         
