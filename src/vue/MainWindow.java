@@ -38,11 +38,11 @@ public class MainWindow extends JFrame {
 	
 	// In run menu
 	private JMenuItem m_menuBarRunItem1 = new JMenuItem("Run Current Simulation");
-	private JMenuItem m_menuBarRunItem2 = new JMenuItem("Run Specific Screen");
+	private JMenu m_menuBarRunItem2 = new JMenu("Run Specific Screen");
 	private JMenuItem m_menuBarRunItem3 = new JMenuItem("Run External Simulation");
 	
 	// In option menu
-	private JMenuItem m_menuBarOptionItem1 = new JMenuItem("Bookmarks Setting");
+	private JMenuItem m_menuBarOptionItem1 = new JMenuItem("Bookmarks");
 	private JMenuItem m_menuBarOptionItem2 = new JMenuItem("Setting By Default");
 	
 	// In view menu
@@ -54,6 +54,10 @@ public class MainWindow extends JFrame {
 	// In help menu
 	private JMenuItem m_menuBarHelpItem1 = new JMenuItem("Help Contents");
 	private JMenuItem m_menuBarHelpItem2 = new JMenuItem("Credits");
+	
+	// In tab run
+	private JCheckBoxMenuItem  m_runItem2Choice1 = new JCheckBoxMenuItem ("All");
+	private JMenu  m_runItem2Choice2 = new JMenu ("Custom");
 	
 	// In tab view
 	private JRadioButtonMenuItem  m_viewItem2Choice1 = new JRadioButtonMenuItem ("None");
@@ -99,6 +103,12 @@ public class MainWindow extends JFrame {
         this.m_menuBar.add(m_menuEdit);//the Edit tab is added to MenuBar
         
         //Construction of the tab "Run" of menuBar
+        //Sub-group of tab "Run Specific Screen" in tab run
+        this.m_menuBarRunItem2.add(m_runItem2Choice1);//Adding a CheckBox "All" in tab "Run Specific Screen"
+        this.m_runItem2Choice1.setSelected(true);//Set a CheckBox "All" to true by default
+        this.m_menuBarRunItem2.addSeparator();//Adding a separator in tab "Run Specific Screen" in tab "Run"
+        this.m_menuBarRunItem2.add(m_runItem2Choice2);//Adding a tab "Custom" in tab "Run Specific Screen"
+        
         this.m_menuRun.add(m_menuBarRunItem1);//Adding a tab "Run Current Simulation" in MenuBar
         this.m_menuRun.add(m_menuBarRunItem2);//Adding a tab "Run Specific Screen" in MenuBar
         this.m_menuRun.addSeparator();//Adding a separator in tab Run of the MenuBar
@@ -126,8 +136,8 @@ public class MainWindow extends JFrame {
         this.m_menuView.add(m_menuBarViewItem1);//Adding a tab "View By Default" in MenuBar
         this.m_menuView.add(m_menuBarViewItem2);//Adding a tab "Split Screen By" in MenuBar
         this.m_menuView.addSeparator();//Adding a separator in tab View of the MenuBar
-        this.m_menuView.add(m_menuBarViewItem3);//Adding a tab "Show Toolbars" in MenuBar
-        this.m_menuBarViewItem3.setSelected(true);//Set "Show Toolbars" check box to true by default
+        this.m_menuView.add(m_menuBarViewItem3);//Adding a checkBox tab "Show Toolbars" in MenuBar
+        this.m_menuBarViewItem3.setSelected(true);//Set "Show Toolbars" checkBox to true by default
         this.m_menuView.addSeparator();//Adding a separator in tab View of the MenuBar
         this.m_menuView.add(m_menuBarViewItem4);//Adding a tab "Customize View" in MenuBar
         this.m_menuBar.add(m_menuView);//the View tab is added to MenuBar
