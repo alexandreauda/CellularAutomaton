@@ -51,7 +51,7 @@ public class MainWindow extends JFrame {
 	// In view menu
 	private JMenuItem m_menuBarViewItem1 = new JMenuItem("View By Default");
 	private JMenu m_menuBarViewItem2 = new JMenu("Split Screen By");
-	private JCheckBoxMenuItem m_menuBarViewItem3 = new JCheckBoxMenuItem("Show Toolbars");
+	private JCheckBoxMenuItem m_menuBarViewItem3 = new StayOpenCheckBoxMenuItem("Show Toolbars");
 	private JMenuItem m_menuBarViewItem4 = new JMenuItem("Customize View");
 	
 	// In help menu
@@ -59,13 +59,13 @@ public class MainWindow extends JFrame {
 	private JMenuItem m_menuBarHelpItem2 = new JMenuItem("Credits");
 	
 	// In tab run
-	private JCheckBoxMenuItem  m_runItem2Choice1 = new JCheckBoxMenuItem ("All");
+	private JCheckBoxMenuItem  m_runItem2Choice1 = new StayOpenCheckBoxMenuItem ("All");
 	private JMenu  m_runItem2Choice2 = new JMenu ("Custom");
 	
 	// In tab view
-	private JRadioButtonMenuItem  m_viewItem2Choice1 = new JRadioButtonMenuItem ("None");
-	private JRadioButtonMenuItem  m_viewItem2Choice2 = new JRadioButtonMenuItem ("2");
-	private JRadioButtonMenuItem  m_viewItem2Choice3 = new JRadioButtonMenuItem ("4");
+	private JRadioButtonMenuItem  m_viewItem2Choice1 = new StayOpenRadioButtonMenuItem ("None");
+	private JRadioButtonMenuItem  m_viewItem2Choice2 = new StayOpenRadioButtonMenuItem ("2");
+	private JRadioButtonMenuItem  m_viewItem2Choice3 = new StayOpenRadioButtonMenuItem ("4");
     
     /******CONSTRUCTEUR******/
     public MainWindow (){
