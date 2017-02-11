@@ -1,4 +1,6 @@
-package vue;
+package main;
+
+import vue.MainWindow;
 
 public class Main {
 
