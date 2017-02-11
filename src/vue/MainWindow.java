@@ -11,6 +11,7 @@ public class MainWindow extends JFrame {
 	private JMenu m_menuFile = new JMenu("File");
 	private JMenu m_menuEdit = new JMenu("Edit");
 	private JMenu m_menuRun = new JMenu("Run");
+	private JMenu m_menuOption = new JMenu("Option");
 
 	private JMenuItem m_menuBarFileItem1 = new JMenuItem("New");
 	private JMenuItem m_menuBarFileItem2 = new JMenuItem("Open File");
@@ -31,6 +32,9 @@ public class MainWindow extends JFrame {
 	
 	private JMenuItem m_menuBarRunItem1 = new JMenuItem("Run Current Simulation");
 	private JMenuItem m_menuBarRunItem2 = new JMenuItem("Run External Simulation");
+	
+	private JMenuItem m_menuBarOptionItem1 = new JMenuItem("Bookmarks");
+	private JMenuItem m_menuBarOptionItem2 = new JMenuItem("Setting By Default");
     
     /******CONSTRUCTEUR******/
     public MainWindow (){
@@ -75,6 +79,12 @@ public class MainWindow extends JFrame {
         this.m_menuRun.addSeparator();//Adding a separator in tab Run of the MenuBar
         this.m_menuRun.add(m_menuBarRunItem2);//Adding a tab "Run External Simulation" in MenuBar
         this.m_menuBar.add(m_menuRun);//the Run tab is added to MenuBar
+        
+      //Construction of the tab "Option" of menuBar
+        this.m_menuOption.add(m_menuBarOptionItem1);//Adding a tab "Run Current Simulation" in MenuBar
+        this.m_menuOption.addSeparator();//Adding a separator in tab Run of the MenuBar
+        this.m_menuOption.add(m_menuBarOptionItem2);//Adding a tab "Run External Simulation" in MenuBar
+        this.m_menuBar.add(m_menuOption);//the Run tab is added to MenuBar
         
         this.setJMenuBar(m_menuBar);//the MenuBar tab is added to Window
         
