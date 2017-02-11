@@ -81,9 +81,9 @@ public class MainWindow extends JFrame {
         this.m_menuBar.add(m_menuRun);//the Run tab is added to MenuBar
         
       //Construction of the tab "Option" of menuBar
-        this.m_menuOption.add(m_menuBarOptionItem1);//Adding a tab "Run Current Simulation" in MenuBar
+        this.m_menuOption.add(m_menuBarOptionItem1);//Adding a tab "Bookmarks" in MenuBar
         this.m_menuOption.addSeparator();//Adding a separator in tab Run of the MenuBar
-        this.m_menuOption.add(m_menuBarOptionItem2);//Adding a tab "Run External Simulation" in MenuBar
+        this.m_menuOption.add(m_menuBarOptionItem2);//Adding a tab "Setting By Default" in MenuBar
         this.m_menuBar.add(m_menuOption);//the Run tab is added to MenuBar
         
         this.setJMenuBar(m_menuBar);//the MenuBar tab is added to Window
