@@ -13,6 +13,7 @@ public class MainWindow extends JFrame {
 	private JMenu m_menuRun = new JMenu("Run");
 	private JMenu m_menuOption = new JMenu("Option");
 	private JMenu m_menuView = new JMenu("View");
+	private JMenu m_menuHelp = new JMenu("Help");
 
 	private JMenuItem m_menuBarFileItem1 = new JMenuItem("New");
 	private JMenuItem m_menuBarFileItem2 = new JMenuItem("Open File");
@@ -42,6 +43,9 @@ public class MainWindow extends JFrame {
 	private JMenuItem m_menuBarViewItem2 = new JMenuItem("Split Screen By");
 	private JCheckBoxMenuItem m_menuBarViewItem3 = new JCheckBoxMenuItem("Show Toolbars");
 	private JMenuItem m_menuBarViewItem4 = new JMenuItem("Customize View");
+	
+	private JMenuItem m_menuBarHelpItem1 = new JMenuItem("Help Contents");
+	private JMenuItem m_menuBarHelpItem2 = new JMenuItem("Credits");
     
     /******CONSTRUCTEUR******/
     public MainWindow (){
@@ -102,6 +106,12 @@ public class MainWindow extends JFrame {
         this.m_menuView.addSeparator();//Adding a separator in tab View of the MenuBar
         this.m_menuView.add(m_menuBarViewItem4);//Adding a tab "Customize View" in MenuBar
         this.m_menuBar.add(m_menuView);//the View tab is added to MenuBar
+        
+        //Construction of the tab "Help" of menuBar
+        this.m_menuHelp.add(m_menuBarHelpItem1);//Adding a tab "Help Contents" in MenuBar
+        this.m_menuHelp.addSeparator();//Adding a separator in tab Help of the MenuBar
+        this.m_menuHelp.add(m_menuBarHelpItem2);//Adding a tab "Credits" in MenuBar
+        this.m_menuBar.add(m_menuHelp);//the Help tab is added to MenuBar
         
         this.setJMenuBar(m_menuBar);//the MenuBar tab is added to Window
         
