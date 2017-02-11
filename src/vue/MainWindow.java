@@ -1,12 +1,15 @@
-
 package vue;
 
-import java.awt.*;
 import javax.swing.*;
 
 public class MainWindow extends JFrame {
     
-    /******ATTRIBUT******/
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/******ATTRIBUT******/
 	private JMenuBar m_menuBar = new JMenuBar();
 	
 	//Tab in MenuBar
