@@ -1,6 +1,8 @@
 package vue;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
@@ -25,7 +27,7 @@ public class CreditsWindow extends JFrame {
 	private JPanel pan = new JPanel();
 
 	/** Création du JTextPane. */
-	private static JTextPane m_JtextPane = new JTextPane();
+	private JTextPane m_JtextPane = new JTextPane();
 
 
 	/**
@@ -43,7 +45,7 @@ public class CreditsWindow extends JFrame {
 		this.getContentPane().add(pan);
 		
 		//add the list of contributors in the window
-		displayListContributors(title, contributorList.toString()); //display the list of contributors with all the styles
+		this.displayListContributors(title, contributorList.toString()); //display the list of contributors with all the styles
 		m_JtextPane.setEditable(false);//Set the JTextPane non editable
 		m_JtextPane.setOpaque(false);//Set the JTextPane non opaque
 		m_JtextPane.setCaretPosition(0); //Set the scroll in he top of the window
@@ -95,7 +97,7 @@ public class CreditsWindow extends JFrame {
 	 * @param titre the title
 	 * @param listContributors the list contributors
 	 */
-	public static void displayListContributors(String titre, String listContributors){
+	public void displayListContributors(String titre, String listContributors){
 
 		/*
 		 * Création d'un style
