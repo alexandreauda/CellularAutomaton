@@ -9,32 +9,40 @@ import java.sql.Statement;
 
 public class Gestion_DB {
 
-	//******ATTRIBUT******
-	private static Connection connect;//crée un objet de type Connection qui appartient à l'api java
+	/******ATTRIBUTES******/
+	private static Connection connect;//Create a Connection object that belongs to the java API
 
-	//******CONSTRUCTEUR PAR DEFAUT******
+	/**
+	 * ****CONSTRUCTOR BY DEFAULT*****.
+	 */
 	public Gestion_DB(){
 		Singleton singleton =new Singleton();
-		Gestion_DB.connect=singleton.getConnexion();//on se connecte à la base de données. (on initialise la connexion)
+		Gestion_DB.connect=singleton.getConnexion();//We connect to the database. (The connection is initialized)
 	}
 
-	//******CONSTRUCTEUR A PARAMETRE******
+	/**
+	 * **** CONSTRUCTOR AT PARAMETERS*****.
+	 */
 
 
-	//******METHODE DE CLASSE******
+	
+	
+	/**
+	 * ****CLASS METHODS*****.
+	 */
 
-	//Execute une requête de recherche via PreparedStatement
+	// Execute a search query via PreparedStatement
 	public ResultSet makePreparedQuerySearch(String query){
 		ResultSet result=null;
-		//Exécution requête
+		// Execute query
 		try {
-			//On crée l'objet avec la requête en paramètre
+			// We create the object with the query as parameter
 			PreparedStatement prepared_result = connect.prepareStatement(query);
 			result=prepared_result.executeQuery();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return result;//on retourne la table qui est retournée par l'exécution de la query (requête).
+		return result;//We return the table that is returned by the execution of the query.
 	}
 
 	//Execute une requête de modification (INSERT, UPDATE, DELETE) via PreparedStatement
