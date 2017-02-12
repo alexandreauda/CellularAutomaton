@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.*;
 
 import controller.NewEvent;
+import controller.QuitEvent;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -397,6 +398,7 @@ public class MainWindow extends JFrame {
 	private void initAcceleratorFile(){
 		//add all the accelerators for the items of tab File
 		m_menuBarFileItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.ALT_MASK + KeyEvent.SHIFT_MASK)); //add accelerators of New in tab File
+		m_menuBarFileItem7.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_MASK)); //add accelerators of New in tab File
 	}
 
 	/***Listeners***/
@@ -407,6 +409,7 @@ public class MainWindow extends JFrame {
 
 	private void addListenerFile (){
 		m_menuBarFileItem1.addActionListener(new NewEvent());
+		m_menuBarFileItem7.addActionListener(new QuitEvent(this));
 	}
 
 }
