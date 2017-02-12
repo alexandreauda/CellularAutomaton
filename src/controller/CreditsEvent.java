@@ -28,11 +28,11 @@ public class CreditsEvent implements ActionListener {
 		Gestion_DB gestionDB = new Gestion_DB();
 		final String query = "SELECT * FROM contributor";
 		ResultSet result = gestionDB.makePreparedQuerySearch(query);
-		final String title = "<html>Contributors: <br/><br/></html>";
+		final String title = "CONTRIBUTORS";
 		StringBuilder listContributors = new StringBuilder();
 		try {
 			while (result.next()){
-				listContributors.append("- "+result.getString(3)+" "+result.getString(2)+"\n");
+				listContributors.append(result.getString(3)+" "+result.getString(2)+"\n");
 			}
 		} catch (SQLException e1) {
 			String errorMessage = "Message error: \n "+e1.getMessage();

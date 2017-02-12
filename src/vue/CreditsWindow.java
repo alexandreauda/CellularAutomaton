@@ -1,13 +1,12 @@
 package vue;
 
-import java.awt.Component;
-import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.Color;
 
 import javax.swing.*;
-import javax.swing.border.Border;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 
 
@@ -20,61 +19,41 @@ public class CreditsWindow extends JFrame {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/******ATTRIBUTES******/
-	/** The question JLabel. */
-	protected JLabel titleLabel;
+	/** ****ATTRIBUTES*****. */
 
-	/** The text pane to display the contributors. */
-	protected JTextArea textPane = new JTextArea(20, 33);
- 
 	/** The pan JPanel to put our components. */
 	private JPanel pan = new JPanel();
-	
-	/** The window width. */
-	protected int window_width; //width of the window
 
-	/** The window height. */
-	protected int window_height; //height of the window
+	/** Création du JTextPane. */
+	private static JTextPane JtextPane = new JTextPane();
 
 
-	
 	/**
 	 * ****CONSTRUCTOR*****.
+	 *
+	 * @param title the title
+	 * @param contributorList the contributor list
 	 */
 	public CreditsWindow (String title, StringBuilder contributorList){
 
-		/***Set the window***/
+		//Set the window
 		this.setWindow();
-		
-		window_width=this.getWidth(); //initialize the attribute window_width with the width of the window
-		window_height=this.getHeight(); //initialize the attribute window_height with the height of the window
-
 
 		//add the JPanel pan to the window
-				this.getContentPane().add(pan);
-				pan.setBounds(window_width,window_height, 150, 150); //Set the dimension of the JPanel
-				titleLabel = new JLabel(title);
-				//Creating a Container with Horizontal Management
-				Box b0 = Box.createHorizontalBox();
-				b0.add(titleLabel); //add the JLabel which will contain the question ask to the user in the JPanel
-				Box b1 = Box.createHorizontalBox();
-				b1.add(textPane); //add the JLabel which will contain the question ask to the user in the JPanel
-				
-				//Creating a Container with Vertical Management
-				Box b2 = Box.createVerticalBox();
-				b2.add(b0);
-				b2.add(b1);
-				
-				pan.add(b2);
-				
-				textPane.setLineWrap(true); //Sets the line-wrapping policy of the text area. If set to true the lines will be wrapped if they are too long to fit within the allocated width.
-				textPane.setText(contributorList.toString());//Set the text of the textPane with the comments of the film
-				textPane.setEditable(false);
-				textPane.setOpaque(false);
-				textPane.setBorder(null);
-				textPane.setCaretPosition(0);
-				this.add(new JScrollPane(pan)); //add the scroll
+		this.getContentPane().add(pan);
+		
+		//add the list of contributors in the window
+		displayListContributors(title, contributorList.toString()); //display the list of contributors with all the styles
+		JtextPane.setEditable(false);//Set the JTextPane non editable
+		JtextPane.setOpaque(false);//Set the JTextPane non opaque
+		JtextPane.setCaretPosition(0); //Set the scroll in he top of the window
 
+		//add the JtextPane to the window
+		this.add(JtextPane); 
+		
+		//add the scroll to the JtextPane
+		this.add(new JScrollPane(JtextPane)); 
+		
 		//Set the window visible
 		this.setVisible(true);
 	}
@@ -87,7 +66,7 @@ public class CreditsWindow extends JFrame {
 
 	/***Set the window***/
 	private void setWindow(){
-		this.setWindow("Credits", 500, 400, false, false);
+		this.setWindow("Credits", 350, 450, false, false);
 	}
 
 
@@ -110,5 +89,70 @@ public class CreditsWindow extends JFrame {
 
 	}
 
-	
+	/**
+	 * Display list of contributors and set all the style for the list.
+	 *
+	 * @param titre the title
+	 * @param listContributors the list contributors
+	 */
+	public static void displayListContributors(String titre, String listContributors){
+
+		/*
+		 * Création d'un style
+		 * (le style du texte de la liste des contributeurs)
+		 */
+		SimpleAttributeSet style_normal = new SimpleAttributeSet();
+		StyleConstants.setFontFamily(style_normal, "Calibri"); //definit la police 
+		StyleConstants.setFontSize(style_normal, 20); //definit la taille
+
+		/*
+		 * Création du style pour l'affichage du titre
+		 */
+		SimpleAttributeSet style_titre = new SimpleAttributeSet();
+		style_titre.addAttributes(style_normal);
+		StyleConstants.setForeground(style_titre, Color.BLUE); //definit la couleur du titre
+		StyleConstants.setUnderline(style_titre, true); //Souligne le titre
+		StyleConstants.setFontSize(style_titre, 36); //definit la taille du titre
+		StyleConstants.setBold(style_titre, true); //Met le titre en gras
+
+		/*
+		 * Création du style qui permet de centrer le texte
+		 */
+		SimpleAttributeSet centrer = new SimpleAttributeSet();
+		StyleConstants.setAlignment(centrer, StyleConstants.ALIGN_CENTER); //centre le texte
+
+
+		try {
+			/*
+			 * Récupération du style du document 
+			 */
+			StyledDocument doc = JtextPane.getStyledDocument();
+
+			/*
+			 * Insertion d'une chaine de caractères dans le document
+			 * insertString :
+			 * 	position de départ dans le document (doc.getLength ajoute à la fin
+			 *  texte à ajouter
+			 *  style pour le texte à ajouter
+			 */
+			doc.insertString(doc.getLength(), titre+"\n\n", style_titre);
+			doc.insertString(doc.getLength(), listContributors+"\n", style_normal);
+			int end_list=doc.getLength();
+
+			/*
+			 * Centrage du titre
+			 */
+			doc.setParagraphAttributes(0, end_list, centrer, false);
+			
+
+		}
+		catch (BadLocationException e) {
+			e.printStackTrace();
+		}
+
+
+	}
+
+
+
 }
