@@ -25,7 +25,7 @@ public class CreditsWindow extends JFrame {
 	private JPanel pan = new JPanel();
 
 	/** Création du JTextPane. */
-	private static JTextPane JtextPane = new JTextPane();
+	private static JTextPane m_JtextPane = new JTextPane();
 
 
 	/**
@@ -44,15 +44,15 @@ public class CreditsWindow extends JFrame {
 		
 		//add the list of contributors in the window
 		displayListContributors(title, contributorList.toString()); //display the list of contributors with all the styles
-		JtextPane.setEditable(false);//Set the JTextPane non editable
-		JtextPane.setOpaque(false);//Set the JTextPane non opaque
-		JtextPane.setCaretPosition(0); //Set the scroll in he top of the window
+		m_JtextPane.setEditable(false);//Set the JTextPane non editable
+		m_JtextPane.setOpaque(false);//Set the JTextPane non opaque
+		m_JtextPane.setCaretPosition(0); //Set the scroll in he top of the window
 
 		//add the JtextPane to the window
-		this.add(JtextPane); 
+		this.add(m_JtextPane); 
 		
 		//add the scroll to the JtextPane
-		this.add(new JScrollPane(JtextPane)); 
+		this.add(new JScrollPane(m_JtextPane)); 
 		
 		//Set the window visible
 		this.setVisible(true);
@@ -126,7 +126,7 @@ public class CreditsWindow extends JFrame {
 			/*
 			 * Récupération du style du document 
 			 */
-			StyledDocument doc = JtextPane.getStyledDocument();
+			StyledDocument doc = m_JtextPane.getStyledDocument();
 
 			/*
 			 * Insertion d'une chaine de caractères dans le document

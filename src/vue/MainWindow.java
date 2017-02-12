@@ -406,6 +406,7 @@ public class MainWindow extends JFrame {
 	private void initAcceleratorMenuBar(){
 		//add all the accelerators for the items
 		this.initAcceleratorFile(); //accelerator of tab File
+		this.initAcceleratorHelp();//accelerator of tab Help
 	}
 
 	private void initAcceleratorFile(){
@@ -416,6 +417,13 @@ public class MainWindow extends JFrame {
 		m_menuBarFileItem8.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_MASK + KeyEvent.SHIFT_MASK)); //add accelerators of CloseAll in tab File
 		m_menuBarFileItem9.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_MASK)); //add accelerators of Quit in tab File
 	}
+	
+	private void initAcceleratorHelp(){
+		//add all the accelerators for the items of tab Help
+		m_menuBarHelpItem2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, KeyEvent.ALT_MASK + KeyEvent.SHIFT_MASK)); //add accelerators of Quit in tab File
+	}
+	
+	
 
 	/***Listeners***/
 
