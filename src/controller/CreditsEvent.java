@@ -32,7 +32,7 @@ public class CreditsEvent implements ActionListener {
 		StringBuilder listContributors = new StringBuilder();
 		try {
 			while (result.next()){
-				listContributors.append("- "+result.getString(2)+" "+result.getString(3)+"\n");
+				listContributors.append("- "+result.getString(3)+" "+result.getString(2)+"\n");
 			}
 		} catch (SQLException e1) {
 			String errorMessage = "Message error: \n "+e1.getMessage();
