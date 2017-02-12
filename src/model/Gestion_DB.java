@@ -45,11 +45,11 @@ public class Gestion_DB {
 		return result;//We return the table that is returned by the execution of the query.
 	}
 
-	//Execute une requête de modification (INSERT, UPDATE, DELETE) via PreparedStatement
+	//Execute modification query (INSERT, UPDATE, DELETE) via PreparedStatement
 	public void makePreparedQueryUpdate(String query){
-		//Exécution requête
+		//Query execution 
 		try {
-			//On crée l'objet avec la requête en paramètre
+			//We create the object with the query in parametre
 			PreparedStatement prepared_result = connect.prepareStatement(query);
 			prepared_result.executeUpdate();
 		} catch (SQLException e) {
@@ -58,39 +58,39 @@ public class Gestion_DB {
 	}
 
 
-	//Execute une requête de recherche via ResultSet
+	//Execution of a search query via ResultSet
 	public ResultSet makeQuerySearch(String query){
 		Statement state=null;
 		ResultSet result=null;
 
-		//Création d'un statement
+		//Creation of the statement
 		try {
-			state=connect.createStatement();//initialisation de l'objet state du type Statement qui permet d'exécuter des requêtes. createStatement() possède des paramètres pour indiquer la portée des résultats: readonly...
+			state=connect.createStatement();//initialisation of the object state of type Statement which is use to execute queries. CreateStatement() has parameters to indicate the configuration of the results: readonly...
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		//Exécution requête
+		//Query execution
 		try {
-			result=state.executeQuery(query);//result est la table qui est retournée par l'exécution de la query (requête).
+			result=state.executeQuery(query);//result is the table which is returned by the execution of the query.
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return result;//on retourne la table qui est retournée par l'exécution de la query (requête).
+		return result;//we return the table which is returned by the execution of the query.
 	}
 
-	//Execute une requête de modification (INSERT, UPDATE, DELETE) via ResultSet
+	//Execute a query of modification (INSERT, UPDATE, DELETE) via ResultSet
 	public void makeQueryUpdate(String query){
 		Statement state=null;
 
-		//Création d'un statement
+		//Création of a statement
 		try {
-			state=connect.createStatement();//initialisation de l'objet state du type Statement qui permet d'exécuter des requêtes. createStatement() possède des paramètres pour indiquer la portée des résultats: readonly...
+			state=connect.createStatement();//initialisation of an object state of type Statement which is used to execute queries. createStatement() has parameters to indicate the configuration of the results: readonly...
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		//Exécution requête
 		try {
-			state.executeUpdate(query);//on modifie la base avec un INSERT, UPDATE, DELETE
+			state.executeUpdate(query);//we modifie the database with INSERT, UPDATE, DELETE
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

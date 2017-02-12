@@ -4,11 +4,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-//Met en oeuvre le patern Singleton: permet de regrouper le code relatif à la connection entre java et la db.
-//Il permet aussi de n'avoir qu'une seule connection.
+//We implement the Singleton patern: we regroup the code use to make the connection between java and the database.
+//This patern is used to have only one connection.
 public class Singleton {
 
-	//******ATTRIBUT******
+	//******ATTRIBUTES******
 	private static String pilote;
 
 	private static String url;
@@ -18,12 +18,12 @@ public class Singleton {
 	private static Connection connect;
 
 
-	//******CONSTRUCTEUR PAR DEFAUT******
+	//******DEFAULT CONSTRUCTEOR******
 	public Singleton(){
 		this("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/CellularAutomat", "CellularAutomat", "CeYzZsXtr5TxVtFV", null);
 	}
 
-	//******CONSTRUCTEUR A PARAMETRE******
+	//******PARAMETERS CONSTRUCTOR******
 	public Singleton(String pilote, String url, String login, String passord, Connection connect){
 		Singleton.pilote=pilote;
 		Singleton.url=url;
@@ -32,7 +32,7 @@ public class Singleton {
 		Singleton.connect=connect;
 	}
 
-	//******GETTER AND SETTER******
+	//******GETTERS AND SETTERS******
 	public static String getPilote() {
 		return pilote;
 	}
@@ -83,17 +83,17 @@ public class Singleton {
 	}
 
 
-	//******METHODE DE CLASSE******
+	//******CLASS METHODS******
 	public Connection getConnexion(){
 
-		if(connect==null){//si l'attibut est à null, c'est qu'il n'y a pas eu de connection précédemment: on se connecte donc
+		if(connect==null){//If the attribute is null, there hasen't been a precedent connection: therefore we connect
 			try {
-				// Etape 1: Chargement du driver
+				// Etape 1: load the driver
 				Class.forName(pilote);
-				// Etape 2: Récupération de la connexion
+				// Etape 2: Retrieve the connection
 				connect=DriverManager.getConnection(url, login, passord);
 			}  
-			// gestion des exceptions
+			// manage the exceptions
 			catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -101,10 +101,10 @@ public class Singleton {
 				e.printStackTrace();
 			}
 		}
-		else{//sinon si l'objet connect est déja initialisé, c'est que l'on c'est déja connecté donc on a pas besoin de se reconnecter.
+		else{//else if the object connect is already initialize, we have already connect. Therefore we don't have to connect.
 			System.out.println("Connection SQL existante");
 		}
-		return connect;	//retourne la connexion du type Connection qui appertient à l'api java
+		return connect;	//return the connection of type Connection which is contain à l'api java
 	}
 
 
