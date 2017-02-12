@@ -5,6 +5,9 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.*;
 
+import controller.CloseAllEvent;
+import controller.CloseEvent;
+import controller.CreditsEvent;
 import controller.NewEvent;
 import controller.OpenFileEvent;
 import controller.QuitEvent;
@@ -58,9 +61,15 @@ public class MainWindow extends JFrame {
 
 	/** The menu bar file item 6. */
 	private JMenuItem m_menuBarFileItem6 = new JMenuItem("Print");
-
+	
 	/** The menu bar file item 7. */
-	private JMenuItem m_menuBarFileItem7 = new JMenuItem("Quit");
+	private JMenuItem m_menuBarFileItem7 = new JMenuItem("Close");
+	
+	/** The menu bar file item 8. */
+	private JMenuItem m_menuBarFileItem8 = new JMenuItem("Close All");
+
+	/** The menu bar file item 9. */
+	private JMenuItem m_menuBarFileItem9 = new JMenuItem("Quit");
 
 	/** The menu bar edit item 1. */
 	// In edit menu
@@ -255,16 +264,19 @@ public class MainWindow extends JFrame {
 	 */
 	private void constructTabFileMenuBar(){
 		//Construction of the tab "File" of menuBar
-		this.m_menuFile.add(m_menuBarFileItem1);//Adding a tab "New" in MenuBar
-		this.m_menuFile.add(m_menuBarFileItem2);//Adding a tab "Open File" in MenuBar
-		this.m_menuFile.add(m_menuBarFileItem3);//Adding a tab "Recent File" in MenuBar
+		this.m_menuFile.add(m_menuBarFileItem1);//Adding a tab "New" in tab File in MenuBar
+		this.m_menuFile.add(m_menuBarFileItem2);//Adding a tab "Open File" in tab File in MenuBar
+		this.m_menuFile.add(m_menuBarFileItem3);//Adding a tab "Recent File" in tab File in MenuBar
 		this.m_menuFile.addSeparator();//Adding a separator in tab File of the MenuBar
-		this.m_menuFile.add(m_menuBarFileItem4);//Adding a tab "Save" in MenuBar
-		this.m_menuFile.add(m_menuBarFileItem5);//Adding a tab "Save As" in MenuBar
+		this.m_menuFile.add(m_menuBarFileItem4);//Adding a tab "Save" in tab File in MenuBar
+		this.m_menuFile.add(m_menuBarFileItem5);//Adding a tab "Save As" in tab File in MenuBar
 		this.m_menuFile.addSeparator();//Adding a separator in tab File of the MenuBar
-		this.m_menuFile.add(m_menuBarFileItem6);//Adding a tab "Print" in MenuBar
+		this.m_menuFile.add(m_menuBarFileItem6);//Adding a tab "Print" in tab File in MenuBar
 		this.m_menuFile.addSeparator();//Adding a separator in tab File of the MenuBar
-		this.m_menuFile.add(m_menuBarFileItem7);//Adding a tab "Quit" in MenuBar
+		this.m_menuFile.add(m_menuBarFileItem7);//Adding a tab "Close" in tab File in MenuBar
+		this.m_menuFile.add(m_menuBarFileItem8);//Adding a tab "Close All" in tab File in MenuBar
+		this.m_menuFile.addSeparator();//Adding a separator in tab File of the MenuBar
+		this.m_menuFile.add(m_menuBarFileItem9);//Adding a tab "Quit" in tab File in MenuBar
 		this.m_menuBar.add(m_menuFile);//the File tab is added to MenuBar
 
 	}
@@ -400,19 +412,28 @@ public class MainWindow extends JFrame {
 		//add all the accelerators for the items of tab File
 		m_menuBarFileItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_MASK)); //add accelerators of New in tab File
 		m_menuBarFileItem2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_MASK)); //add accelerators of Open File in tab File
-		m_menuBarFileItem7.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_MASK)); //add accelerators of Quit in tab File
+		m_menuBarFileItem7.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_MASK)); //add accelerators of Close in tab File
+		m_menuBarFileItem8.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_MASK + KeyEvent.SHIFT_MASK)); //add accelerators of CloseAll in tab File
+		m_menuBarFileItem9.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_MASK)); //add accelerators of Quit in tab File
 	}
 
 	/***Listeners***/
 
 	private void addListenerMenuBar (){
 		this.addListenerFile(); //add listener of tab File
+		this.addListenerHelp(); //add listener of tab Help
 	}
 
 	private void addListenerFile (){
 		m_menuBarFileItem1.addActionListener(new NewEvent());
 		m_menuBarFileItem2.addActionListener(new OpenFileEvent());
-		m_menuBarFileItem7.addActionListener(new QuitEvent(this));
+		m_menuBarFileItem7.addActionListener(new CloseEvent(this));
+		m_menuBarFileItem8.addActionListener(new CloseAllEvent());
+		m_menuBarFileItem9.addActionListener(new QuitEvent());
+	}
+	
+	private void addListenerHelp (){
+		m_menuBarHelpItem2.addActionListener(new CreditsEvent());
 	}
 
 }
