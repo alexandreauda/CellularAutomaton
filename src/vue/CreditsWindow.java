@@ -24,11 +24,10 @@ public class CreditsWindow extends JFrame {
 	/** The question JLabel. */
 	protected JLabel titleLabel;
 
-	/** The text pane to display the result (film name and summary). */
-	protected JTextArea textPane = new JTextArea("Hello Master!", 21, 33);
+	/** The text pane to display the contributors. */
+	protected JTextArea textPane = new JTextArea(20, 33);
  
 	/** The pan JPanel to put our components. */
-	//On create a JPanel
 	private JPanel pan = new JPanel();
 	
 	/** The window width. */
