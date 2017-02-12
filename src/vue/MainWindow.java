@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.*;
 
 import controller.NewEvent;
+import controller.OpenFileEvent;
 import controller.QuitEvent;
 
 // TODO: Auto-generated Javadoc
@@ -17,144 +18,144 @@ public class MainWindow extends JFrame {
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** ****ATTRIBUT*****. */
+	/******ATTRIBUTES******/
 	private JMenuBar m_menuBar = new JMenuBar();
 
-	/** The m menu file. */
+	/** The menu file. */
 	//Tab in MenuBar
 	private JMenu m_menuFile = new JMenu("File");
 
-	/** The m menu edit. */
+	/** The menu edit. */
 	private JMenu m_menuEdit = new JMenu("Edit");
 
-	/** The m menu run. */
+	/** The menu run. */
 	private JMenu m_menuRun = new JMenu("Run");
 
-	/** The m menu option. */
+	/** The menu option. */
 	private JMenu m_menuOption = new JMenu("Option");
 
-	/** The m menu view. */
+	/** The menu view. */
 	private JMenu m_menuView = new JMenu("View");
 
-	/** The m menu help. */
+	/** The menu help. */
 	private JMenu m_menuHelp = new JMenu("Help");
 
-	/** The m menu bar file item 1. */
+	/** The menu bar file item 1. */
 	// In file menu
 	private JMenuItem m_menuBarFileItem1 = new JMenuItem("New");
 
-	/** The m menu bar file item 2. */
+	/** The menu bar file item 2. */
 	private JMenuItem m_menuBarFileItem2 = new JMenuItem("Open File");
 
-	/** The m menu bar file item 3. */
+	/** The menu bar file item 3. */
 	private JMenuItem m_menuBarFileItem3 = new JMenuItem("Recent File");
 
-	/** The m menu bar file item 4. */
+	/** The menu bar file item 4. */
 	private JMenuItem m_menuBarFileItem4 = new JMenuItem("Save");
 
-	/** The m menu bar file item 5. */
+	/** The menu bar file item 5. */
 	private JMenuItem m_menuBarFileItem5 = new JMenuItem("Save As");
 
-	/** The m menu bar file item 6. */
+	/** The menu bar file item 6. */
 	private JMenuItem m_menuBarFileItem6 = new JMenuItem("Print");
 
-	/** The m menu bar file item 7. */
+	/** The menu bar file item 7. */
 	private JMenuItem m_menuBarFileItem7 = new JMenuItem("Quit");
 
-	/** The m menu bar edit item 1. */
+	/** The menu bar edit item 1. */
 	// In edit menu
 	private JMenuItem m_menuBarEditItem1 = new JMenuItem("Undo");
 
-	/** The m menu bar edit item 2. */
+	/** The menu bar edit item 2. */
 	private JMenuItem m_menuBarEditItem2 = new JMenuItem("Redo");
 
-	/** The m menu bar edit item 3. */
+	/** The menu bar edit item 3. */
 	private JMenuItem m_menuBarEditItem3 = new JMenuItem("Cut");
 
-	/** The m menu bar edit item 4. */
+	/** The menu bar edit item 4. */
 	private JMenuItem m_menuBarEditItem4 = new JMenuItem("Copy");
 
-	/** The m menu bar edit item 5. */
+	/** The menu bar edit item 5. */
 	private JMenuItem m_menuBarEditItem5 = new JMenuItem("Paste");
 
-	/** The m menu bar edit item 6. */
+	/** The menu bar edit item 6. */
 	private JMenuItem m_menuBarEditItem6 = new JMenuItem("Select all");
 
-	/** The m menu bar edit item 7. */
+	/** The menu bar edit item 7. */
 	private JMenuItem m_menuBarEditItem7 = new JMenuItem("Find");
 
-	/** The m menu bar edit item 8. */
+	/** The menu bar edit item 8. */
 	private JMenuItem m_menuBarEditItem8 = new JMenuItem("Find Next");
 
-	/** The m menu bar run item 1. */
+	/** The menu bar run item 1. */
 	// In run menu
 	private JMenuItem m_menuBarRunItem1 = new JMenuItem("Run Current Simulation");
 
-	/** The m menu bar run item 2. */
+	/** The menu bar run item 2. */
 	private JMenu m_menuBarRunItem2 = new JMenu("Run Specific Screen");
 
-	/** The m menu bar run item 3. */
+	/** The menu bar run item 3. */
 	private JMenuItem m_menuBarRunItem3 = new JMenuItem("Run External Simulation");
 
-	/** The m menu bar option item 1. */
+	/** The menu bar option item 1. */
 	// In option menu
 	private JMenuItem m_menuBarOptionItem1 = new JMenuItem("Bookmarks");
 
-	/** The m menu bar option item 2. */
+	/** The menu bar option item 2. */
 	private JMenuItem m_menuBarOptionItem2 = new JMenuItem("Setting By Default");
 
-	/** The m menu bar view item 1. */
+	/** The menu bar view item 1. */
 	// In view menu
 	private JMenuItem m_menuBarViewItem1 = new JMenuItem("View By Default");
 
-	/** The m menu bar view item 2. */
+	/** The menu bar view item 2. */
 	private JMenu m_menuBarViewItem2 = new JMenu("Split Screen By");
 
-	/** The m menu bar view item 3. */
+	/** The menu bar view item 3. */
 	private JCheckBoxMenuItem m_menuBarViewItem3 = new StayOpenCheckBoxMenuItem("Show Toolbars");
 
-	/** The m menu bar view item 4. */
+	/** The menu bar view item 4. */
 	private JMenuItem m_menuBarViewItem4 = new JMenuItem("Customize View");
 
-	/** The m menu bar help item 1. */
+	/** The menu bar help item 1. */
 	// In help menu
 	private JMenuItem m_menuBarHelpItem1 = new JMenuItem("Help Contents");
 
-	/** The m menu bar help item 2. */
+	/** The menu bar help item 2. */
 	private JMenuItem m_menuBarHelpItem2 = new JMenuItem("Credits");
 
-	/** The m run item 2 choice 1. */
+	/** The run item 2 choice 1. */
 	// In tab run
 	private JCheckBoxMenuItem  m_runItem2Choice1 = new StayOpenCheckBoxMenuItem ("All");
 
-	/** The m run item 2 choice 2. */
+	/** The run item 2 choice 2. */
 	private JMenu  m_runItem2Choice2 = new JMenu ("Custom");
 
-	/** The m custom item choice 1. */
+	/** The custom item choice 1. */
 	// In tab custom in tab run
 	private JCheckBoxMenuItem  m_customItemChoice1 = new StayOpenCheckBoxMenuItem ("1");
 
-	/** The m custom item choice 2. */
+	/** The custom item choice 2. */
 	private JCheckBoxMenuItem  m_customItemChoice2 = new StayOpenCheckBoxMenuItem ("2");
 
-	/** The m custom item choice 3. */
+	/** The custom item choice 3. */
 	private JCheckBoxMenuItem  m_customItemChoice3 = new StayOpenCheckBoxMenuItem ("3");
 
-	/** The m custom item choice 4. */
+	/** The custom item choice 4. */
 	private JCheckBoxMenuItem  m_customItemChoice4 = new StayOpenCheckBoxMenuItem ("4");
 
-	/** The m view item 2 choice 1. */
+	/** The view item 2 choice 1. */
 	// In tab view
 	private JRadioButtonMenuItem  m_viewItem2Choice1 = new StayOpenRadioButtonMenuItem ("None");
 
-	/** The m view item 2 choice 2. */
+	/** The view item 2 choice 2. */
 	private JRadioButtonMenuItem  m_viewItem2Choice2 = new StayOpenRadioButtonMenuItem ("2");
 
-	/** The m view item 2 choice 3. */
+	/** The view item 2 choice 3. */
 	private JRadioButtonMenuItem  m_viewItem2Choice3 = new StayOpenRadioButtonMenuItem ("4");
 
 	/**
-	 * ****CONSTRUCTEUR*****.
+	 * ****CONSTRUCTOR*****.
 	 */
 	public MainWindow (){
 
@@ -224,28 +225,28 @@ public class MainWindow extends JFrame {
 	 */
 	private void initMenuBar(){
 		//We initialize our menuBar 
-		//Construction of the tab "File" of menuBar
-		this.constructTabFileMenuBar();
+		
+		this.constructTabFileMenuBar();//Construction of the tab "File" of menuBar
 
-		//Construction of the tab "Edit" of menuBar
-		this.constructTabEditMenuBar();
+		
+		this.constructTabEditMenuBar();//Construction of the tab "Edit" of menuBar
 
-		//Construction of the tab "Run" of menuBar
-		this.constructTabRunMenuBar();
+		
+		this.constructTabRunMenuBar();//Construction of the tab "Run" of menuBar
 
 
-		//Construction of the tab "Option" of menuBar
-		this.constructTabOptionMenuBar();
+		
+		this.constructTabOptionMenuBar();//Construction of the tab "Option" of menuBar
 
-		//Construction of the tab "View" of menuBar
-		this.constructTabViewMenuBar();
+		
+		this.constructTabViewMenuBar();//Construction of the tab "View" of menuBar
 
-		//Construction of the tab "Help" of menuBar
-		this.constructTabHelpMenuBar();
+		
+		this.constructTabHelpMenuBar();//Construction of the tab "Help" of menuBar
 
 		this.setJMenuBar(m_menuBar);//the MenuBar tab is added to Window
 
-		this.initAcceleratorMenuBar();
+		this.initAcceleratorMenuBar();//Adding all Accelerator of the MenuBar
 
 	}
 
@@ -397,8 +398,9 @@ public class MainWindow extends JFrame {
 
 	private void initAcceleratorFile(){
 		//add all the accelerators for the items of tab File
-		m_menuBarFileItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.ALT_MASK + KeyEvent.SHIFT_MASK)); //add accelerators of New in tab File
-		m_menuBarFileItem7.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_MASK)); //add accelerators of New in tab File
+		m_menuBarFileItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_MASK)); //add accelerators of New in tab File
+		m_menuBarFileItem2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_MASK)); //add accelerators of Open File in tab File
+		m_menuBarFileItem7.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_MASK)); //add accelerators of Quit in tab File
 	}
 
 	/***Listeners***/
@@ -409,6 +411,7 @@ public class MainWindow extends JFrame {
 
 	private void addListenerFile (){
 		m_menuBarFileItem1.addActionListener(new NewEvent());
+		m_menuBarFileItem2.addActionListener(new OpenFileEvent());
 		m_menuBarFileItem7.addActionListener(new QuitEvent(this));
 	}
 

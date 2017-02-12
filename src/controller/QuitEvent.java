@@ -10,12 +10,21 @@ public class QuitEvent implements ActionListener {
 	/******ATTRIBUTES******/
 	MainWindow window;
 	
+	
+	/**
+	 * ****CONSTRUCTOR*****.
+	 */
 	public QuitEvent(MainWindow window) {
 		super();
 		this.window = window;
 		
 	}
 
+	
+	/**
+	 * ****CLASS METHODS*****.
+	 */
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.window.dispose();
