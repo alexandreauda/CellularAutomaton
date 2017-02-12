@@ -8,16 +8,17 @@ import javax.swing.MenuSelectionManager;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+// TODO: Auto-generated Javadoc
 /**
  * An extension of JRadioButtonMenuItem that doesn't close the menu when selected.
  *
  */
 public class StayOpenRadioButtonMenuItem extends JRadioButtonMenuItem {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The path. */
 	private static MenuElement[] path;
 
 	{
@@ -33,6 +34,8 @@ public class StayOpenRadioButtonMenuItem extends JRadioButtonMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open radio button menu item.
+	 *
 	 * @see JRadioButtonMenuItem#JRadioButtonMenuItem()
 	 */
 	public StayOpenRadioButtonMenuItem() {
@@ -40,6 +43,9 @@ public class StayOpenRadioButtonMenuItem extends JRadioButtonMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open radio button menu item.
+	 *
+	 * @param a the a
 	 * @see JRadioButtonMenuItem#JRadioButtonMenuItem(Action)
 	 */
 	public StayOpenRadioButtonMenuItem(Action a) {
@@ -47,6 +53,9 @@ public class StayOpenRadioButtonMenuItem extends JRadioButtonMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open radio button menu item.
+	 *
+	 * @param icon the icon
 	 * @see JRadioButtonMenuItem#JRadioButtonMenuItem(Icon)
 	 */
 	public StayOpenRadioButtonMenuItem(Icon icon) {
@@ -54,6 +63,10 @@ public class StayOpenRadioButtonMenuItem extends JRadioButtonMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open radio button menu item.
+	 *
+	 * @param icon the icon
+	 * @param selected the selected
 	 * @see JRadioButtonMenuItem#JRadioButtonMenuItem(Icon, boolean)
 	 */
 	public StayOpenRadioButtonMenuItem(Icon icon, boolean selected) {
@@ -61,6 +74,9 @@ public class StayOpenRadioButtonMenuItem extends JRadioButtonMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open radio button menu item.
+	 *
+	 * @param text the text
 	 * @see JRadioButtonMenuItem#JRadioButtonMenuItem(String)
 	 */
 	public StayOpenRadioButtonMenuItem(String text) {
@@ -68,6 +84,10 @@ public class StayOpenRadioButtonMenuItem extends JRadioButtonMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open radio button menu item.
+	 *
+	 * @param text the text
+	 * @param selected the selected
 	 * @see JRadioButtonMenuItem#JRadioButtonMenuItem(String, boolean)
 	 */
 	public StayOpenRadioButtonMenuItem(String text, boolean selected) {
@@ -75,6 +95,10 @@ public class StayOpenRadioButtonMenuItem extends JRadioButtonMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open radio button menu item.
+	 *
+	 * @param text the text
+	 * @param icon the icon
 	 * @see JRadioButtonMenuItem#JRadioButtonMenuItem(String, Icon)
 	 */
 	public StayOpenRadioButtonMenuItem(String text, Icon icon) {
@@ -82,6 +106,11 @@ public class StayOpenRadioButtonMenuItem extends JRadioButtonMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open radio button menu item.
+	 *
+	 * @param text the text
+	 * @param icon the icon
+	 * @param selected the selected
 	 * @see JRadioButtonMenuItem#JRadioButtonMenuItem(String, Icon, boolean)
 	 */
 	public StayOpenRadioButtonMenuItem(String text, Icon icon, boolean selected) {

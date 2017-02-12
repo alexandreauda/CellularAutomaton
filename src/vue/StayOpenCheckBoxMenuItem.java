@@ -9,16 +9,17 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 
+// TODO: Auto-generated Javadoc
 /**
  * An extension of JCheckBoxMenuItem that doesn't close the menu when selected.
  *
  */
 public class StayOpenCheckBoxMenuItem extends JCheckBoxMenuItem {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The path. */
 	private static MenuElement[] path;
 
 	{
@@ -34,6 +35,8 @@ public class StayOpenCheckBoxMenuItem extends JCheckBoxMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open check box menu item.
+	 *
 	 * @see JCheckBoxMenuItem#JCheckBoxMenuItem()
 	 */
 	public StayOpenCheckBoxMenuItem() {
@@ -41,6 +44,9 @@ public class StayOpenCheckBoxMenuItem extends JCheckBoxMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open check box menu item.
+	 *
+	 * @param a the a
 	 * @see JCheckBoxMenuItem#JCheckBoxMenuItem(Action)
 	 */
 	public StayOpenCheckBoxMenuItem(Action a) {
@@ -48,6 +54,9 @@ public class StayOpenCheckBoxMenuItem extends JCheckBoxMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open check box menu item.
+	 *
+	 * @param icon the icon
 	 * @see JCheckBoxMenuItem#JCheckBoxMenuItem(Icon)
 	 */
 	public StayOpenCheckBoxMenuItem(Icon icon) {
@@ -55,6 +64,9 @@ public class StayOpenCheckBoxMenuItem extends JCheckBoxMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open check box menu item.
+	 *
+	 * @param text the text
 	 * @see JCheckBoxMenuItem#JCheckBoxMenuItem(String)
 	 */
 	public StayOpenCheckBoxMenuItem(String text) {
@@ -62,6 +74,10 @@ public class StayOpenCheckBoxMenuItem extends JCheckBoxMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open check box menu item.
+	 *
+	 * @param text the text
+	 * @param selected the selected
 	 * @see JCheckBoxMenuItem#JCheckBoxMenuItem(String, boolean)
 	 */
 	public StayOpenCheckBoxMenuItem(String text, boolean selected) {
@@ -69,6 +85,10 @@ public class StayOpenCheckBoxMenuItem extends JCheckBoxMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open check box menu item.
+	 *
+	 * @param text the text
+	 * @param icon the icon
 	 * @see JCheckBoxMenuItem#JCheckBoxMenuItem(String, Icon)
 	 */
 	public StayOpenCheckBoxMenuItem(String text, Icon icon) {
@@ -76,6 +96,11 @@ public class StayOpenCheckBoxMenuItem extends JCheckBoxMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open check box menu item.
+	 *
+	 * @param text the text
+	 * @param icon the icon
+	 * @param selected the selected
 	 * @see JCheckBoxMenuItem#JCheckBoxMenuItem(String, Icon, boolean)
 	 */
 	public StayOpenCheckBoxMenuItem(String text, Icon icon, boolean selected) {

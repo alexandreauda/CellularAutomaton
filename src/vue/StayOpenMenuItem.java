@@ -8,16 +8,17 @@ import javax.swing.MenuSelectionManager;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+// TODO: Auto-generated Javadoc
 /**
  * An extension of JMenuItem that doesn't close the menu when selected.
  *
  */
 public class StayOpenMenuItem extends JMenuItem {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
+	
+	/** The path. */
 	private static MenuElement[] path;
 
 	{
@@ -33,6 +34,8 @@ public class StayOpenMenuItem extends JMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open menu item.
+	 *
 	 * @see JMenuItem#JMenuItem()
 	 */
 	public StayOpenMenuItem() {
@@ -40,6 +43,9 @@ public class StayOpenMenuItem extends JMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open menu item.
+	 *
+	 * @param a the a
 	 * @see JMenuItem#JMenuItem(javax.swing.Action)
 	 */
 	public StayOpenMenuItem(Action a) {
@@ -47,6 +53,9 @@ public class StayOpenMenuItem extends JMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open menu item.
+	 *
+	 * @param icon the icon
 	 * @see JMenuItem#JMenuItem(javax.swing.Icon)
 	 */
 	public StayOpenMenuItem(Icon icon) {
@@ -54,6 +63,9 @@ public class StayOpenMenuItem extends JMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open menu item.
+	 *
+	 * @param text the text
 	 * @see JMenuItem#JMenuItem(java.lang.String)
 	 */
 	public StayOpenMenuItem(String text) {
@@ -61,6 +73,10 @@ public class StayOpenMenuItem extends JMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open menu item.
+	 *
+	 * @param text the text
+	 * @param icon the icon
 	 * @see JMenuItem#JMenuItem(java.lang.String, javax.swing.Icon)
 	 */
 	public StayOpenMenuItem(String text, Icon icon) {
@@ -68,6 +84,10 @@ public class StayOpenMenuItem extends JMenuItem {
 	}
 
 	/**
+	 * Instantiates a new stay open menu item.
+	 *
+	 * @param text the text
+	 * @param mnemonic the mnemonic
 	 * @see JMenuItem#JMenuItem(java.lang.String, int)
 	 */
 	public StayOpenMenuItem(String text, int mnemonic) {

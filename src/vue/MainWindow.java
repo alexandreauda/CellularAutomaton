@@ -1,83 +1,160 @@
 package vue;
 
-import java.util.HashMap;
+
+import java.awt.event.KeyEvent;
 
 import javax.swing.*;
 
 import controller.NewEvent;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MainWindow.
+ */
 public class MainWindow extends JFrame {
 
-	/**
-	 * 
-	 */
+	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/******ATTRIBUT******/
+	/** ****ATTRIBUT*****. */
 	private JMenuBar m_menuBar = new JMenuBar();
-	
+
+	/** The m menu file. */
 	//Tab in MenuBar
 	private JMenu m_menuFile = new JMenu("File");
+
+	/** The m menu edit. */
 	private JMenu m_menuEdit = new JMenu("Edit");
+
+	/** The m menu run. */
 	private JMenu m_menuRun = new JMenu("Run");
+
+	/** The m menu option. */
 	private JMenu m_menuOption = new JMenu("Option");
+
+	/** The m menu view. */
 	private JMenu m_menuView = new JMenu("View");
+
+	/** The m menu help. */
 	private JMenu m_menuHelp = new JMenu("Help");
 
+	/** The m menu bar file item 1. */
 	// In file menu
 	private JMenuItem m_menuBarFileItem1 = new JMenuItem("New");
+
+	/** The m menu bar file item 2. */
 	private JMenuItem m_menuBarFileItem2 = new JMenuItem("Open File");
+
+	/** The m menu bar file item 3. */
 	private JMenuItem m_menuBarFileItem3 = new JMenuItem("Recent File");
+
+	/** The m menu bar file item 4. */
 	private JMenuItem m_menuBarFileItem4 = new JMenuItem("Save");
+
+	/** The m menu bar file item 5. */
 	private JMenuItem m_menuBarFileItem5 = new JMenuItem("Save As");
+
+	/** The m menu bar file item 6. */
 	private JMenuItem m_menuBarFileItem6 = new JMenuItem("Print");
+
+	/** The m menu bar file item 7. */
 	private JMenuItem m_menuBarFileItem7 = new JMenuItem("Quit");
 
+	/** The m menu bar edit item 1. */
 	// In edit menu
 	private JMenuItem m_menuBarEditItem1 = new JMenuItem("Undo");
+
+	/** The m menu bar edit item 2. */
 	private JMenuItem m_menuBarEditItem2 = new JMenuItem("Redo");
+
+	/** The m menu bar edit item 3. */
 	private JMenuItem m_menuBarEditItem3 = new JMenuItem("Cut");
+
+	/** The m menu bar edit item 4. */
 	private JMenuItem m_menuBarEditItem4 = new JMenuItem("Copy");
+
+	/** The m menu bar edit item 5. */
 	private JMenuItem m_menuBarEditItem5 = new JMenuItem("Paste");
+
+	/** The m menu bar edit item 6. */
 	private JMenuItem m_menuBarEditItem6 = new JMenuItem("Select all");
+
+	/** The m menu bar edit item 7. */
 	private JMenuItem m_menuBarEditItem7 = new JMenuItem("Find");
+
+	/** The m menu bar edit item 8. */
 	private JMenuItem m_menuBarEditItem8 = new JMenuItem("Find Next");
 
+	/** The m menu bar run item 1. */
 	// In run menu
 	private JMenuItem m_menuBarRunItem1 = new JMenuItem("Run Current Simulation");
+
+	/** The m menu bar run item 2. */
 	private JMenu m_menuBarRunItem2 = new JMenu("Run Specific Screen");
+
+	/** The m menu bar run item 3. */
 	private JMenuItem m_menuBarRunItem3 = new JMenuItem("Run External Simulation");
 
+	/** The m menu bar option item 1. */
 	// In option menu
 	private JMenuItem m_menuBarOptionItem1 = new JMenuItem("Bookmarks");
+
+	/** The m menu bar option item 2. */
 	private JMenuItem m_menuBarOptionItem2 = new JMenuItem("Setting By Default");
 
+	/** The m menu bar view item 1. */
 	// In view menu
 	private JMenuItem m_menuBarViewItem1 = new JMenuItem("View By Default");
+
+	/** The m menu bar view item 2. */
 	private JMenu m_menuBarViewItem2 = new JMenu("Split Screen By");
+
+	/** The m menu bar view item 3. */
 	private JCheckBoxMenuItem m_menuBarViewItem3 = new StayOpenCheckBoxMenuItem("Show Toolbars");
+
+	/** The m menu bar view item 4. */
 	private JMenuItem m_menuBarViewItem4 = new JMenuItem("Customize View");
 
+	/** The m menu bar help item 1. */
 	// In help menu
 	private JMenuItem m_menuBarHelpItem1 = new JMenuItem("Help Contents");
+
+	/** The m menu bar help item 2. */
 	private JMenuItem m_menuBarHelpItem2 = new JMenuItem("Credits");
 
+	/** The m run item 2 choice 1. */
 	// In tab run
 	private JCheckBoxMenuItem  m_runItem2Choice1 = new StayOpenCheckBoxMenuItem ("All");
+
+	/** The m run item 2 choice 2. */
 	private JMenu  m_runItem2Choice2 = new JMenu ("Custom");
 
+	/** The m custom item choice 1. */
 	// In tab custom in tab run
 	private JCheckBoxMenuItem  m_customItemChoice1 = new StayOpenCheckBoxMenuItem ("1");
+
+	/** The m custom item choice 2. */
 	private JCheckBoxMenuItem  m_customItemChoice2 = new StayOpenCheckBoxMenuItem ("2");
+
+	/** The m custom item choice 3. */
 	private JCheckBoxMenuItem  m_customItemChoice3 = new StayOpenCheckBoxMenuItem ("3");
+
+	/** The m custom item choice 4. */
 	private JCheckBoxMenuItem  m_customItemChoice4 = new StayOpenCheckBoxMenuItem ("4");
 
+	/** The m view item 2 choice 1. */
 	// In tab view
 	private JRadioButtonMenuItem  m_viewItem2Choice1 = new StayOpenRadioButtonMenuItem ("None");
+
+	/** The m view item 2 choice 2. */
 	private JRadioButtonMenuItem  m_viewItem2Choice2 = new StayOpenRadioButtonMenuItem ("2");
+
+	/** The m view item 2 choice 3. */
 	private JRadioButtonMenuItem  m_viewItem2Choice3 = new StayOpenRadioButtonMenuItem ("4");
 
-	/******CONSTRUCTEUR******/
+	/**
+	 * ****CONSTRUCTEUR*****.
+	 */
 	public MainWindow (){
 
 		/***Set the window***/
@@ -88,9 +165,9 @@ public class MainWindow extends JFrame {
 
 		//We initialize our menuBar 
 		this.initMenuBar();
-		
+
 		//add listeners
-		this.addListener();
+		this.addListenerMenuBar();
 
 		//Set the window visible
 		this.setVisible(true);
@@ -98,7 +175,9 @@ public class MainWindow extends JFrame {
 
 
 
-	/******CLASS METHODS******/
+	/**
+	 * ****CLASS METHODS*****.
+	 */
 
 	/***Set the window***/
 	private void setWindow(){
@@ -106,7 +185,15 @@ public class MainWindow extends JFrame {
 	}
 
 
-	/***Set the window***/
+	/**
+	 * *Set the window**.
+	 *
+	 * @param title the title
+	 * @param width the width
+	 * @param height the height
+	 * @param isResisable the is resisable
+	 * @param isAlwayOnTop the is alway on top
+	 */
 	private void setWindow(String title, int width, int height, boolean isResisable, boolean isAlwayOnTop){
 		this.setTitle(title);//Define a title to the window    
 		this.setSize(width,height);//Initial size of the window
@@ -117,6 +204,9 @@ public class MainWindow extends JFrame {
 
 	}
 
+	/**
+	 * Inits the menu mnemonic.
+	 */
 	private void initMenuMnemonic(){
 		//add all the mnémonic for the MenuBar
 		m_menuFile.setMnemonic('F');
@@ -128,6 +218,9 @@ public class MainWindow extends JFrame {
 	}
 
 
+	/**
+	 * Inits the menu bar.
+	 */
 	private void initMenuBar(){
 		//We initialize our menuBar 
 		//Construction of the tab "File" of menuBar
@@ -151,8 +244,13 @@ public class MainWindow extends JFrame {
 
 		this.setJMenuBar(m_menuBar);//the MenuBar tab is added to Window
 
+		this.initAcceleratorMenuBar();
+
 	}
 
+	/**
+	 * Construct tab file menu bar.
+	 */
 	private void constructTabFileMenuBar(){
 		//Construction of the tab "File" of menuBar
 		this.m_menuFile.add(m_menuBarFileItem1);//Adding a tab "New" in MenuBar
@@ -169,6 +267,9 @@ public class MainWindow extends JFrame {
 
 	}
 
+	/**
+	 * Construct tab edit menu bar.
+	 */
 	private void constructTabEditMenuBar(){
 		//Construction of the tab "Edit" of menuBar
 		this.m_menuEdit.add(m_menuBarEditItem1);//Adding a tab "Undo" in MenuBar
@@ -185,6 +286,9 @@ public class MainWindow extends JFrame {
 
 	}
 
+	/**
+	 * Construct tab run menu bar.
+	 */
 	private void constructTabRunMenuBar(){
 		//Construction of the tab "Run" of menuBar
 		this.constructSubTabCustomInTabRunSpecificScreen();//Sub-group of tab "Custom" in tab "Run Specific Screen" in tab run
@@ -197,6 +301,9 @@ public class MainWindow extends JFrame {
 		this.m_menuBar.add(m_menuRun);//the Run tab is added to MenuBar
 	}
 
+	/**
+	 * Construct sub tab custom in tab run specific screen.
+	 */
 	private void constructSubTabCustomInTabRunSpecificScreen(){
 		//Sub-group of tab "Custom" in tab "Run Specific Screen" in tab run
 		this.m_runItem2Choice2.add(m_customItemChoice1);//Adding a tab "1" in tab "Custom"
@@ -207,6 +314,9 @@ public class MainWindow extends JFrame {
 
 	}
 
+	/**
+	 * Construct sub tab run specific screen in tab run.
+	 */
 	private void constructSubTabRunSpecificScreenInTabRun(){
 		//Sub-group of tab "Run Specific Screen" in tab run
 		this.m_menuBarRunItem2.add(m_runItem2Choice1);//Adding a CheckBox "All" in tab "Run Specific Screen"
@@ -216,6 +326,9 @@ public class MainWindow extends JFrame {
 
 	}
 
+	/**
+	 * Construct tab option menu bar.
+	 */
 	private void constructTabOptionMenuBar(){
 		//Construction of the tab "Option" of menuBar
 		this.m_menuOption.add(m_menuBarOptionItem1);//Adding a tab "Bookmarks" in MenuBar
@@ -225,6 +338,9 @@ public class MainWindow extends JFrame {
 
 	}
 
+	/**
+	 * Construct tab view menu bar.
+	 */
 	private void constructTabViewMenuBar(){
 		this.constructSubTabSplitScreenByInTabView();//Sub-group of tab "Split Screen By" in tab view
 
@@ -241,6 +357,9 @@ public class MainWindow extends JFrame {
 	}
 
 
+	/**
+	 * Construct sub tab split screen by in tab view.
+	 */
 	private void constructSubTabSplitScreenByInTabView(){
 		//Sub-group of tab "Split Screen By" in tab view
 		ButtonGroup viewItem2ButtonGroup = new ButtonGroup();//Adding ButtonGroup
@@ -255,6 +374,9 @@ public class MainWindow extends JFrame {
 	}
 
 
+	/**
+	 * Construct tab help menu bar.
+	 */
 	private void constructTabHelpMenuBar(){
 		//Construction of the tab "Help" of menuBar
 		this.m_menuHelp.add(m_menuBarHelpItem1);//Adding a tab "Help Contents" in MenuBar
@@ -263,11 +385,27 @@ public class MainWindow extends JFrame {
 		this.m_menuBar.add(m_menuHelp);//the Help tab is added to MenuBar
 
 	}
-	
-	
-	/******Listeners******/
-	
-	private void addListener (){
+
+	/**
+	 * *Init the accelerators**.
+	 */
+	private void initAcceleratorMenuBar(){
+		//add all the accelerators for the items
+		this.initAcceleratorFile(); //accelerator of tab File
+	}
+
+	private void initAcceleratorFile(){
+		//add all the accelerators for the items of tab File
+		m_menuBarFileItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.ALT_MASK + KeyEvent.SHIFT_MASK)); //add accelerators of New in tab File
+	}
+
+	/***Listeners***/
+
+	private void addListenerMenuBar (){
+		this.addListenerFile(); //add listener of tab File
+	}
+
+	private void addListenerFile (){
 		m_menuBarFileItem1.addActionListener(new NewEvent());
 	}
 
