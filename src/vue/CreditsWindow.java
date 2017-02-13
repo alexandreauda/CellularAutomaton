@@ -3,7 +3,10 @@ package vue;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.SimpleAttributeSet;
@@ -61,7 +64,6 @@ public class CreditsWindow extends JFrame {
 	}
 
 
-
 	/**
 	 * ****CLASS METHODS*****.
 	 */
@@ -88,7 +90,12 @@ public class CreditsWindow extends JFrame {
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//Complete the process when clicking on the red cross
 		this.setResizable(isResisable);//Prevents resizing
 		this.setAlwaysOnTop(isAlwayOnTop);//The windows will not be always on top
-
+		try {
+			this.setIconImage(ImageIO.read(new File("Files/Images/Favicon/PenroseColor2.png")));
+		}
+		catch (IOException exc) {
+		    exc.printStackTrace();
+		}
 	}
 
 	/**

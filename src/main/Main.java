@@ -1,5 +1,11 @@
 package main;
 
+import java.awt.EventQueue;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 import vue.MainWindow;
 
 
@@ -14,8 +20,15 @@ public class Main {
 	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
-		MainWindow SimulatorWindow = new MainWindow();
-        
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MainWindow SimulatorWindow = new MainWindow();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 
 }

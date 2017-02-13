@@ -1,8 +1,12 @@
 package vue;
 
 
+import java.awt.Image;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import controller.CloseAllEvent;
@@ -61,10 +65,10 @@ public class MainWindow extends JFrame {
 
 	/** The menu bar file item 6. */
 	private JMenuItem m_menuBarFileItem6 = new JMenuItem("Print");
-	
+
 	/** The menu bar file item 7. */
 	private JMenuItem m_menuBarFileItem7 = new JMenuItem("Close");
-	
+
 	/** The menu bar file item 8. */
 	private JMenuItem m_menuBarFileItem8 = new JMenuItem("Close All");
 
@@ -212,7 +216,12 @@ public class MainWindow extends JFrame {
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//Complete the process when clicking on the red cross
 		this.setResizable(isResisable);//Prevents resizing
 		this.setAlwaysOnTop(isAlwayOnTop);//The windows will not be always on top
-
+		try {
+			this.setIconImage(ImageIO.read(new File("Files/Images/Favicon/PenroseColor2.png")));
+		}
+		catch (IOException exc) {
+		    exc.printStackTrace();
+		}
 	}
 
 	/**
@@ -234,23 +243,23 @@ public class MainWindow extends JFrame {
 	 */
 	private void initMenuBar(){
 		//We initialize our menuBar 
-		
+
 		this.constructTabFileMenuBar();//Construction of the tab "File" of menuBar
 
-		
+
 		this.constructTabEditMenuBar();//Construction of the tab "Edit" of menuBar
 
-		
+
 		this.constructTabRunMenuBar();//Construction of the tab "Run" of menuBar
 
 
-		
+
 		this.constructTabOptionMenuBar();//Construction of the tab "Option" of menuBar
 
-		
+
 		this.constructTabViewMenuBar();//Construction of the tab "View" of menuBar
 
-		
+
 		this.constructTabHelpMenuBar();//Construction of the tab "Help" of menuBar
 
 		this.setJMenuBar(m_menuBar);//the MenuBar tab is added to Window
@@ -417,13 +426,13 @@ public class MainWindow extends JFrame {
 		m_menuBarFileItem8.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_MASK + KeyEvent.SHIFT_MASK)); //add accelerators of CloseAll in tab File
 		m_menuBarFileItem9.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_MASK)); //add accelerators of Quit in tab File
 	}
-	
+
 	private void initAcceleratorHelp(){
 		//add all the accelerators for the items of tab Help
 		m_menuBarHelpItem2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, KeyEvent.ALT_MASK + KeyEvent.SHIFT_MASK)); //add accelerators of Quit in tab File
 	}
-	
-	
+
+
 
 	/***Listeners***/
 
@@ -439,7 +448,7 @@ public class MainWindow extends JFrame {
 		m_menuBarFileItem8.addActionListener(new CloseAllEvent());
 		m_menuBarFileItem9.addActionListener(new QuitEvent());
 	}
-	
+
 	private void addListenerHelp (){
 		m_menuBarHelpItem2.addActionListener(new CreditsEvent());
 	}
