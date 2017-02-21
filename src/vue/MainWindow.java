@@ -172,7 +172,7 @@ public class MainWindow extends JFrame {
 	 */
 	public MainWindow (){
 
-		/***Set the window***/
+		//Set the window
 		this.setWindow();
 
 		//Set mnemonic of the MenuBar
@@ -196,7 +196,7 @@ public class MainWindow extends JFrame {
 
 	/***Set the window***/
 	private void setWindow(){
-		this.setWindow("Cellular Automaton", 1000, 600, true, false);
+		this.setWindow("Cellular Automaton", 1370, 730, true, false);
 	}
 
 
