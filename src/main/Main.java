@@ -20,16 +20,8 @@ public class Main {
 	 * @param args the arguments
 	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				try {
-					MainWindow SimulatorWindow = new MainWindow();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+		MainWindow SimulatorWindow = new MainWindow();
+		SimulatorWindow.runSimulation();
 	}
 
 }

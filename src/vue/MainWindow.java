@@ -1,6 +1,10 @@
 package vue;
 
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -8,6 +12,8 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 import controller.CloseAllEvent;
 import controller.CloseEvent;
@@ -15,6 +21,14 @@ import controller.CreditsEvent;
 import controller.NewEvent;
 import controller.OpenFileEvent;
 import controller.QuitEvent;
+import controller.ConwayRules;
+import vue.IForm;
+import controller.IInitializeSimulationRules;
+import controller.IRules;
+import controller.InitializeSimulationRandomly;
+import vue.InternalFrameSimulation;
+import vue.RectangleForm;
+
 
 // TODO: Auto-generated Javadoc
 /**
@@ -166,6 +180,54 @@ public class MainWindow extends JFrame {
 
 	/** The view item 2 choice 3. */
 	private JRadioButtonMenuItem  m_viewItem2Choice3 = new StayOpenRadioButtonMenuItem ("4");
+	
+	private JPanel m_mainPanel;
+	private JPanel m_panelTopTools;
+	private JToolBar m_mainToolBar;
+	private JToolBar m_toolBarTypeCellularAutomaton;
+	private JPanel m_panelTypeCellularAutomaton;
+	private JSeparator m_separatorInTypeCellularAutomaton;
+	private JPanel m_panelChooseCellularAutomaton;
+	private JPanel m_panelUniform;
+	private GroupLayout m_GroupLayoutPanelTypeCellularAutomaton;
+	private JComboBox m_comboBoxUniform;
+	private JComboBox m_comboBoxCellularAutomaton;
+	private JToolBar m_toolBarSimulationTools;
+	private JPanel m_panelSimulationTools;
+	private JButton m_buttonLaucher;
+	private JButton m_buttonPause;
+	private JButton m_buttonStop;
+	private JButton m_buttonUndo;
+	private JButton m_buttonRedo;
+	private JButton m_buttonReload;
+	private JToolBar m_toolBarControlTools;
+	private JPanel m_panelControlTools;
+	private JPanel m_panelSimulationSpeed;
+	private JPanel m_panelSimulationMode;
+	private JRadioButton m_radioButtonContinuous;
+	private JRadioButton m_radioButtonStepBystep;
+	private ButtonGroup m_radioButtonGroup;
+	private JSlider m_sliderSpeedSimulation;
+	private JSeparator m_separatorInControlTools;
+	private JDesktopPane m_mainDesktopPane;
+	private JPanel m_panelLateralTools;
+	private GroupLayout m_GroupLayoutPanelLateralTools;
+	private JPanel m_panelAlgorithm;
+	private GroupLayout m_GroupLayoutPanelAlgorithm;
+	private JComboBox m_comboBoxAlgorithm;
+	private JPanel m_panelInitialPositionCells;
+	private GroupLayout m_GroupLayoutPanelInitialPositionCells;
+	private JComboBox m_comboBoxInitialPositionCells;
+	private JPanel m_panelFormCells;
+	private GroupLayout m_GroupLayoutPanelFormCells;
+	private JComboBox comboBoxFormCells;
+	private JPanel m_panelColorCells;
+	private GroupLayout m_GroupLayoutPanelColorCells;
+	private JComboBox m_comboBoxColorCells;
+	private JPanel m_panelBackgroundColor;
+	private GroupLayout m_GroupLayoutPanelBackgroundColor;
+	private JComboBox m_comboBoxBackgroundColor;
+	private InternalFrameSimulation m_internalFrameSimulation;
 
 	/**
 	 * ****CONSTRUCTOR*****.
@@ -183,12 +245,30 @@ public class MainWindow extends JFrame {
 
 		//add listeners
 		this.addListenerMenuBar();
+		
+		//Build the component of the window
+		this.buildComponentWindow();
 
 		//Set the window visible
 		this.setVisible(true);
 	}
 
 
+	
+	/******GETTERS******/
+	public JFrame getFrame() {
+		return this;
+	}
+
+	public InternalFrameSimulation getInternalFrame() {
+		return m_internalFrameSimulation;
+	}
+	
+	/******SETTERS******/	
+	public void setInternalFrame(InternalFrameSimulation internalFrame) {
+		this.m_internalFrameSimulation = internalFrame;
+	}
+	
 
 	/**
 	 * ****CLASS METHODS*****.
@@ -452,5 +532,501 @@ public class MainWindow extends JFrame {
 	private void addListenerHelp (){
 		m_menuBarHelpItem2.addActionListener(new CreditsEvent());
 	}
+	
+	/******Build Windows******/
+	
+	public void buildComponentWindow(){
+		m_mainPanel = new JPanel();
+		this.getContentPane().add(m_mainPanel, BorderLayout.CENTER);
+		m_mainPanel.setLayout(new BorderLayout(0, 0));
+		
+		m_mainToolBar = new JToolBar();
+		m_mainPanel.add(m_mainToolBar, BorderLayout.NORTH);
+		
+		m_panelTopTools = new JPanel();
+		m_mainToolBar.add(m_panelTopTools);
+		m_panelTopTools.setLayout(new GridLayout(1, 3, 0, 0));
+		
+		buildTypeCellularAutomaton();//Build the ToolBar of TypeCellularAutomaton
+		
+		buildSimulationTools();//Build the ToolBar of SimulationTools
+		
+		buildControlTools();//Build the ToolBar of ControlTools
+		
+		buildDesktopPane();//Build the DestopPane of window
+		
+		buildInternalFrameSimulation();//Build the InternalFrame witch contain the simulation
+		
+		buildLateralTools();//Build the panel of LateralTools
+		
+	}
+	
+	public void buildTypeCellularAutomaton(){
+		buildToolBarTypeCellularAutomaton();//Build the toolBar of TypeCellularAutomaton
+	}
+	
+	public void buildToolBarTypeCellularAutomaton(){
+		m_toolBarTypeCellularAutomaton = new JToolBar();//Creation of toolBar TypeCellularAutomaton
+		m_panelTopTools.add(m_toolBarTypeCellularAutomaton);//Add the toolBar to panel of the mainToolBar
+		
+		buildPanelTypeCellularAutomaton();//Build the panel of the toolBar TypeCellularAutomaton
+	}
+	
+	public void buildPanelTypeCellularAutomaton(){
+		m_panelTypeCellularAutomaton = new JPanel();
+		m_toolBarTypeCellularAutomaton.add(m_panelTypeCellularAutomaton);
+		m_panelTypeCellularAutomaton.setBorder(BorderFactory.createTitledBorder("Type of Cellular Automaton"));
+		
+		buildSeparatorInTypeCellularAutomaton();//Build the separator of the toolBar TypeCellularAutomaton
+		
+		buildPanelChooseCellularAutomaton();//Build the panel ChooseCellularAutomaton
+		
+		buildPanelUniform();//Build the panel Uniform
+		
+		buildGroupLayoutPanelTypeCellularAutomaton();//Build the GroupLayout of the panel TypeCellularAutomaton
+	}
+	
+	public void buildSeparatorInTypeCellularAutomaton(){
+		//Build the separator of the toolBar TypeCellularAutomaton
+		m_separatorInTypeCellularAutomaton = new JSeparator();
+		m_separatorInTypeCellularAutomaton.setOrientation(SwingConstants.VERTICAL);
+	}
+	
+	public void buildPanelChooseCellularAutomaton(){
+		//Build the panel ChooseCellularAutomaton
+		m_panelChooseCellularAutomaton = new JPanel();
+		m_panelChooseCellularAutomaton.setBorder(BorderFactory.createTitledBorder("Cellular Automaton"));
+		m_panelChooseCellularAutomaton.setLayout(new BorderLayout(0, 0));
+		
+		buildComponentChooseCellularAutomaton();//Build the component of the panel ChooseCellularAutomaton
+	}
+	
+	public void buildComponentChooseCellularAutomaton(){
+		//Build the component of the panel ChooseCellularAutomaton
+		m_comboBoxCellularAutomaton = new JComboBox();
+		m_panelChooseCellularAutomaton.add(m_comboBoxCellularAutomaton, BorderLayout.CENTER);
+	}
+	
+	public void buildPanelUniform(){
+		//Build the panel Uniform
+		m_panelUniform = new JPanel();
+		m_panelUniform.setBorder(BorderFactory.createTitledBorder("Uniform / Non-Uniform"));
+		m_panelUniform.setLayout(new BorderLayout(0, 0));
+		
+		buildComponentUniform();//Build the component of the panel Uniform
+	}
+	
+	public void buildComponentUniform(){
+		//Build the component of the panel Uniform
+		m_comboBoxUniform = new JComboBox();
+		m_panelUniform.add(m_comboBoxUniform, BorderLayout.CENTER);
+	}
+	
+	public void buildGroupLayoutPanelTypeCellularAutomaton(){
+		m_GroupLayoutPanelTypeCellularAutomaton = new GroupLayout(m_panelTypeCellularAutomaton);
+		m_GroupLayoutPanelTypeCellularAutomaton.setHorizontalGroup(
+			m_GroupLayoutPanelTypeCellularAutomaton.createParallelGroup(Alignment.LEADING)
+				.addGroup(m_GroupLayoutPanelTypeCellularAutomaton.createSequentialGroup()
+					.addComponent(m_panelChooseCellularAutomaton, GroupLayout.PREFERRED_SIZE, 152, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(m_separatorInTypeCellularAutomaton, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(m_panelUniform, GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
+		);
+		m_GroupLayoutPanelTypeCellularAutomaton.setVerticalGroup(
+			m_GroupLayoutPanelTypeCellularAutomaton.createParallelGroup(Alignment.TRAILING)
+				.addComponent(m_separatorInTypeCellularAutomaton, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+				.addComponent(m_panelChooseCellularAutomaton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+				.addComponent(m_panelUniform, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
+		);
+		m_panelTypeCellularAutomaton.setLayout(m_GroupLayoutPanelTypeCellularAutomaton);
+	}
+	
+	
+	
+	public void buildSimulationTools(){
+		buildSimulationTools("Files/Images/Simulation_Tools/");
+	}
+	
+	public void buildSimulationTools(String pathDirectory){
+		m_toolBarSimulationTools = new JToolBar();
+		m_panelTopTools.add(m_toolBarSimulationTools);
+		
+		m_panelSimulationTools = new JPanel();
+		m_toolBarSimulationTools.add(m_panelSimulationTools);
+		m_panelSimulationTools.setBorder(BorderFactory.createTitledBorder("Simulation Tools"));
+		
+		m_buttonLaucher = new JButton(new ImageIcon(pathDirectory+"button_laucher.png"));
+		
+		m_buttonPause = new JButton(new ImageIcon(pathDirectory+"button_pause.png"));
+		
+		m_buttonStop = new JButton(new ImageIcon(pathDirectory+"button_stop.png"));
+		
+		m_buttonUndo = new JButton(new ImageIcon(pathDirectory+"button_undo.png"));
+		
+		m_buttonRedo = new JButton(new ImageIcon(pathDirectory+"button_redo.png"));
+		
+		m_buttonReload = new JButton(new ImageIcon(pathDirectory+"button_reload.png"));
+		
+		m_panelSimulationTools.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		m_panelSimulationTools.add(m_buttonLaucher);
+		m_panelSimulationTools.add(m_buttonPause);
+		m_panelSimulationTools.add(m_buttonStop);
+		m_panelSimulationTools.add(m_buttonUndo);
+		m_panelSimulationTools.add(m_buttonRedo);
+		m_panelSimulationTools.add(m_buttonReload);
+	}
+	
+	
+	
+	public void buildControlTools(){
+		buildToolBarControlTools();//Build the ToolBar of ControlTools
+	}
+	
+	
+	public void buildToolBarControlTools(){
+		m_toolBarControlTools = new JToolBar();//Creation of toolBar
+		m_panelTopTools.add(m_toolBarControlTools);//Add the toolBar to panel of the mainToolBar
+		
+		buildPanelControlTools();//Build the panel in the ToolBar ControlTools
+	}
+	
+	
+	public void buildPanelControlTools(){
+		m_panelControlTools = new JPanel();//Creation of panel
+		m_toolBarControlTools.add(m_panelControlTools);//Add the panel to toolBar ControlTools
+		m_panelControlTools.setBorder(BorderFactory.createTitledBorder("Control tools"));//Set a border of JPanel
+		m_panelControlTools.setLayout(null);
+		
+		buildPanelSimulationSpeed();//Set the panel SimulationSpeed
+		buildPanelSimulationMode();//Set the panel SimulationMode
+		
+		m_panelControlTools.add(m_panelSimulationSpeed);//Add the panel of "Simulation Speed" to panel of "ControlTools"
+		m_panelControlTools.add(m_panelSimulationMode);//Add the panel of "Simulation Mode" to panel of "ControlTools"
+		
+		buildSeparatorInControlTools();//Build the separator in ControlTools
+	}
+	
+	
+	public void buildPanelSimulationSpeed(){
+		m_panelSimulationSpeed = new JPanel();//Creation of panel for SimulationSpeed
+		m_panelSimulationSpeed.setBounds(6, 16, 180, 50);//Set size of JPanel
+		m_panelSimulationSpeed.setBorder(BorderFactory.createTitledBorder("Simulation Speed"));//Set a border of JPanel
+		
+		buildComponentSimulationSpeed();//Set the component of Panel "Simulation Speed"
+	}
+	
+	public void buildComponentSimulationSpeed(){ 
+		m_panelSimulationSpeed.setLayout(new BorderLayout(0, 0));
+		m_sliderSpeedSimulation = new JSlider();//Creation of Slider for panel "Simulation Speed"
+		m_panelSimulationSpeed.add(m_sliderSpeedSimulation, BorderLayout.CENTER);//Add the slider to panel m_panelSimulationSpeed
+	}
+	
+	
+	
+	public void buildPanelSimulationMode(){
+		m_panelSimulationMode = new JPanel();//Creation of JPanel for SimulationMode
+		m_panelSimulationMode.setBounds(207, 16, 210, 50);//Set size of JPanel
+		m_panelSimulationMode.setBorder(BorderFactory.createTitledBorder("Simulation Mode"));//Set a border of JPanel
+		
+		buildComponentSimulationMode();//Set the component of Panel "Simulation Mode"
+	}
+	
+	public void buildComponentSimulationMode(){
+		//Creation of RadioButton
+		m_radioButtonContinuous = new JRadioButton("Continuous");//Create the radioButton m_radioButtonContinuous
+		m_panelSimulationMode.add(m_radioButtonContinuous);//Add the radioButton m_radioButtonContinuous to panel m_panelSimulationMode
+		
+		m_radioButtonStepBystep = new JRadioButton("Step By Step");//Create the radioButton m_radioButtonStepBystep
+		m_panelSimulationMode.add(m_radioButtonStepBystep);//Add the radioButton m_radioButtonStepBystep to panel m_panelSimulationMode
+		
+		//Creation of ButtonGroup
+		m_radioButtonGroup = new ButtonGroup();//Create ButtonGroup
+		m_radioButtonGroup.add(m_radioButtonContinuous);//Adding the radioButton m_radioButtonContinuous to ButtonGroup m_radioButtonGroup
+		m_radioButtonGroup.add(m_radioButtonStepBystep);//Adding the radioButton m_radioButtonStepBystep to ButtonGroup m_radioButtonGroup
+		m_radioButtonContinuous.setSelected(true);//Set the radioButton m_radioButtonContinuous to true by default 
+	}
+
+	
+	public void buildSeparatorInControlTools(){
+		//Creation of Separator between the panel of "Simulation Speed" and the panel "Simulation Mode"
+		m_separatorInControlTools = new JSeparator();//Create JSeparator
+		m_separatorInControlTools.setOrientation(SwingConstants.VERTICAL);//Set the orientation of separator to vertical
+		m_separatorInControlTools.setBounds(194, 23, 2, 43);//Set the position and size of separator
+		m_panelControlTools.add(m_separatorInControlTools);//Add the separator to panel m_panelControlTools
+	}
+	
+	
+	public void buildDesktopPane(){
+		m_mainDesktopPane = new JDesktopPane();
+		m_mainPanel.add(m_mainDesktopPane, BorderLayout.CENTER);
+	}
+	
+	
+	public void buildInternalFrameSimulation(){
+		IRules ruleSimulation = new ConwayRules();
+		IForm formOfCells = new RectangleForm();
+		Color colorOfCells = Color.BLUE;
+		Color backgroundColor = Color.BLACK;
+		IInitializeSimulationRules initializeSimulationRule = new InitializeSimulationRandomly();
+		buildInternalFrameSimulation(ruleSimulation, formOfCells, colorOfCells, backgroundColor, initializeSimulationRule);
+	}
+	
+	public void buildInternalFrameSimulation(IRules ruleSimulation, IForm formOfCells, Color colorOfCells, Color backgroundColor, IInitializeSimulationRules initializeSimulationRule){
+		m_internalFrameSimulation = new InternalFrameSimulation("Simulation", ruleSimulation, formOfCells, colorOfCells, backgroundColor, initializeSimulationRule);
+		m_internalFrameSimulation.setBounds(53, 11, 900, 530);
+		m_internalFrameSimulation.setVisible(true);
+		m_mainDesktopPane.setLayout(null);
+		m_mainDesktopPane.add(m_internalFrameSimulation);
+	}
+	
+	
+	public void buildLateralTools(){
+		buildPanelLateralTools();//Build the panel "Lateral Tools"
+	}
+	
+	
+	public void buildPanelLateralTools(){
+		m_panelLateralTools = new JPanel();//Create a JPanel for the "Lateral Tools"
+		m_mainPanel.add(m_panelLateralTools, BorderLayout.EAST);//Add the panel m_panelLateralTools to panel m_mainPanel
+		
+		buildPanelAlgorithm();//Create the panel "Algorithm"
+		
+		buildPanelInitialPositionCells();//Create the panel "InitialPositionCells"
+		
+		buildPanelFormCells();//Create the panel "FormCells"
+		
+		buildPanelColorCells();//Create the panel "ColorCells"
+		
+		buildPanelBackgroundColor();//Create the panel "BackgroundColor"
+		
+		buildGroupLayoutPanelLateralTools();//Create the GroupLayout for the disposition of the panel "Lateral Tools"
+	}
+	
+	
+	public void buildPanelAlgorithm(){
+		m_panelAlgorithm = new JPanel();//Create the panel Algorithm
+		m_panelAlgorithm.setBorder(BorderFactory.createTitledBorder("Algorithm"));//Set a border for the panel Algorithm
+		
+		buildComponentLateralToolsAlgorithm();//Create components of panel Algorithm in the LateralTools
+	}
+	
+	
+	public void buildPanelInitialPositionCells(){
+		m_panelInitialPositionCells = new JPanel();//Create the panel InitialPositionCells
+		m_panelInitialPositionCells.setBorder(BorderFactory.createTitledBorder("Initial Position of Cells"));//Set a border for the panel InitialPositionCells
+		
+		buildComponentLateralToolsInitialPositionCells();//Create components of panel InitialPositionCells in the LateralTools
+	}
+	
+	public void buildPanelFormCells(){
+		m_panelFormCells = new JPanel();//Create the panel FormCells
+		m_panelFormCells.setBorder(BorderFactory.createTitledBorder("Form of Cells"));//Set a border for the panel FormCells
+		
+		buildComponentLateralToolsFormCells();//Create components of panel FormCells in the LateralTools
+	}
+	
+	public void buildPanelColorCells(){
+		m_panelColorCells = new JPanel();//Create the panel ColorCells
+		m_panelColorCells.setBorder(BorderFactory.createTitledBorder("Color of Cells"));//Set a border for the panel ColorCells
+		
+		buildComponentLateralToolsColorCells();//Create components of panel ColorCells in the LateralTools
+	}
+	
+	public void buildPanelBackgroundColor(){
+		m_panelBackgroundColor = new JPanel();//Create the panel BackgroundColor
+		m_panelBackgroundColor.setBorder(BorderFactory.createTitledBorder("Background Color"));//Set a border for the panel BackgroundColor
+		
+		buildComponentLateralToolsBackgroundColor();//Create components of panel BackgroundColor in the LateralTools
+	}
+	
+	public void buildComponentLateralToolsAlgorithm(){
+		m_comboBoxAlgorithm = new JComboBox();
+		m_GroupLayoutPanelAlgorithm = new GroupLayout(m_panelAlgorithm);
+		
+		buildGroupLayoutComponentAlgorithm();//Build the grouplayout for the component Algorithm
+	}
+	
+	public void buildGroupLayoutComponentAlgorithm(){
+		m_GroupLayoutPanelAlgorithm.setHorizontalGroup(
+				m_GroupLayoutPanelAlgorithm.createParallelGroup(Alignment.LEADING)
+					.addGroup(m_GroupLayoutPanelAlgorithm.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(m_comboBoxAlgorithm, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+			);
+			m_GroupLayoutPanelAlgorithm.setVerticalGroup(
+				m_GroupLayoutPanelAlgorithm.createParallelGroup(Alignment.LEADING)
+					.addGroup(m_GroupLayoutPanelAlgorithm.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(m_comboBoxAlgorithm, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(17, Short.MAX_VALUE))
+			);
+			m_panelAlgorithm.setLayout(m_GroupLayoutPanelAlgorithm);
+	}
+	
+	public void buildComponentLateralToolsInitialPositionCells(){
+		m_comboBoxInitialPositionCells = new JComboBox();
+		m_GroupLayoutPanelInitialPositionCells = new GroupLayout(m_panelInitialPositionCells);
+		
+		buildGroupLayoutComponentInitialPositionCells();
+	}
+	
+	public void buildGroupLayoutComponentInitialPositionCells(){
+		m_GroupLayoutPanelInitialPositionCells.setHorizontalGroup(
+				m_GroupLayoutPanelInitialPositionCells.createParallelGroup(Alignment.LEADING)
+					.addGap(0, 158, Short.MAX_VALUE)
+					.addGroup(m_GroupLayoutPanelInitialPositionCells.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(m_comboBoxInitialPositionCells, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+			);
+			m_GroupLayoutPanelInitialPositionCells.setVerticalGroup(
+				m_GroupLayoutPanelInitialPositionCells.createParallelGroup(Alignment.LEADING)
+					.addGap(0, 71, Short.MAX_VALUE)
+					.addGroup(m_GroupLayoutPanelInitialPositionCells.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(m_comboBoxInitialPositionCells, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(17, Short.MAX_VALUE))
+			);
+			m_panelInitialPositionCells.setLayout(m_GroupLayoutPanelInitialPositionCells);
+	}
+	
+	
+	public void buildComponentLateralToolsFormCells(){
+		comboBoxFormCells = new JComboBox();
+		m_GroupLayoutPanelFormCells = new GroupLayout(m_panelFormCells);
+		
+		buildGroupLayoutComponentFormCells();
+	}
+	
+	public void buildGroupLayoutComponentFormCells(){
+		m_GroupLayoutPanelFormCells.setHorizontalGroup(
+				m_GroupLayoutPanelFormCells.createParallelGroup(Alignment.LEADING)
+					.addGap(0, 158, Short.MAX_VALUE)
+					.addGroup(m_GroupLayoutPanelFormCells.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(comboBoxFormCells, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+			);
+			m_GroupLayoutPanelFormCells.setVerticalGroup(
+				m_GroupLayoutPanelFormCells.createParallelGroup(Alignment.LEADING)
+					.addGap(0, 71, Short.MAX_VALUE)
+					.addGroup(m_GroupLayoutPanelFormCells.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(comboBoxFormCells, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(17, Short.MAX_VALUE))
+			);
+			m_panelFormCells.setLayout(m_GroupLayoutPanelFormCells);
+	}
+	
+	
+	public void buildComponentLateralToolsColorCells(){
+		m_comboBoxColorCells = new JComboBox();
+		m_GroupLayoutPanelColorCells = new GroupLayout(m_panelColorCells);
+		
+		buildGroupLayoutComponentColorCells();
+	}
+	
+	public void buildGroupLayoutComponentColorCells(){
+		m_GroupLayoutPanelColorCells.setHorizontalGroup(
+			m_GroupLayoutPanelColorCells.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 158, Short.MAX_VALUE)
+				.addGroup(m_GroupLayoutPanelColorCells.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(m_comboBoxColorCells, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		m_GroupLayoutPanelColorCells.setVerticalGroup(
+			m_GroupLayoutPanelColorCells.createParallelGroup(Alignment.LEADING)
+				.addGap(0, 71, Short.MAX_VALUE)
+				.addGroup(m_GroupLayoutPanelColorCells.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(m_comboBoxColorCells, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(17, Short.MAX_VALUE))
+		);
+		m_panelColorCells.setLayout(m_GroupLayoutPanelColorCells);
+	}
+	
+	
+	public void buildComponentLateralToolsBackgroundColor(){
+		m_comboBoxBackgroundColor = new JComboBox();
+		m_GroupLayoutPanelBackgroundColor = new GroupLayout(m_panelBackgroundColor);
+		
+		buildGroupLayoutComponentBackgroundColor();
+	}
+	
+	public void buildGroupLayoutComponentBackgroundColor(){
+		m_GroupLayoutPanelBackgroundColor.setHorizontalGroup(
+				m_GroupLayoutPanelBackgroundColor.createParallelGroup(Alignment.LEADING)
+					.addGap(0, 158, Short.MAX_VALUE)
+					.addGroup(m_GroupLayoutPanelBackgroundColor.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(m_comboBoxBackgroundColor, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+			);
+			m_GroupLayoutPanelBackgroundColor.setVerticalGroup(
+					m_GroupLayoutPanelBackgroundColor.createParallelGroup(Alignment.LEADING)
+					.addGap(0, 71, Short.MAX_VALUE)
+					.addGroup(m_GroupLayoutPanelBackgroundColor.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(m_comboBoxBackgroundColor, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(17, Short.MAX_VALUE))
+			);
+			m_panelBackgroundColor.setLayout(m_GroupLayoutPanelBackgroundColor);
+	}
+
+	
+	public void buildGroupLayoutPanelLateralTools(){
+		m_GroupLayoutPanelLateralTools = new GroupLayout(m_panelLateralTools);
+		m_GroupLayoutPanelLateralTools.setHorizontalGroup(
+			m_GroupLayoutPanelLateralTools.createParallelGroup(Alignment.LEADING)
+				.addGroup(m_GroupLayoutPanelLateralTools.createSequentialGroup()
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addComponent(m_panelAlgorithm, GroupLayout.PREFERRED_SIZE, 158, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap())
+				.addGroup(m_GroupLayoutPanelLateralTools.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(m_panelInitialPositionCells, GroupLayout.PREFERRED_SIZE, 158, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				.addGroup(m_GroupLayoutPanelLateralTools.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(m_panelFormCells, GroupLayout.PREFERRED_SIZE, 158, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				.addGroup(m_GroupLayoutPanelLateralTools.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(m_panelColorCells, GroupLayout.PREFERRED_SIZE, 158, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+				.addGroup(m_GroupLayoutPanelLateralTools.createSequentialGroup()
+						.addContainerGap()
+						.addComponent(m_panelBackgroundColor, GroupLayout.PREFERRED_SIZE, 158, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
+		m_GroupLayoutPanelLateralTools.setVerticalGroup(
+			m_GroupLayoutPanelLateralTools.createParallelGroup(Alignment.LEADING)
+				.addGroup(m_GroupLayoutPanelLateralTools.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(m_panelAlgorithm, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(m_panelInitialPositionCells, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(m_panelFormCells, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(m_panelColorCells, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(m_panelBackgroundColor, GroupLayout.PREFERRED_SIZE, 71, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(251, Short.MAX_VALUE))
+		);
+		m_panelLateralTools.setLayout(m_GroupLayoutPanelLateralTools);
+	}
+	
+	
+	
+	
+	
+	public void runSimulation() {
+		m_internalFrameSimulation.startUpdate();//The simulation of the window start
+	}
+
 
 }
