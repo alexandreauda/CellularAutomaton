@@ -25,6 +25,7 @@ import controller.OpenFileEvent;
 import controller.PauseSimulationEvent;
 import controller.QuitEvent;
 import controller.StartSimulationEvent;
+import controller.StopSimulationEvent;
 import model.SimulationState;
 import controller.ConwayRules;
 import vue.IForm;
@@ -1044,6 +1045,7 @@ public class MainWindow extends JFrame {
 	private void addListenerSimulationTools(){
 		this.addListenerLaucher();//add listener of button Launcher
 		this.addListenerPause();//add listener of button Pause
+		addListenerStop();//add listener of button Stop
 	}
 
 	private void addListenerLaucher(){
@@ -1052,6 +1054,10 @@ public class MainWindow extends JFrame {
 	
 	private void addListenerPause(){
 		m_buttonPause.addActionListener(new PauseSimulationEvent(this));
+	}
+	
+	private void addListenerStop(){
+		m_buttonStop.addActionListener(new StopSimulationEvent(this));
 	}
 	
 
