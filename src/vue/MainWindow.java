@@ -21,6 +21,7 @@ import controller.CreditsEvent;
 import controller.NewEvent;
 import controller.OpenFileEvent;
 import controller.QuitEvent;
+import model.SimulationState;
 import controller.ConwayRules;
 import vue.IForm;
 import controller.IInitializeSimulationRules;
@@ -181,6 +182,7 @@ public class MainWindow extends JFrame {
 	/** The view item 2 choice 3. */
 	private JRadioButtonMenuItem  m_viewItem2Choice3 = new StayOpenRadioButtonMenuItem ("4");
 	
+	/** Graphic Component */
 	private JPanel m_mainPanel;
 	private JPanel m_panelTopTools;
 	private JToolBar m_mainToolBar;
@@ -228,6 +230,8 @@ public class MainWindow extends JFrame {
 	private GroupLayout m_GroupLayoutPanelBackgroundColor;
 	private JComboBox m_comboBoxBackgroundColor;
 	private InternalFrameSimulation m_internalFrameSimulation;
+	
+	private SimulationState m_simulationState;
 
 	/**
 	 * ****CONSTRUCTOR*****.
@@ -251,6 +255,8 @@ public class MainWindow extends JFrame {
 
 		//Set the window visible
 		this.setVisible(true);
+		
+		m_simulationState = SimulationState.RUN;
 	}
 
 
@@ -1025,7 +1031,17 @@ public class MainWindow extends JFrame {
 	
 	
 	public void runSimulation() {
-		m_internalFrameSimulation.startUpdate();//The simulation of the window start
+		if(m_simulationState == SimulationState.RUN){
+			while(m_simulationState == SimulationState.RUN) {
+				m_internalFrameSimulation.startUpdate();//The simulation of the window start
+			}
+		}
+		else if(m_simulationState == SimulationState.PAUSE){
+			//TODO
+		}
+		else{
+			//TODO
+		}
 	}
 
 

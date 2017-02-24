@@ -54,7 +54,7 @@ public class InternalFrameSimulation extends JInternalFrame {
 	/******CLASS METHODS******/
 	
 	public void startUpdate() {
-		while(true) {
+
 			long before = System.currentTimeMillis();
 			m_simulation.update();
 
@@ -66,7 +66,6 @@ public class InternalFrameSimulation extends JInternalFrame {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
 	}
 
 	public class Screen extends JLabel {

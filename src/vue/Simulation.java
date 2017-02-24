@@ -28,7 +28,7 @@ public class Simulation {
         m_colorOfCells=colorOfCells;
         m_initializeSimulationRule=initializeSimulationRule;
         
-         m_initializeSimulationRule.initializeSimulation(m_matrixCells, m_nbCellWidth, m_nbCellHeight, m_cellularAutomaton, m_formOfCells, m_colorOfCells);//Initialize simulation according to a rule witch is a matrix of cells
+        m_initializeSimulationRule.initializeSimulation(m_matrixCells, m_nbCellWidth, m_nbCellHeight, m_cellularAutomaton, m_formOfCells, m_colorOfCells);//Initialize simulation according to a rule witch is a matrix of cells
         
     }
     
