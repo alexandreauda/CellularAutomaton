@@ -54,7 +54,6 @@ public class InternalFrameSimulation extends JInternalFrame {
 	/******CLASS METHODS******/
 	
 	public void startUpdate() {
-
 			long before = System.currentTimeMillis();
 			m_simulation.update();
 

@@ -6,6 +6,8 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
@@ -20,7 +22,9 @@ import controller.CloseEvent;
 import controller.CreditsEvent;
 import controller.NewEvent;
 import controller.OpenFileEvent;
+import controller.PauseSimulationEvent;
 import controller.QuitEvent;
+import controller.StartSimulationEvent;
 import model.SimulationState;
 import controller.ConwayRules;
 import vue.IForm;
@@ -196,7 +200,7 @@ public class MainWindow extends JFrame {
 	private JComboBox m_comboBoxCellularAutomaton;
 	private JToolBar m_toolBarSimulationTools;
 	private JPanel m_panelSimulationTools;
-	private JButton m_buttonLaucher;
+	private JButton m_buttonLauncher;
 	private JButton m_buttonPause;
 	private JButton m_buttonStop;
 	private JButton m_buttonUndo;
@@ -247,11 +251,14 @@ public class MainWindow extends JFrame {
 		//We initialize our menuBar 
 		this.initMenuBar();
 
-		//add listeners
+		//add listeners MenuBar
 		this.addListenerMenuBar();
 		
 		//Build the component of the window
 		this.buildComponentWindow();
+		
+		//add listeners SimulationTools
+		addListenerSimulationTools();
 
 		//Set the window visible
 		this.setVisible(true);
@@ -271,8 +278,12 @@ public class MainWindow extends JFrame {
 	}
 	
 	/******SETTERS******/	
-	public void setInternalFrame(InternalFrameSimulation internalFrame) {
+	public void setm_internalFrame(InternalFrameSimulation internalFrame) {
 		this.m_internalFrameSimulation = internalFrame;
+	}
+	
+	public void setm_simulationState(SimulationState m_simulationState) {
+		this.m_simulationState = m_simulationState;
 	}
 	
 
@@ -520,7 +531,7 @@ public class MainWindow extends JFrame {
 
 
 
-	/***Listeners***/
+	/***Listeners MenuBar***/
 
 	private void addListenerMenuBar (){
 		this.addListenerFile(); //add listener of tab File
@@ -662,7 +673,7 @@ public class MainWindow extends JFrame {
 		m_toolBarSimulationTools.add(m_panelSimulationTools);
 		m_panelSimulationTools.setBorder(BorderFactory.createTitledBorder("Simulation Tools"));
 		
-		m_buttonLaucher = new JButton(new ImageIcon(pathDirectory+"button_laucher.png"));
+		m_buttonLauncher = new JButton(new ImageIcon(pathDirectory+"button_laucher.png"));
 		
 		m_buttonPause = new JButton(new ImageIcon(pathDirectory+"button_pause.png"));
 		
@@ -675,7 +686,7 @@ public class MainWindow extends JFrame {
 		m_buttonReload = new JButton(new ImageIcon(pathDirectory+"button_reload.png"));
 		
 		m_panelSimulationTools.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		m_panelSimulationTools.add(m_buttonLaucher);
+		m_panelSimulationTools.add(m_buttonLauncher);
 		m_panelSimulationTools.add(m_buttonPause);
 		m_panelSimulationTools.add(m_buttonStop);
 		m_panelSimulationTools.add(m_buttonUndo);
@@ -1029,20 +1040,43 @@ public class MainWindow extends JFrame {
 	
 	
 	
+	/***Listeners Simulation Tools***/
+	private void addListenerSimulationTools(){
+		this.addListenerLaucher();//add listener of button Launcher
+		this.addListenerPause();//add listener of button Pause
+	}
+
+	private void addListenerLaucher(){
+		m_buttonLauncher.addActionListener(new StartSimulationEvent(this));
+	}
+	
+	private void addListenerPause(){
+		m_buttonPause.addActionListener(new PauseSimulationEvent(this));
+	}
+	
+
+	
 	
 	public void runSimulation() {
-		if(m_simulationState == SimulationState.RUN){
-			while(m_simulationState == SimulationState.RUN) {
-				m_internalFrameSimulation.startUpdate();//The simulation of the window start
+		while(true){
+			if(m_simulationState == SimulationState.RUN){
+				while(m_simulationState == SimulationState.RUN) {
+					m_internalFrameSimulation.startUpdate();//The simulation of the window start
+				}
+			}
+			else if(m_simulationState == SimulationState.PAUSE){
+				while(m_simulationState == SimulationState.PAUSE) {
+					System.out.println("Pause");
+				//TODO
+				}
+			}
+			else{
+				//TODO
+				System.out.println("Stop");
 			}
 		}
-		else if(m_simulationState == SimulationState.PAUSE){
-			//TODO
-		}
-		else{
-			//TODO
-		}
 	}
+	
 
 
 }
