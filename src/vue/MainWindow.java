@@ -264,7 +264,7 @@ public class MainWindow extends JFrame {
 		//Set the window visible
 		this.setVisible(true);
 		
-		m_simulationState = SimulationState.RUN;
+		m_simulationState = SimulationState.STOP;
 	}
 
 
