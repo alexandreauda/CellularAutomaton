@@ -8,7 +8,7 @@ import vue.MainWindow;
 
 public class StopSimulationEvent implements ActionListener  {
 	/******ATTRIBUTES******/
-	MainWindow window;
+	private MainWindow window;
 	
 	
 	/**

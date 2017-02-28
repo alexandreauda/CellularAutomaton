@@ -9,7 +9,7 @@ import vue.MainWindow;
 public class PauseSimulationEvent implements ActionListener {
 	
 	/******ATTRIBUTES******/
-	MainWindow window;
+	private MainWindow window;
 	
 	
 	/**
@@ -28,7 +28,7 @@ public class PauseSimulationEvent implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.window.setm_simulationState(SimulationState.PAUSE);;	
+		this.window.setm_simulationState(SimulationState.PAUSE);
 	}
 
 }

@@ -9,7 +9,7 @@ import vue.MainWindow;
 public class StartSimulationEvent implements ActionListener {
 	
 	/******ATTRIBUTES******/
-	MainWindow window;
+	private MainWindow window;
 	
 	
 	/**
