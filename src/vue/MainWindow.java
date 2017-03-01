@@ -24,6 +24,7 @@ import controller.NewEvent;
 import controller.OpenFileEvent;
 import controller.PauseSimulationEvent;
 import controller.QuitEvent;
+import controller.SpeedSimulationEvent;
 import controller.StartSimulationEvent;
 import controller.StopSimulationEvent;
 import model.SimulationState;
@@ -260,6 +261,9 @@ public class MainWindow extends JFrame {
 		
 		//add listeners SimulationTools
 		addListenerSimulationTools();
+		
+		//add listeners ControlTools
+		addListenerControlTools();
 
 		//Set the window visible
 		this.setVisible(true);
@@ -270,16 +274,16 @@ public class MainWindow extends JFrame {
 
 	
 	/******GETTERS******/
-	public JFrame getFrame() {
-		return this;
-	}
-
-	public InternalFrameSimulation getInternalFrame() {
+	public InternalFrameSimulation getm_internalFrameSimulation() {
 		return m_internalFrameSimulation;
 	}
 	
+	public JSlider getm_sliderSpeedSimulation() {
+		return m_sliderSpeedSimulation;
+	}
+	
 	/******SETTERS******/	
-	public void setm_internalFrame(InternalFrameSimulation internalFrame) {
+	public void setm_internalFrameSimulation(InternalFrameSimulation internalFrame) {
 		this.m_internalFrameSimulation = internalFrame;
 	}
 	
@@ -737,6 +741,12 @@ public class MainWindow extends JFrame {
 	public void buildComponentSimulationSpeed(){ 
 		m_panelSimulationSpeed.setLayout(new BorderLayout(0, 0));
 		m_sliderSpeedSimulation = new JSlider();//Creation of Slider for panel "Simulation Speed"
+		m_sliderSpeedSimulation.setMinimum(1);//Set the minimum value of slider
+		m_sliderSpeedSimulation.setMaximum(100);//Set the maximum value of slider
+		m_sliderSpeedSimulation.setValue(30);//Set the value of slider to 30 by default
+		m_sliderSpeedSimulation.setPaintTicks(true);//Set the paint ticks of slider
+		m_sliderSpeedSimulation.setMinorTickSpacing(10);//Set the space between each ticks of slider to 10
+		m_sliderSpeedSimulation.setMajorTickSpacing(20);//Set the space between each major ticks of slider to 20
 		m_panelSimulationSpeed.add(m_sliderSpeedSimulation, BorderLayout.CENTER);//Add the slider to panel m_panelSimulationSpeed
 	}
 	
@@ -1058,6 +1068,17 @@ public class MainWindow extends JFrame {
 	
 	private void addListenerStop(){
 		m_buttonStop.addActionListener(new StopSimulationEvent(this));
+	}
+	
+	
+	
+	/***Listeners Control Tools***/
+	private void addListenerControlTools(){
+		this.addListenerSlider();//add listener of slider Speed Simulation
+	}
+
+	private void addListenerSlider(){
+		m_sliderSpeedSimulation.addChangeListener(new SpeedSimulationEvent(this));
 	}
 	
 

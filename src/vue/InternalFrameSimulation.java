@@ -23,7 +23,7 @@ public class InternalFrameSimulation extends JInternalFrame {
 	private int m_width;
 	private int m_height;
 	private int m_refreshRate; //Updates per seconde
-	private final int m_millis;
+	private int m_millis;
 	private Screen m_screen;
 	private Simulation m_simulation;
 	private Color m_backgroundColor;
@@ -49,11 +49,17 @@ public class InternalFrameSimulation extends JInternalFrame {
 		this.setSize(m_width + this.getInsets().left +  + this.getInsets().right, m_height + this.getInsets().bottom +  + this.getInsets().top);
 		this.setVisible(true);
 	}
+	
+	/******SETTERS******/
+	public void setm_refreshRate(int refreshRate) {
+		this.m_refreshRate = refreshRate;
+	}
 
 	
 	/******CLASS METHODS******/
 	
 	public void startUpdate() {
+			m_millis = 1000/m_refreshRate;
 			long before = System.currentTimeMillis();
 			m_simulation.update();
 
@@ -66,6 +72,7 @@ public class InternalFrameSimulation extends JInternalFrame {
 				e.printStackTrace();
 			}
 	}
+
 
 	public class Screen extends JLabel {
 		/**
