@@ -50,6 +50,11 @@ public class InternalFrameSimulation extends JInternalFrame {
 		this.setVisible(true);
 	}
 	
+	/******GETTERS******/
+	public Simulation getm_simulation() {
+		return m_simulation;
+	}
+	
 	/******SETTERS******/
 	public void setm_refreshRate(int refreshRate) {
 		this.m_refreshRate = refreshRate;

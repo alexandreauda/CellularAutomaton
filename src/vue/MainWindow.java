@@ -24,6 +24,7 @@ import controller.NewEvent;
 import controller.OpenFileEvent;
 import controller.PauseSimulationEvent;
 import controller.QuitEvent;
+import controller.RefreshSimulationEvent;
 import controller.SpeedSimulationEvent;
 import controller.StartSimulationEvent;
 import controller.StopSimulationEvent;
@@ -1056,6 +1057,7 @@ public class MainWindow extends JFrame {
 		this.addListenerLaucher();//add listener of button Launcher
 		this.addListenerPause();//add listener of button Pause
 		addListenerStop();//add listener of button Stop
+		addListenerRefresh();//add listener of button Refresh
 	}
 
 	private void addListenerLaucher(){
@@ -1068,6 +1070,10 @@ public class MainWindow extends JFrame {
 	
 	private void addListenerStop(){
 		m_buttonStop.addActionListener(new StopSimulationEvent(this));
+	}
+	
+	private void addListenerRefresh(){
+		m_buttonReload.addActionListener(new RefreshSimulationEvent(this));
 	}
 	
 	

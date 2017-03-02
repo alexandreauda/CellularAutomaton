@@ -45,6 +45,22 @@ public class Simulation {
 	public int getm_nbCellHeight() {
 		return m_nbCellHeight;
 	}
+	
+	public IRules getm_cellularAutomaton() {
+			return m_cellularAutomaton;
+	}
+	
+	public IForm getm_formOfCells() {
+		return m_formOfCells;
+	}
+	
+	public Color getm_colorOfCells() {
+		return m_colorOfCells;
+	}
+	
+	public IInitializeSimulationRules getm_initializeSimulationRule() {
+		return m_initializeSimulationRule;
+	}
 
 	/******CLASS METHODS******/ 
 	
