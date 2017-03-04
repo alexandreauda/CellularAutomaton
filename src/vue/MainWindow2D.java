@@ -40,9 +40,9 @@ import vue.RectangleForm;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class MainWindow.
+ * The Class MainWindow2D.
  */
-public class MainWindow extends JFrame {
+public class MainWindow2D extends JFrame {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -243,7 +243,7 @@ public class MainWindow extends JFrame {
 	/**
 	 * ****CONSTRUCTOR*****.
 	 */
-	public MainWindow (){
+	public MainWindow2D (){
 
 		//Set the window
 		this.setWindow();

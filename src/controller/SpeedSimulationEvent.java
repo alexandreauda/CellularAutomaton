@@ -3,18 +3,18 @@ package controller;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import vue.MainWindow;
+import vue.MainWindow2D;
 
 public class SpeedSimulationEvent implements ChangeListener {
 	
 	/******ATTRIBUTES******/
-	private MainWindow window;
+	private MainWindow2D window;
 	
 	
 	/**
 	 * ****CONSTRUCTOR*****.
 	 */
-	public SpeedSimulationEvent(MainWindow window) {
+	public SpeedSimulationEvent(MainWindow2D window) {
 		super();
 		this.window = window;
 		

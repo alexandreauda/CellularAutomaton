@@ -4,18 +4,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import model.SimulationState;
-import vue.MainWindow;
+import vue.MainWindow2D;
 
 public class PauseSimulationEvent implements ActionListener {
 	
 	/******ATTRIBUTES******/
-	private MainWindow window;
+	private MainWindow2D window;
 	
 	
 	/**
 	 * ****CONSTRUCTOR*****.
 	 */
-	public PauseSimulationEvent(MainWindow window) {
+	public PauseSimulationEvent(MainWindow2D window) {
 		super();
 		this.window = window;
 		

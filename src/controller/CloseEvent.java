@@ -3,19 +3,19 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import vue.MainWindow;
+import vue.MainWindow2D;
 
 public class CloseEvent implements ActionListener {
 
 
 	/******ATTRIBUTES******/
-	MainWindow window;
+	MainWindow2D window;
 	
 	
 	/**
 	 * ****CONSTRUCTOR*****.
 	 */
-	public CloseEvent(MainWindow window) {
+	public CloseEvent(MainWindow2D window) {
 		super();
 		this.window = window;
 		

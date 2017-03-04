@@ -3,7 +3,7 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import vue.MainWindow;
+import vue.MainWindow2D;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -16,7 +16,7 @@ public class NewEvent implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		MainWindow newSimulatorWindow = new MainWindow();
+		MainWindow2D newSimulatorWindow = new MainWindow2D();
 		
 	}
 
