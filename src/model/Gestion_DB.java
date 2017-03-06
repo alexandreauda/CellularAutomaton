@@ -16,7 +16,7 @@ public class Gestion_DB {
 	 * ****CONSTRUCTOR BY DEFAULT*****.
 	 */
 	public Gestion_DB(){
-		Singleton singleton =new Singleton();
+		Singleton singleton = Singleton.getInstance();
 		Gestion_DB.connect=singleton.getConnexion();//We connect to the database. (The connection is initialized)
 	}
 
@@ -40,7 +40,7 @@ public class Gestion_DB {
 			PreparedStatement prepared_result = connect.prepareStatement(query);
 			result=prepared_result.executeQuery();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Error. Cause: "+e.getCause()+". Message: "+e.getMessage());
 		}
 		return result;//We return the table that is returned by the execution of the query.
 	}
@@ -53,7 +53,7 @@ public class Gestion_DB {
 			PreparedStatement prepared_result = connect.prepareStatement(query);
 			prepared_result.executeUpdate();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Error. Cause: "+e.getCause()+". Message: "+e.getMessage());
 		}
 	}
 
@@ -67,13 +67,13 @@ public class Gestion_DB {
 		try {
 			state=connect.createStatement();//initialisation of the object state of type Statement which is use to execute queries. CreateStatement() has parameters to indicate the configuration of the results: readonly...
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Error. Cause: "+e.getCause()+". Message: "+e.getMessage());
 		}
 		//Query execution
 		try {
 			result=state.executeQuery(query);//result is the table which is returned by the execution of the query.
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (SQLException | NullPointerException e) {
+			System.out.println("Error. Cause: "+e.getCause()+". Message: "+e.getMessage());
 		}
 		return result;//we return the table which is returned by the execution of the query.
 	}
@@ -82,17 +82,17 @@ public class Gestion_DB {
 	public void makeQueryUpdate(String query){
 		Statement state=null;
 
-		//Création of a statement
+		//Creation of a statement
 		try {
 			state=connect.createStatement();//initialisation of an object state of type Statement which is used to execute queries. createStatement() has parameters to indicate the configuration of the results: readonly...
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("Error. Cause: "+e.getCause()+". Message: "+e.getMessage());
 		}
-		//Exécution requête
+		//Execution query
 		try {
 			state.executeUpdate(query);//we modifie the database with INSERT, UPDATE, DELETE
-		} catch (SQLException e) {
-			e.printStackTrace();
+		} catch (SQLException | NullPointerException e) {
+			System.out.println("Error. Cause: "+e.getCause()+". Message: "+e.getMessage());
 		}
 	}
 

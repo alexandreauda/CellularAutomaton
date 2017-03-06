@@ -19,17 +19,24 @@ public class Singleton {
 
 
 	//******DEFAULT CONSTRUCTEOR******
-	public Singleton(){
+	private Singleton(){
 		this("com.mysql.jdbc.Driver", "jdbc:mysql://localhost/CellularAutomat", "CellularAutomat", "CeYzZsXtr5TxVtFV", null);
 	}
 
 	//******PARAMETERS CONSTRUCTOR******
-	public Singleton(String pilote, String url, String login, String passord, Connection connect){
+	private Singleton(String pilote, String url, String login, String passord, Connection connect){
 		Singleton.pilote=pilote;
 		Singleton.url=url;
 		Singleton.login=login;
 		Singleton.passord=passord;
 		Singleton.connect=connect;
+	}
+
+	/** Holder */
+	private static class SingletonHolder
+	{		
+		/** Unique instance non préinitialize */
+		private static final Singleton instance = new Singleton();
 	}
 
 	//******GETTERS AND SETTERS******
@@ -94,11 +101,8 @@ public class Singleton {
 				connect=DriverManager.getConnection(url, login, passord);
 			}  
 			// manage the exceptions
-			catch (SQLException e) {
-				e.printStackTrace();
-			}
-			catch (ClassNotFoundException e) {
-				e.printStackTrace();
+			catch (SQLException | ClassNotFoundException e) {
+				System.out.println("Error. Cause: "+e.getCause()+". Message: "+e.getMessage());
 			}
 		}
 		else{//else if the object connect is already initialize, we have already connect. Therefore we don't have to connect.
@@ -107,7 +111,11 @@ public class Singleton {
 		return connect;	//return the connection of type Connection which is contain à l'api java
 	}
 
-
+	/** Access point for the single instance of the singleton */
+	public static Singleton getInstance()
+	{
+		return SingletonHolder.instance;
+	}
 
 
 }
