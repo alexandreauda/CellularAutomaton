@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mer 01 Mars 2017 à 22:15
+-- Généré le :  Jeu 30 Mars 2017 à 00:16
 -- Version du serveur :  5.6.22-log
 -- Version de PHP :  5.5.12
 
@@ -40,6 +40,21 @@ CREATE TABLE IF NOT EXISTS `contributor` (
 
 INSERT INTO `contributor` (`id`, `Name`, `FirstName`) VALUES
 (1, 'AUDA', 'Alexandre');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `logs`
+--
+
+CREATE TABLE IF NOT EXISTS `logs` (
+  `EVENT_ID` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `EVENT_DATE` datetime NOT NULL,
+  `LEVEL` varchar(50) NOT NULL,
+  `LOGGER` varchar(50) NOT NULL,
+  `MESSAGE` text NOT NULL,
+  PRIMARY KEY (`EVENT_ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

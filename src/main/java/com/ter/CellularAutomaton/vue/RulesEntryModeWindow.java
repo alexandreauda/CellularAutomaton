@@ -1,14 +1,22 @@
 package com.ter.CellularAutomaton.vue;
 
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
+import com.ter.CellularAutomaton.controller.CloseRulesEntryModeWindowEvent;
+import com.ter.CellularAutomaton.controller.QuitEvent;
 import com.ter.CellularAutomaton.controller.RulesEntryModeAdditiveEvent;
 import com.ter.CellularAutomaton.controller.RulesEntryModeElementaryEvent;
 import com.ter.CellularAutomaton.controller.RulesEntryModePatternEvent;
 import com.ter.CellularAutomaton.controller.RulesEntryModeScriptEvent;
 
 import java.awt.BorderLayout;
+import java.awt.event.KeyEvent;
+
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 
@@ -18,6 +26,22 @@ public class RulesEntryModeWindow extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private JMenuBar m_menuBar = new JMenuBar();
+
+	/** The menu file. */
+	//Tab in MenuBar
+	private JMenu m_menuFile = new JMenu("File");
+	
+	/** The menu bar file item 1. */
+	// In file menu
+
+	/** The menu bar file item 1. */
+	private JMenuItem m_menuBarFileItem1 = new JMenuItem("Close");
+
+	/** The menu bar file item 2. */
+	private JMenuItem m_menuBarFileItem2 = new JMenuItem("Quit");
+	
 	private JPanel m_mainPanel;
 	private JPanel m_panelElementary;
 	private JButton m_buttonElementary;
@@ -28,18 +52,27 @@ public class RulesEntryModeWindow extends JFrame {
 	private JPanel m_panelScript;
 	private JButton m_buttonScript;
 	
+	private MainWindow1D m_currentSimulator;
+	
 	
 
 	/**
 	 * Create the application.
 	 */
-	public RulesEntryModeWindow() {
+	public RulesEntryModeWindow(MainWindow1D currentSimulator) {
 		this.setTitle("Rules entry mode");
 		this.setSize(450, 300);
 		this.setLocationRelativeTo(null);
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		m_currentSimulator = currentSimulator;// Initialize attribute with current simulator
 		
 		buildComponentWindow();//Build component of window
+		
+		this.initMenuMnemonic();//Set mnemonic of the MenuBar
+		
+		this.initMenuBar();//We initialize our menuBar
+		
+		this.addListenerMenuBar();//We initialize Listener of menuBar
 		
 		addListenerOnWindow ();//Add Listener on window
 		
@@ -52,6 +85,67 @@ public class RulesEntryModeWindow extends JFrame {
 	//Build component of window
 	private void buildComponentWindow() {
 		buildPanelMain();//Build the main panel
+	}
+	
+	/******Menu bar******/
+	/**
+	 * Inits the menu bar.
+	 */
+	private void initMenuBar(){
+		//We initialize our menuBar 
+		this.constructTabFileMenuBar();//Construction of the tab "File" of menuBar
+		
+		this.setJMenuBar(m_menuBar);//Add menuBar to window
+		
+		this.initAcceleratorMenuBar();//Adding all Accelerator of the MenuBar
+	}
+	
+	
+	/**
+	 * Construct tab file menu bar.
+	 */
+	private void constructTabFileMenuBar(){
+		//Construction of the tab "File" of menuBar
+		this.m_menuFile.add(m_menuBarFileItem1);//Adding a tab "Close" in tab File in MenuBar
+		this.m_menuFile.add(m_menuBarFileItem2);//Adding a tab "Quit" in tab File in MenuBar
+		this.m_menuBar.add(m_menuFile);//the File tab is added to MenuBar
+	}
+	
+	
+	/******Mnemonic******/
+	/**
+	 * Inits the menu mnemonic.
+	 */
+	private void initMenuMnemonic(){
+		//add all the mnémonic for the MenuBar
+		m_menuFile.setMnemonic('F');
+	}
+	
+	/******Accelerator******/
+	/**
+	 * *Init the accelerators**.
+	 */
+	private void initAcceleratorMenuBar(){
+		//add all the accelerators for the items
+		this.initAcceleratorFile(); //accelerator of tab File
+	}
+	
+	private void initAcceleratorFile(){
+		//add all the accelerators for the items of tab File
+		m_menuBarFileItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_MASK)); //add accelerators of Close in tab File
+		m_menuBarFileItem2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_MASK)); //add accelerators of Quit in tab File
+	}
+	
+	/******Listeners MenuBar******/
+	//add listeners MenuBar
+	private void addListenerMenuBar (){
+		this.addListenerFile(); //add listener of tab File
+	}
+
+	//add listeners for tab File in MenuBar
+	private void addListenerFile (){
+		m_menuBarFileItem1.addActionListener(new CloseRulesEntryModeWindowEvent(this));
+		m_menuBarFileItem2.addActionListener(new QuitEvent());
 	}
 	
 	/******Build Main Panel******/
@@ -150,7 +244,7 @@ public class RulesEntryModeWindow extends JFrame {
 	
 	//Listener on button m_buttonElementary
 	private void addListenerButtonElementary (){
-		m_buttonElementary.addActionListener(new RulesEntryModeElementaryEvent(this));
+		m_buttonElementary.addActionListener(new RulesEntryModeElementaryEvent(this,m_currentSimulator));
 	}
 	
 	//Listener on button m_buttonAdditive

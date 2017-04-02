@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+	<!-- Declaration of the different Appenders+Layout and Loggers -->
+
+	<!-- Configuration of the Appenders+Layout -->
+	<Appenders>
+
+		<!--Logging in console -->
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d %-5p [%t] %C{2} (%F:%L) - %m%n" />
+		</Console>
+
+		<!--Logging in files -->
+		<!-- 
+		<File name="MyFile" fileName="logs/overallapp.log" append="true" bufferedIO="true"> 
+			<PatternLayout pattern="%d %-5p [%t] %C{2} (%F:%L) - %m%n" /> </File> <RollingFile 
+			name="RollingFile" fileName="logs/app.log" filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.zip"> 
+			<PatternLayout> <Pattern>%d %p %c{1.} [%t] %m%n</Pattern> </PatternLayout> 
+			<Policies> <TimeBasedTriggeringPolicy /> <SizeBasedTriggeringPolicy size="20 
+			MB" /> </Policies> <DefaultRolloverStrategy max="20" /> </RollingFile>
+		-->
+
+		<!--BEGIN: CAN BE REMOVE -->
+		<!--Logging in a database-->
+		<!-- THE tableName ATTIBUTE VALUE IN THE JDBC TAG MUST BE CHANGE FOR YOUR CURRENT PROJECT. -->
+		<JDBC name="databaseAppender" tableName="logs">
+			<!-- THE CLASS ATTIBUTE VALUE IN THE ConnectionFactory TAG MUST BE CHANGE 
+				FOR YOUR CURRENT PROJECT. -->
+			<ConnectionFactory class="com.ter.CellularAutomaton.main.ConnectionFactory"
+				method="getDatabaseConnection" />
+			<Column name="EVENT_DATE" isEventTimestamp="true" />
+			<Column name="LEVEL" pattern="%level" />
+			<Column name="LOGGER" pattern="%logger" />
+			<Column name="MESSAGE" pattern="%message" />
+		</JDBC>
+		<!--END: CAN BE REMOVE -->
+
+	</Appenders>
+
+	<!-- Configuration of the Loggers -->
+	<Loggers>
+		<!-- Configuration of the Loggers -->
+		<Logger name="configurationLog" level="info" />
+
+		<!-- Configuration of the root Loggers -->
+		<!-- THE level TAG MUST BE CHANGE IF WE WANT TO SEE OTHER LEVEL OF MESSAGES -->
+		<Root level="info">
+			<AppenderRef ref="Console" />
+			<!--
+			<AppenderRef ref="MyFile" />
+			<AppenderRef ref="RollingFile" />
+			-->
+			<!--BEGIN: CAN BE REMOVE -->
+			<AppenderRef ref="databaseAppender" />
+			<!--END: CAN BE REMOVE -->
+		</Root>
+
+	</Loggers>
+
+</Configuration>

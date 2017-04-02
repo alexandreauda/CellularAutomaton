@@ -15,23 +15,23 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import com.ter.CellularAutomaton.controller.CloseAllEvent;
-import com.ter.CellularAutomaton.controller.CloseEvent;
+import com.ter.CellularAutomaton.controller.Close2DEvent;
 import com.ter.CellularAutomaton.controller.CreditsEvent;
-import com.ter.CellularAutomaton.controller.NewEvent;
+import com.ter.CellularAutomaton.controller.New2DEvent;
 import com.ter.CellularAutomaton.controller.OpenFileEvent;
-import com.ter.CellularAutomaton.controller.PauseSimulationEvent;
+import com.ter.CellularAutomaton.controller.PauseSimulation2DEvent;
 import com.ter.CellularAutomaton.controller.QuitEvent;
-import com.ter.CellularAutomaton.controller.RefreshSimulationEvent;
+import com.ter.CellularAutomaton.controller.RefreshSimulation2DEvent;
 import com.ter.CellularAutomaton.controller.SpeedSimulationEvent;
-import com.ter.CellularAutomaton.controller.StartSimulationEvent;
-import com.ter.CellularAutomaton.controller.StopSimulationEvent;
+import com.ter.CellularAutomaton.controller.StartSimulation2DEvent;
+import com.ter.CellularAutomaton.controller.StopSimulation2DEvent;
 import com.ter.CellularAutomaton.model.SimulationState;
-import com.ter.CellularAutomaton.controller.ConwayRules;
+import com.ter.CellularAutomaton.controller.ConwayRules2D;
 import com.ter.CellularAutomaton.vue.IForm;
-import com.ter.CellularAutomaton.controller.IInitializeSimulationRules;
-import com.ter.CellularAutomaton.controller.IRules;
+import com.ter.CellularAutomaton.controller.IInitializeSimulationRules2D;
+import com.ter.CellularAutomaton.controller.IRules2D;
 import com.ter.CellularAutomaton.controller.InitializeSimulation2DRandomly;
-import com.ter.CellularAutomaton.vue.InternalFrameSimulation;
+import com.ter.CellularAutomaton.vue.InternalFrameSimulation2D;
 import com.ter.CellularAutomaton.vue.RectangleForm;
 
 
@@ -233,7 +233,7 @@ public class MainWindow2D extends JFrame {
 	private JPanel m_panelBackgroundColor;
 	private GroupLayout m_GroupLayoutPanelBackgroundColor;
 	private JComboBox m_comboBoxBackgroundColor;
-	private InternalFrameSimulation m_internalFrameSimulation;
+	private InternalFrameSimulation2D m_internalFrameSimulation;
 	
 	private SimulationState m_simulationState;
 
@@ -272,7 +272,7 @@ public class MainWindow2D extends JFrame {
 
 	
 	/******GETTERS******/
-	public InternalFrameSimulation getm_internalFrameSimulation() {
+	public InternalFrameSimulation2D getm_internalFrameSimulation() {
 		return m_internalFrameSimulation;
 	}
 	
@@ -281,7 +281,7 @@ public class MainWindow2D extends JFrame {
 	}
 	
 	/******SETTERS******/	
-	public void setm_internalFrameSimulation(InternalFrameSimulation internalFrame) {
+	public void setm_internalFrameSimulation(InternalFrameSimulation2D internalFrame) {
 		this.m_internalFrameSimulation = internalFrame;
 	}
 	
@@ -542,9 +542,9 @@ public class MainWindow2D extends JFrame {
 	}
 
 	private void addListenerFile (){
-		m_menuBarFileItem1.addActionListener(new NewEvent());
+		m_menuBarFileItem1.addActionListener(new New2DEvent());
 		m_menuBarFileItem2.addActionListener(new OpenFileEvent());
-		m_menuBarFileItem7.addActionListener(new CloseEvent(this));
+		m_menuBarFileItem7.addActionListener(new Close2DEvent(this));
 		m_menuBarFileItem8.addActionListener(new CloseAllEvent());
 		m_menuBarFileItem9.addActionListener(new QuitEvent());
 	}
@@ -790,16 +790,16 @@ public class MainWindow2D extends JFrame {
 	
 	
 	public void buildInternalFrameSimulation(){
-		IRules ruleSimulation = new ConwayRules();
+		IRules2D ruleSimulation = new ConwayRules2D();
 		IForm formOfCells = new RectangleForm();
 		Color colorOfCells = Color.BLUE;
 		Color backgroundColor = Color.BLACK;
-		IInitializeSimulationRules initializeSimulationRule = new InitializeSimulation2DRandomly();
+		IInitializeSimulationRules2D initializeSimulationRule = new InitializeSimulation2DRandomly();
 		buildInternalFrameSimulation(ruleSimulation, formOfCells, colorOfCells, backgroundColor, initializeSimulationRule);
 	}
 	
-	public void buildInternalFrameSimulation(IRules ruleSimulation, IForm formOfCells, Color colorOfCells, Color backgroundColor, IInitializeSimulationRules initializeSimulationRule){
-		m_internalFrameSimulation = new InternalFrameSimulation("Simulation", ruleSimulation, formOfCells, colorOfCells, backgroundColor, initializeSimulationRule);
+	public void buildInternalFrameSimulation(IRules2D ruleSimulation, IForm formOfCells, Color colorOfCells, Color backgroundColor, IInitializeSimulationRules2D initializeSimulationRule){
+		m_internalFrameSimulation = new InternalFrameSimulation2D("Simulation", ruleSimulation, formOfCells, colorOfCells, backgroundColor, initializeSimulationRule);
 		m_internalFrameSimulation.setBounds(53, 11, 900, 530);
 		m_internalFrameSimulation.setVisible(true);
 		m_mainDesktopPane.setLayout(null);
@@ -1058,19 +1058,19 @@ public class MainWindow2D extends JFrame {
 	}
 
 	private void addListenerLaucher(){
-		m_buttonLauncher.addActionListener(new StartSimulationEvent(this));
+		m_buttonLauncher.addActionListener(new StartSimulation2DEvent(this));
 	}
 	
 	private void addListenerPause(){
-		m_buttonPause.addActionListener(new PauseSimulationEvent(this));
+		m_buttonPause.addActionListener(new PauseSimulation2DEvent(this));
 	}
 	
 	private void addListenerStop(){
-		m_buttonStop.addActionListener(new StopSimulationEvent(this));
+		m_buttonStop.addActionListener(new StopSimulation2DEvent(this));
 	}
 	
 	private void addListenerRefresh(){
-		m_buttonReload.addActionListener(new RefreshSimulationEvent(this));
+		m_buttonReload.addActionListener(new RefreshSimulation2DEvent(this));
 	}
 	
 	

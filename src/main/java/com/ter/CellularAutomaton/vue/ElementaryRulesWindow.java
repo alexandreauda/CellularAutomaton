@@ -8,7 +8,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
 import com.ter.CellularAutomaton.controller.CloseElementaryRulesWindowEvent;
+import com.ter.CellularAutomaton.controller.OKElementaryRules1DEvent;
 import com.ter.CellularAutomaton.controller.QuitEvent;
+
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import javax.swing.GroupLayout;
@@ -47,32 +49,46 @@ public class ElementaryRulesWindow extends JFrame {
 	/** Component of window */
 	private final JPanel m_panelControl = new JPanel();
 	private final JButton m_buttonReset = new JButton("Reset");
-	private final JCheckBox m_CheckBoxRememberSetting = new JCheckBox("Remember this setting");
+	private final JCheckBox m_checkBoxRememberSetting = new JCheckBox("Remember this setting");
+	private final JCheckBox m_checkBoxSetActualSettingAsDefault = new JCheckBox("Set actual setting as default");
 	private final JPanel m_panelRulesSetting = new JPanel();
-	private final JLabel m_labelAlphabet = new JLabel("Alphabet (0 to ?):");
-	private final JFormattedTextField m_formattedTextFieldAlphabet = new JFormattedTextField();
-	private final JLabel m_labelRules = new JLabel("Rules (0 to 255):");
+	private final JLabel m_labelAlphabet = new JLabel("Alphabet (0 to ?):  1");
+	private final JLabel m_labelRadius = new JLabel("Radius (must be equal or greater than 1):");
+	private final JFormattedTextField m_formattedTextFieldRadius = new JFormattedTextField();
+	private final JLabel m_labelRules = new JLabel("Rules (0 to ?):");
 	private final JFormattedTextField m_formattedTextFieldRules = new JFormattedTextField();
 	private final JButton m_buttonOk = new JButton("OK");
-	private final JButton btnNewButton = new JButton("Personalize");
-	private JSeparator m_separatorBetweenAlphabetAndRules;
+	private final JButton m_buttonPersonalize = new JButton("Personalize");
+	private JSeparator m_separatorBetweenAlphabetAndRadius;
+	private JSeparator m_separatorBetweenRadiusAndRules;
 	private JSeparator m_separatorBetweenRulesAndPanelControl;
+	
+	private MainWindow1D m_currentSimulator;
+	
+	/******GETTERS******/
+	public JFormattedTextField getm_formattedTextFieldRules() {
+		return m_formattedTextFieldRules;
+	}
 
 
 	/**
 	 * Create the application.
 	 */
-	public ElementaryRulesWindow() {
+	public ElementaryRulesWindow(MainWindow1D currentSimulator) {
 		
-		buildComponentWindow();//Build component of window
+		m_currentSimulator = currentSimulator;// Initialize attribute with current simulator
 		
-		this.initMenuMnemonic();//Set mnemonic of the MenuBar
+		buildComponentWindow();// Build component of window.
 		
-		this.initMenuBar();//We initialize our menuBar
+		this.initMenuMnemonic();// Set mnemonic of the MenuBar.
 		
-		this.addListenerMenuBar();//We initialize Listener of menuBar
+		this.initMenuBar();// We initialize our menuBar.
 		
-		this.setVisible(true);//Set the window visible
+		this.addListenerMenuBar();// We initialize Listener of menuBar.
+		
+		this.addListenerOnComponentsOfControlPanel();// Initialize Listeners on Components of panel Control.
+		
+		this.setVisible(true);// Set the window visible.
 	}
 
 	/**
@@ -80,9 +96,24 @@ public class ElementaryRulesWindow extends JFrame {
 	 */
 	private void buildComponentWindow() {
 		this.setTitle("Elementary Rules Window");//Set the title of window
-		this.setSize(470,320);//Set size of window
+		this.setSize(550,320);//Set size of window
 		this.setLocationRelativeTo(null);//Center the location of window
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//Set Default Close Operation to DISPOSE_ON_CLOSE
+		getContentPane().add(m_panelControl, BorderLayout.SOUTH);//Set panel Control in SOUTH
+		
+		buildGroupLayoutPanelControl();//Set Layout for Panel Control
+		
+		m_labelAlphabet.setFont(new Font(m_labelAlphabet.getFont().getName(), m_labelAlphabet.getFont().getStyle(), 15));// new font size is 15
+		m_labelRules.setFont(new Font(m_labelRules.getFont().getName(), m_labelRules.getFont().getStyle(), 15));// new font size is 15
+		m_labelRadius.setFont(new Font(m_labelRadius.getFont().getName(), m_labelRadius.getFont().getStyle(), 15));// new font size is 15
+		
+		getContentPane().add(m_panelRulesSetting, BorderLayout.CENTER);//Set panel RulesSetting in SOUTH
+		
+		m_separatorBetweenAlphabetAndRadius = new JSeparator();//Set separator between alphabet and Radius
+		m_separatorBetweenRadiusAndRules = new JSeparator();//Set separator between Radius and Rules
+		m_separatorBetweenRulesAndPanelControl = new JSeparator();//Set separator between Rules and panel control
+		
+		buildGroupLayoutPanelRulesSetting();//Set Layout for Panel RulesSetting
 	}
 	
 	
@@ -96,37 +127,48 @@ public class ElementaryRulesWindow extends JFrame {
 			gl_panelRulesSetting.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelRulesSetting.createSequentialGroup()
 					.addGroup(gl_panelRulesSetting.createParallelGroup(Alignment.LEADING)
-						.addComponent(m_separatorBetweenAlphabetAndRules, GroupLayout.PREFERRED_SIZE, 10000, GroupLayout.PREFERRED_SIZE)
-						.addComponent(m_separatorBetweenRulesAndPanelControl, GroupLayout.PREFERRED_SIZE, 10000, GroupLayout.PREFERRED_SIZE)
+						.addComponent(m_separatorBetweenRadiusAndRules, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 10000, Short.MAX_VALUE)
+						.addGroup(Alignment.TRAILING, gl_panelRulesSetting.createParallelGroup(Alignment.LEADING, false)
+							.addComponent(m_separatorBetweenRulesAndPanelControl, GroupLayout.DEFAULT_SIZE, 10000, Short.MAX_VALUE)
+							.addGroup(gl_panelRulesSetting.createSequentialGroup()
+								.addContainerGap()
+								.addComponent(m_labelRules, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addComponent(m_formattedTextFieldRules, GroupLayout.PREFERRED_SIZE, 375, GroupLayout.PREFERRED_SIZE))
+							.addGroup(gl_panelRulesSetting.createSequentialGroup()
+								.addContainerGap()
+								.addComponent(m_labelAlphabet, GroupLayout.PREFERRED_SIZE, 140, GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addGap(250)
+								.addComponent(m_buttonPersonalize, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE)))
+						.addComponent(m_separatorBetweenAlphabetAndRadius, GroupLayout.DEFAULT_SIZE, 10000, Short.MAX_VALUE)
 						.addGroup(gl_panelRulesSetting.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(m_labelAlphabet, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(m_formattedTextFieldAlphabet, GroupLayout.PREFERRED_SIZE, 138, GroupLayout.PREFERRED_SIZE)
-							.addGap(33)
-							.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 120, GroupLayout.PREFERRED_SIZE))
-						.addGroup(gl_panelRulesSetting.createSequentialGroup()
-							.addContainerGap()
-							.addComponent(m_labelRules, GroupLayout.PREFERRED_SIZE, 126, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(m_formattedTextFieldRules, GroupLayout.PREFERRED_SIZE, 138, GroupLayout.PREFERRED_SIZE)))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+							.addComponent(m_labelRadius)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(m_formattedTextFieldRadius, GroupLayout.PREFERRED_SIZE, 205, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap())
 		);
 		gl_panelRulesSetting.setVerticalGroup(
-			gl_panelRulesSetting.createParallelGroup(Alignment.LEADING)
+			gl_panelRulesSetting.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_panelRulesSetting.createSequentialGroup()
-					.addGap(32)
+					.addContainerGap()
 					.addGroup(gl_panelRulesSetting.createParallelGroup(Alignment.BASELINE)
 						.addComponent(m_labelAlphabet)
-						.addComponent(m_formattedTextFieldAlphabet, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnNewButton))
-					.addGap(39)
-					.addComponent(m_separatorBetweenAlphabetAndRules, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(33)
+						.addComponent(m_buttonPersonalize))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(m_separatorBetweenRadiusAndRules, GroupLayout.PREFERRED_SIZE, 2, GroupLayout.PREFERRED_SIZE)
+					.addGap(28)
+					.addGroup(gl_panelRulesSetting.createParallelGroup(Alignment.BASELINE)
+						.addComponent(m_labelRadius)
+						.addComponent(m_formattedTextFieldRadius, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+					.addComponent(m_separatorBetweenAlphabetAndRadius, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_panelRulesSetting.createParallelGroup(Alignment.BASELINE)
 						.addComponent(m_labelRules, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
 						.addComponent(m_formattedTextFieldRules, GroupLayout.PREFERRED_SIZE, 32, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+					.addGap(18)
 					.addComponent(m_separatorBetweenRulesAndPanelControl, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 		);
 		m_panelRulesSetting.setLayout(gl_panelRulesSetting);
@@ -137,26 +179,30 @@ public class ElementaryRulesWindow extends JFrame {
 	 * GroupLayout of Panel Control.
 	 */
 	private void buildGroupLayoutPanelControl(){
+		
 		GroupLayout gl_panelControl = new GroupLayout(m_panelControl);
 		gl_panelControl.setHorizontalGroup(
 			gl_panelControl.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelControl.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(m_buttonReset, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)
-					.addGap(32)
-					.addComponent(m_CheckBoxRememberSetting)
-					.addPreferredGap(ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-					.addComponent(m_buttonOk, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
+					.addComponent(m_buttonReset, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(m_checkBoxSetActualSettingAsDefault)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(m_checkBoxRememberSetting)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(m_buttonOk, GroupLayout.PREFERRED_SIZE, 83, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(56, Short.MAX_VALUE))
 		);
 		gl_panelControl.setVerticalGroup(
 			gl_panelControl.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panelControl.createSequentialGroup()
 					.addGap(5)
 					.addGroup(gl_panelControl.createParallelGroup(Alignment.BASELINE)
-						.addComponent(m_CheckBoxRememberSetting)
-						.addComponent(m_buttonOk, GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
-						.addComponent(m_buttonReset, GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
+						.addComponent(m_buttonReset, GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+						.addComponent(m_checkBoxSetActualSettingAsDefault)
+						.addComponent(m_checkBoxRememberSetting)
+						.addComponent(m_buttonOk, GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		m_panelControl.setLayout(gl_panelControl);
@@ -172,20 +218,6 @@ public class ElementaryRulesWindow extends JFrame {
 		this.constructTabFileMenuBar();//Construction of the tab "File" of menuBar
 		
 		this.setJMenuBar(m_menuBar);//Add menuBar to window
-		
-		getContentPane().add(m_panelControl, BorderLayout.SOUTH);//Set panel Control in SOUTH
-		
-		buildGroupLayoutPanelControl();//Set Layout for Panel Control
-		
-		m_labelAlphabet.setFont(new Font(m_labelAlphabet.getFont().getName(), m_labelAlphabet.getFont().getStyle(), 15));// new font size is 15
-		m_labelRules.setFont(new Font(m_labelRules.getFont().getName(), m_labelRules.getFont().getStyle(), 15));// new font size is 15
-		
-		getContentPane().add(m_panelRulesSetting, BorderLayout.CENTER);//Set panel RulesSetting in SOUTH
-		
-		m_separatorBetweenAlphabetAndRules = new JSeparator();//Set separator between alphabet and rules
-		m_separatorBetweenRulesAndPanelControl = new JSeparator();//Set separator between Rules and panel control
-		
-		buildGroupLayoutPanelRulesSetting();//Set Layout for Panel RulesSetting
 		
 		this.initAcceleratorMenuBar();//Adding all Accelerator of the MenuBar
 	}
@@ -237,4 +269,12 @@ public class ElementaryRulesWindow extends JFrame {
 		m_menuBarFileItem1.addActionListener(new CloseElementaryRulesWindowEvent(this));
 		m_menuBarFileItem2.addActionListener(new QuitEvent());
 	}
+	
+	
+	
+	/******Listeners panel Control******/
+	private void addListenerOnComponentsOfControlPanel(){
+		m_buttonOk.addActionListener(new OKElementaryRules1DEvent(this,m_currentSimulator));//add listener of button OK
+	}
+	
 }

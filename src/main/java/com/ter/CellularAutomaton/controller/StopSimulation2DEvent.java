@@ -4,20 +4,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import com.ter.CellularAutomaton.model.SimulationState;
-import com.ter.CellularAutomaton.vue.MainWindow1D;
+import com.ter.CellularAutomaton.vue.MainWindow2D;
 
-public class RefreshSimulation1DEvent implements ActionListener {
-
+public class StopSimulation2DEvent implements ActionListener  {
 	/******ATTRIBUTES******/
-	private MainWindow1D window;
+	private MainWindow2D window;
 	
 	
 	/**
 	 * ****CONSTRUCTOR*****.
 	 */
-	public RefreshSimulation1DEvent(MainWindow1D window) {
+	public StopSimulation2DEvent(MainWindow2D window) {
 		super();
 		this.window = window;
+		
 	}
 
 	
@@ -27,9 +27,6 @@ public class RefreshSimulation1DEvent implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.window.getm_internalFrameSimulation().getm_simulation().getm_initializeSimulationRule().initializeSimulation(this.window.getm_internalFrameSimulation().getm_simulation());
-		this.window.getm_internalFrameSimulation().startUpdate();
 		this.window.setm_simulationState(SimulationState.STOP);
 	}
-
 }
