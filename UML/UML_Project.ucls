@@ -1,0 +1,1021 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.10" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="com.ter.CellularAutomaton.controller.New1DEvent" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/New1DEvent.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="194" x="127" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="com.ter.CellularAutomaton.main.ConnectionFactory" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/main/ConnectionFactory.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="206" x="2887" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="com.ter.CellularAutomaton.controller.CellularAutomatonSetting1DEvent" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/CellularAutomatonSetting1DEvent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="269" x="2293" y="555"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="4" language="java" name="com.ter.CellularAutomaton.model.SimulationState" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/model/SimulationState.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="149" x="4818" y="4901"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="5" language="java" name="com.ter.CellularAutomaton.controller.CloseElementaryRulesWindowEvent" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/CloseElementaryRulesWindowEvent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="328" x="3675" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="com.ter.CellularAutomaton.controller.PauseSimulation1DEvent" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/PauseSimulation1DEvent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="227" x="2602" y="555"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="com.ter.CellularAutomaton.vue.MainWindow1D" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/MainWindow1D.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="2979" width="402" x="4110" y="1846"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="com.ter.CellularAutomaton.vue.RectangleForm" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/RectangleForm.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="155" x="4377" y="5665"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="9" language="java" name="com.ter.CellularAutomaton.controller.IInitializeSimulationRules1D" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/IInitializeSimulationRules1D.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="203" x="4134" y="5665"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="10" language="java" name="com.ter.CellularAutomaton.controller.InitializeSimulation1DRandomly" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/InitializeSimulation1DRandomly.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="203" x="3891" y="5202"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="com.ter.CellularAutomaton.vue.StayOpenMenuItem" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/StayOpenMenuItem.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="225" width="178" x="361" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="com.ter.CellularAutomaton.vue.InternalFrameSimulation1D.Screen" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/InternalFrameSimulation1D.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="117" width="178" x="4377" y="5202"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="com.ter.CellularAutomaton.controller.RulesEntryModeAdditiveEvent" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/RulesEntryModeAdditiveEvent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="296" x="4876" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="com.ter.CellularAutomaton.controller.OKElementaryRules1DEvent" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/OKElementaryRules1DEvent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="366" x="4043" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="com.ter.CellularAutomaton.controller.OpenFileEvent" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/OpenFileEvent.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="194" x="579" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="com.ter.CellularAutomaton.vue.RulesEntryModeWindow" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/RulesEntryModeWindow.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="747" width="227" x="4753" y="555"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="com.ter.CellularAutomaton.controller.SpeedSimulationEvent" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/SpeedSimulationEvent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="215" x="5020" y="555"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="com.ter.CellularAutomaton.controller.RefreshSimulation2DEvent" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/RefreshSimulation2DEvent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="236" x="5275" y="555"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="com.ter.CellularAutomaton.vue.CreditsWindow" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/CreditsWindow.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="189" width="250" x="813" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="com.ter.CellularAutomaton.model.Gestion_DB" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/model/Gestion_DB.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="189" width="245" x="1103" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="com.ter.CellularAutomaton.controller.StartSimulation1DEvent" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/StartSimulation1DEvent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="220" x="2869" y="555"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="com.ter.CellularAutomaton.controller.RulesEntryModeElementaryEvent" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/RulesEntryModeElementaryEvent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="387" x="4449" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="com.ter.CellularAutomaton.controller.New2DEvent" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/New2DEvent.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="194" x="1388" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="24" language="java" name="com.ter.CellularAutomaton.controller.IInitializeSimulationRules2D" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/IInitializeSimulationRules2D.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="81" width="314" x="5450" y="5665"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="25" language="java" name="com.ter.CellularAutomaton.controller.RulesEntryModePatternEvent" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/RulesEntryModePatternEvent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="291" x="5212" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="com.ter.CellularAutomaton.controller.Close2DEvent" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/Close2DEvent.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="194" x="5551" y="555"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="com.ter.CellularAutomaton.controller.StopSimulation1DEvent" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/StopSimulation1DEvent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="219" x="3129" y="555"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="com.ter.CellularAutomaton.controller.ConwayRules2D" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/ConwayRules2D.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="162" x="5227" y="5665"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="com.ter.CellularAutomaton.model.Singleton" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/model/Singleton.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="405" width="256" x="1622" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="com.ter.CellularAutomaton.controller.LocalCardWindowSettingEvent" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/LocalCardWindowSettingEvent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="343" x="6232" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="com.ter.CellularAutomaton.controller.Cell2D" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/Cell2D.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="333" width="232" x="4955" y="5665"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="com.ter.CellularAutomaton.controller.InitializeSimulation2DRandomly" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/InitializeSimulation2DRandomly.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="314" x="5596" y="5202"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="com.ter.CellularAutomaton.controller.StartSimulation2DEvent" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/StartSimulation2DEvent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="220" x="5785" y="555"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="com.ter.CellularAutomaton.vue.InternalFrameSimulation2D" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/InternalFrameSimulation2D.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="243" width="446" x="5168" y="4901"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="com.ter.CellularAutomaton.controller.Close1DEvent" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/Close1DEvent.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="194" x="3388" y="555"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="36" language="java" name="com.ter.CellularAutomaton.vue.IForm" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/IForm.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="81" width="155" x="4894" y="6128"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="37" language="java" name="com.ter.CellularAutomaton.vue.InternalFrameSimulation2D.Screen" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/InternalFrameSimulation2D.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="117" width="178" x="4987" y="5202"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="com.ter.CellularAutomaton.vue.Simulation1D" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/Simulation1D.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="423" width="306" x="4595" y="5202"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="com.ter.CellularAutomaton.controller.Cell1D" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/Cell1D.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="423" width="301" x="4572" y="5665"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="com.ter.CellularAutomaton.controller.CloseAllEvent" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/CloseAllEvent.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="194" x="1918" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="com.ter.CellularAutomaton.controller.RefreshSimulation1DEvent" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/RefreshSimulation1DEvent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="236" x="3622" y="555"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="com.ter.CellularAutomaton.controller.StopSimulation2DEvent" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/StopSimulation2DEvent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="219" x="6045" y="555"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="com.ter.CellularAutomaton.controller.RulesEntryModeScriptEvent" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/RulesEntryModeScriptEvent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="285" x="5543" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="com.ter.CellularAutomaton.vue.CellularAutomatonSettingWindow" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/CellularAutomatonSettingWindow.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1251" width="391" x="6571" y="555"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="com.ter.CellularAutomaton.vue.ElementaryRulesWindow" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/ElementaryRulesWindow.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="657" width="297" x="4110" y="555"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="46" language="java" name="com.ter.CellularAutomaton.controller.GlobalCardWindowSettingEvent" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/GlobalCardWindowSettingEvent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="347" x="6615" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="47" language="java" name="com.ter.CellularAutomaton.vue.StayOpenRadioButtonMenuItem" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/StayOpenRadioButtonMenuItem.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="277" x="2152" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="48" language="java" name="com.ter.CellularAutomaton.main.Main" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/main/Main.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="117" width="144" x="2469" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="49" language="java" name="com.ter.CellularAutomaton.controller.PauseSimulation2DEvent" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/PauseSimulation2DEvent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="227" x="6304" y="555"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="50" language="java" name="com.ter.CellularAutomaton.controller.InitializeSimulation1DOneCell" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/InitializeSimulation1DOneCell.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="203" x="4134" y="5202"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="51" language="java" name="com.ter.CellularAutomaton.controller.QuitEvent" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/QuitEvent.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="194" x="2653" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="52" language="java" name="com.ter.CellularAutomaton.vue.MainWindow2D" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/MainWindow2D.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="3015" width="447" x="5495" y="1846"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="53" language="java" name="com.ter.CellularAutomaton.main.ConnectionFactory.Singleton" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/main/ConnectionFactory.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="81" width="172" x="3898" y="555"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="54" language="java" name="com.ter.CellularAutomaton.vue.InternalFrameSimulation1D" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/InternalFrameSimulation1D.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="261" width="401" x="4377" y="4901"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="55" language="java" name="com.ter.CellularAutomaton.controller.CloseRulesEntryModeWindowEvent" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/CloseRulesEntryModeWindowEvent.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="324" x="5868" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="56" language="java" name="com.ter.CellularAutomaton.vue.Simulation2D" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/Simulation2D.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="315" width="351" x="5205" y="5202"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="57" language="java" name="com.ter.CellularAutomaton.controller.CreditsEvent" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/CreditsEvent.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="194" x="3133" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="58" language="java" name="com.ter.CellularAutomaton.vue.StayOpenCheckBoxMenuItem" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/StayOpenCheckBoxMenuItem.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="243" width="268" x="3367" y="110"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="59" language="java" name="com.ter.CellularAutomaton.controller.IRules2D" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/IRules2D.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="81" width="162" x="5251" y="6128"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <association id="60">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="61" name="window"/>      
+      <multiplicity id="62" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="63">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="64" name="m_matrixCells"/>      
+      <multiplicity id="65" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="66">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="67" name="m_internalFrameSimulation"/>      
+      <multiplicity id="68" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="54" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="69">    
+    <end type="SOURCE" refId="54" navigable="false">      
+      <attribute id="70" name="m_screen"/>      
+      <multiplicity id="71" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="72">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="24"/>  
+  </realization>  
+  <association id="73">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="74" name="m_rule"/>      
+      <multiplicity id="75" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="59" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="76">    
+    <end type="SOURCE" refId="56" navigable="false">      
+      <attribute id="77" name="m_matrixCells"/>      
+      <multiplicity id="78" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="31" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="79">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="80" name="m_window"/>      
+      <multiplicity id="81" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="82">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="83" name="window"/>      
+      <multiplicity id="84" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="85">    
+    <end type="SOURCE" refId="55" navigable="false">      
+      <attribute id="86" name="window"/>      
+      <multiplicity id="87" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="88">    
+    <end type="SOURCE" refId="43" navigable="false">      
+      <attribute id="89" name="m_window"/>      
+      <multiplicity id="90" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="91">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="53"/>  
+  </nesting>  
+  <association id="92">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="93" name="m_initializeSimulationRule"/>      
+      <multiplicity id="94" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="95">    
+    <end type="SOURCE" refId="46" navigable="false">      
+      <attribute id="96" name="m_window"/>      
+      <multiplicity id="97" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="98">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="99" name="window"/>      
+      <multiplicity id="100" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="101">    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="102" name="m_currentSimulator"/>      
+      <multiplicity id="103" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="104">    
+    <bendpoint x="4903" y="5665"/>    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="105" name="m_formOfCells"/>      
+      <multiplicity id="106" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="107">    
+    <end type="SOURCE" refId="50"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <association id="108">    
+    <end type="SOURCE" refId="52" navigable="false">      
+      <attribute id="109" name="m_internalFrameSimulation"/>      
+      <multiplicity id="110" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="34" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="111">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="112" name="window"/>      
+      <multiplicity id="113" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="114">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="115" name="m_window"/>      
+      <multiplicity id="116" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="117">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="59"/>  
+  </realization>  
+  <nesting id="118">    
+    <end type="SOURCE" refId="54"/>    
+    <end type="TARGET" refId="12"/>  
+  </nesting>  
+  <association id="119">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="120" name="window"/>      
+      <multiplicity id="121" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="122">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="123" name="m_currentSimulator"/>      
+      <multiplicity id="124" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="125">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="126" name="window"/>      
+      <multiplicity id="127" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="128">    
+    <end type="SOURCE" refId="33" navigable="false">      
+      <attribute id="129" name="window"/>      
+      <multiplicity id="130" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="131">    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="132" name="window"/>      
+      <multiplicity id="133" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="134">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="135" name="m_form"/>      
+      <multiplicity id="136" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="137">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="138" name="m_elementaryRulesWindow"/>      
+      <multiplicity id="139" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="140">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <association id="141">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="142" name="m_screen"/>      
+      <multiplicity id="143" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="144">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="145" name="window"/>      
+      <multiplicity id="146" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="147">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="36"/>  
+  </realization>  
+  <association id="148">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="149" name="m_window"/>      
+      <multiplicity id="150" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="151">    
+    <end type="SOURCE" refId="49" navigable="false">      
+      <attribute id="152" name="window"/>      
+      <multiplicity id="153" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="154">    
+    <bendpoint x="4924" y="5665"/>    
+    <end type="SOURCE" refId="56" navigable="false">      
+      <attribute id="155" name="m_formOfCells"/>      
+      <multiplicity id="156" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="157">    
+    <end type="SOURCE" refId="56" navigable="false">      
+      <attribute id="158" name="m_initializeSimulationRule"/>      
+      <multiplicity id="159" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="160">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="161" name="window"/>      
+      <multiplicity id="162" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="52" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="163">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="164" name="m_window"/>      
+      <multiplicity id="165" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="166">    
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="167" name="window"/>      
+      <multiplicity id="168" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="169">    
+    <end type="SOURCE" refId="52" navigable="false">      
+      <attribute id="170" name="m_simulationState"/>      
+      <multiplicity id="171" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="172">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="173" name="m_simulation"/>      
+      <multiplicity id="174" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="56" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="175">    
+    <end type="SOURCE" refId="54" navigable="false">      
+      <attribute id="176" name="m_simulation"/>      
+      <multiplicity id="177" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="178">    
+    <bendpoint x="4458" y="555"/>    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="179" name="m_currentSimulator"/>      
+      <multiplicity id="180" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="181">    
+    <bendpoint x="4437" y="555"/>    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="182" name="m_currentSimulator"/>      
+      <multiplicity id="183" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="184">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="185" name="m_window"/>      
+      <multiplicity id="186" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="187">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="188" name="m_form"/>      
+      <multiplicity id="189" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="190">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="191" name="m_window"/>      
+      <multiplicity id="192" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="193">    
+    <bendpoint x="5419" y="5665"/>    
+    <end type="SOURCE" refId="56" navigable="false">      
+      <attribute id="194" name="m_cellularAutomaton"/>      
+      <multiplicity id="195" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="59" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="196">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="197" name="m_simulationState"/>      
+      <multiplicity id="198" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="199">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="37"/>  
+  </nesting>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

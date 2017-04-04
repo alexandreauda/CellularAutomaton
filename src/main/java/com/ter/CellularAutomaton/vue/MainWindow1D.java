@@ -30,6 +30,7 @@ import com.ter.CellularAutomaton.vue.IForm;
 import com.ter.CellularAutomaton.controller.IInitializeSimulationRules1D;
 import com.ter.CellularAutomaton.controller.InitializeSimulation1DOneCell;
 import com.ter.CellularAutomaton.controller.InitializeSimulation1DRandomly;
+import com.ter.CellularAutomaton.controller.MenubarRulesElementary1DEvent;
 import com.ter.CellularAutomaton.vue.InternalFrameSimulation1D;
 import com.ter.CellularAutomaton.vue.RectangleForm;
 
@@ -52,6 +53,9 @@ public class MainWindow1D extends JFrame {
 
 	/** The menu edit. */
 	private JMenu m_menuEdit = new JMenu("Edit");
+	
+	/** The menu rules. */
+	private JMenu m_menuRules = new JMenu("Rules");
 
 	/** The menu run. */
 	private JMenu m_menuRun = new JMenu("Run");
@@ -117,6 +121,19 @@ public class MainWindow1D extends JFrame {
 
 	/** The menu bar edit item 8. */
 	private JMenuItem m_menuBarEditItem8 = new JMenuItem("Find Next");
+	
+	/** The menu bar rules item 1. */
+	// In rules menu
+	private JMenuItem m_menuBarRulesItem1 = new JMenuItem("Elementary");
+
+	/** The menu bar rules item 2. */
+	private JMenuItem m_menuBarRulesItem2 = new JMenuItem("Additive");
+
+	/** The menu bar rules item 3. */
+	private JMenuItem m_menuBarRulesItem3 = new JMenuItem("Pattern");
+
+	/** The menu bar rules item 4. */
+	private JMenuItem m_menuBarRulesItem4 = new JMenuItem("Script");
 
 	/** The menu bar run item 1. */
 	// In run menu
@@ -330,7 +347,8 @@ public class MainWindow1D extends JFrame {
 		//add all the mnémonic for the MenuBar
 		m_menuFile.setMnemonic('F');
 		m_menuEdit.setMnemonic('E');
-		m_menuRun.setMnemonic('R');
+		m_menuRules.setMnemonic('R');
+		m_menuRun.setMnemonic('U');
 		m_menuOption.setMnemonic('O');
 		m_menuView.setMnemonic('V');
 		m_menuHelp.setMnemonic('H');
@@ -349,8 +367,10 @@ public class MainWindow1D extends JFrame {
 		this.constructTabEditMenuBar();//Construction of the tab "Edit" of menuBar
 
 
+		this.constructTabRulesMenuBar();//Construction of the tab "Rules" of menuBar
+		
+		
 		this.constructTabRunMenuBar();//Construction of the tab "Run" of menuBar
-
 
 
 		this.constructTabOptionMenuBar();//Construction of the tab "Option" of menuBar
@@ -405,6 +425,22 @@ public class MainWindow1D extends JFrame {
 		this.m_menuEdit.add(m_menuBarEditItem7);//Adding a tab "Find" in MenuBar
 		this.m_menuEdit.add(m_menuBarEditItem8);//Adding a tab "Find Next" in MenuBar
 		this.m_menuBar.add(m_menuEdit);//the Edit tab is added to MenuBar
+
+	}
+	
+	/**
+	 * Construct tab rules menu bar.
+	 */
+	private void constructTabRulesMenuBar(){
+		//Construction of the tab "Rules" of menuBar
+		this.m_menuRules.add(m_menuBarRulesItem1);//Adding a tab "Elementary" in MenuBar
+		this.m_menuRules.addSeparator();//Adding a separator in tab Rules of the MenuBar
+		this.m_menuRules.add(m_menuBarRulesItem2);//Adding a tab "Additive" in MenuBar
+		this.m_menuRules.addSeparator();//Adding a separator in tab Rules of the MenuBar
+		this.m_menuRules.add(m_menuBarRulesItem3);//Adding a tab "Pattern" in MenuBar
+		this.m_menuRules.addSeparator();//Adding a separator in tab Rules of the MenuBar
+		this.m_menuRules.add(m_menuBarRulesItem4);//Adding a tab "Script" in MenuBar
+		this.m_menuBar.add(m_menuRules);//the Rules tab is added to MenuBar
 
 	}
 
@@ -514,6 +550,7 @@ public class MainWindow1D extends JFrame {
 	private void initAcceleratorMenuBar(){
 		//add all the accelerators for the items
 		this.initAcceleratorFile(); //accelerator of tab File
+		this.initAcceleratorRules(); //accelerator of tab Rules
 		this.initAcceleratorHelp();//accelerator of tab Help
 	}
 
@@ -524,6 +561,14 @@ public class MainWindow1D extends JFrame {
 		m_menuBarFileItem7.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_MASK)); //add accelerators of Close in tab File
 		m_menuBarFileItem8.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_W, KeyEvent.CTRL_MASK + KeyEvent.SHIFT_MASK)); //add accelerators of CloseAll in tab File
 		m_menuBarFileItem9.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_MASK)); //add accelerators of Quit in tab File
+	}
+	
+	private void initAcceleratorRules(){
+		//add all the accelerators for the items of tab Rules
+		m_menuBarRulesItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, KeyEvent.CTRL_MASK)); //add accelerators of Elementary in tab Rules
+		m_menuBarRulesItem2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_MASK)); //add accelerators of Additive in tab Rules
+		m_menuBarRulesItem3.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.CTRL_MASK)); //add accelerators of Pattern in tab Rules
+		m_menuBarRulesItem4.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_MASK)); //add accelerators of Script in tab Rules
 	}
 
 	private void initAcceleratorHelp(){
@@ -537,6 +582,7 @@ public class MainWindow1D extends JFrame {
 
 	private void addListenerMenuBar (){
 		this.addListenerFile(); //add listener of tab File
+		this.addListenerRules(); //add listener of tab Rules
 		this.addListenerHelp(); //add listener of tab Help
 	}
 
@@ -546,6 +592,10 @@ public class MainWindow1D extends JFrame {
 		m_menuBarFileItem7.addActionListener(new Close1DEvent(this));
 		m_menuBarFileItem8.addActionListener(new CloseAllEvent());
 		m_menuBarFileItem9.addActionListener(new QuitEvent());
+	}
+	
+	private void addListenerRules (){
+		m_menuBarRulesItem1.addActionListener(new MenubarRulesElementary1DEvent(this));
 	}
 
 	private void addListenerHelp (){

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.10" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="com.ter.CellularAutomaton.model.Gestion_DB" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/model/Gestion_DB.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="189" width="245" x="105" y="-20"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <enumeration id="2" language="java" name="com.ter.CellularAutomaton.model.SimulationState" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/model/SimulationState.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="149" x="390" y="-20"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <class id="3" language="java" name="com.ter.CellularAutomaton.model.Singleton" project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/model/Singleton.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="405" width="256" x="579" y="-20"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
