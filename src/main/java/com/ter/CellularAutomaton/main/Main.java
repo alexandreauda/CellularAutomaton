@@ -55,7 +55,5 @@ public class Main {
 		
 		//MainWindow2D SimulatorWindow2D = new MainWindow2D();//Create window 2D
 		MainWindow1D SimulatorWindow1D = new MainWindow1D();//Create window 1D
-		SimulatorWindow1D.runSimulation();
-		//SimulatorWindow2D.runSimulation();
 	}
 }

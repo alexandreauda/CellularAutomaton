@@ -1,14 +1,14 @@
 package com.ter.CellularAutomaton.controller;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.ter.CellularAutomaton.main.Main;
 import com.ter.CellularAutomaton.vue.IForm;
 import com.ter.CellularAutomaton.vue.Simulation1D;
 
@@ -28,10 +28,10 @@ public class Cell1D {
 	private HashMap<Integer, Integer> m_evolutionRule;//Represent the table of evolution and therefore the rules: for each possible configuration (key) is associated a value of state (value) specify the rule chosen by user
 
 	private IForm m_form;//Form of cells
-	private Color m_color;//Color of cells
+	private ArrayList<Color> m_color;//Color of cells
 
 	/******CONSTRUCTOR******/
-	public Cell1D(int x, int y, int state, int radius, IForm form, Color color, HashMap<Integer, Integer> evolutionRule) {
+	public Cell1D(int x, int y, int state, int radius, IForm form, ArrayList<Color> color, HashMap<Integer, Integer> evolutionRule) {
 		this.m_x = x;
 		this.m_y = y;
 		this.m_state = state;
@@ -43,6 +43,14 @@ public class Cell1D {
 
 
 	/******GETTERS******/
+	public int getm_x() {
+		return m_x;
+	}
+	
+	public int getm_y() {
+		return m_y;
+	}
+	
 	public int getm_state() {
 		return m_state;
 	}
@@ -62,6 +70,10 @@ public class Cell1D {
 	
 	public void setm_state(int state) {
 		this.m_state = state;
+	}
+	
+	public void setm_color(ArrayList<Color> color) {
+		this.m_color = color;
 	}
 
 	/*******CLASS METHODS*****/
@@ -142,15 +154,7 @@ public class Cell1D {
 
 	//Draw Cell
 	public void draw(Graphics g) {
-		//if the cell is alive
-				if(m_state == 0){
-					g.setColor(Color.BLACK);
-					m_form.draw(g, m_x, m_y);//Draw the form of cells
-				}
-		//if the cell is alive
-		if(m_state == 1){
-			g.setColor(m_color);
-			m_form.draw(g, m_x, m_y);//Draw the form of cells
-		}
+		g.setColor(m_color.get(m_state));//The cell which have a state take the color associate.
+		m_form.draw(g, m_x, m_y);//Draw the form of cells
 	}
 }

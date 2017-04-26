@@ -45,8 +45,12 @@ public class OKElementaryRules1DEvent implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		this.m_currentSimulator.getm_internalFrameSimulation().getm_simulation().setm_idOfLines(0);
 		this.m_currentSimulator.getm_internalFrameSimulation().getm_simulation().getm_initializeSimulationRule().initializeSimulation(m_currentSimulator.getm_internalFrameSimulation().getm_simulation());// Initialize simulation according to current rule of initialization of simulation.
+		this.m_currentSimulator.setm_threadSimulation(null);
 		this.m_currentSimulator.setm_simulationState(SimulationState.RUN);
+		this.m_currentSimulator.setm_threadSimulation(new Thread(new RunApplication1D(m_currentSimulator)));
+		this.m_currentSimulator.getm_threadSimulation().start();
 		String decimalRuleChooseByUser=this.m_window.getm_formattedTextFieldRules().getText();// Stock the decimal number input from user to entry the rule.
 		String binaryRuleChooseByUser=this.convertAndLeftCompleteBy0DecimalToBinary(decimalRuleChooseByUser,8);// Transform the decimal number input from user to entry the rule to binary number.
 

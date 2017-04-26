@@ -169,9 +169,9 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="com.ter.CellularAutomaton.controller.SpeedSimulationEvent" 
+  <class id="17" language="java" name="com.ter.CellularAutomaton.controller.SpeedSimulation2DEvent" 
     project="CellularAutomaton" 
-    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/SpeedSimulationEvent.java" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/controller/SpeedSimulation2DEvent.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="99" width="215" x="5020" y="555"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -624,394 +624,546 @@
     </display>  
   </interface>  
   <association id="60">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="61" name="window"/>      
-      <multiplicity id="62" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="63">    
-    <end type="SOURCE" refId="38" navigable="false">      
-      <attribute id="64" name="m_matrixCells"/>      
-      <multiplicity id="65" minimum="0" maximum="2147483647"/>    
-    </end>    
-    <end type="TARGET" refId="39" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="66">    
     <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="67" name="m_internalFrameSimulation"/>      
-      <multiplicity id="68" minimum="0" maximum="1"/>    
+      <attribute id="61" name="m_internalFrameSimulation">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="62" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="54" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="69">    
-    <end type="SOURCE" refId="54" navigable="false">      
-      <attribute id="70" name="m_screen"/>      
-      <multiplicity id="71" minimum="0" maximum="1"/>    
+  <realization id="63">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <association id="64">    
+    <end type="SOURCE" refId="52" navigable="false">      
+      <attribute id="65" name="m_simulationState">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="66" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="72">    
-    <end type="SOURCE" refId="32"/>    
-    <end type="TARGET" refId="24"/>  
-  </realization>  
-  <association id="73">    
-    <end type="SOURCE" refId="31" navigable="false">      
-      <attribute id="74" name="m_rule"/>      
-      <multiplicity id="75" minimum="0" maximum="1"/>    
+  <association id="67">    
+    <end type="SOURCE" refId="6" navigable="false">      
+      <attribute id="68" name="window">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="69" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="59" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="70">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="71" name="m_currentSimulator">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="72" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="73">    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="74" name="m_simulationState">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="75" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="76">    
     <end type="SOURCE" refId="56" navigable="false">      
-      <attribute id="77" name="m_matrixCells"/>      
-      <multiplicity id="78" minimum="0" maximum="2147483647"/>    
+      <attribute id="77" name="m_matrixCells">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="78" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="31" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="79">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="80" name="m_window"/>      
-      <multiplicity id="81" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="18" navigable="false">      
+      <attribute id="80" name="window">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="81" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="52" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="82">    
-    <end type="SOURCE" refId="41" navigable="false">      
-      <attribute id="83" name="window"/>      
-      <multiplicity id="84" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="83" name="window">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="84" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="52" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="85">    
-    <end type="SOURCE" refId="55" navigable="false">      
-      <attribute id="86" name="window"/>      
-      <multiplicity id="87" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="86" name="window">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="87" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
+    <end type="TARGET" refId="52" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="88">    
-    <end type="SOURCE" refId="43" navigable="false">      
-      <attribute id="89" name="m_window"/>      
-      <multiplicity id="90" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="89" name="window">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="90" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
+    <end type="TARGET" refId="52" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="91">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="53"/>  
-  </nesting>  
-  <association id="92">    
+  <association id="91">    
     <end type="SOURCE" refId="38" navigable="false">      
-      <attribute id="93" name="m_initializeSimulationRule"/>      
-      <multiplicity id="94" minimum="0" maximum="1"/>    
+      <attribute id="92" name="m_initializeSimulationRule">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="93" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="95">    
-    <end type="SOURCE" refId="46" navigable="false">      
-      <attribute id="96" name="m_window"/>      
-      <multiplicity id="97" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="44" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="98">    
-    <end type="SOURCE" refId="35" navigable="false">      
-      <attribute id="99" name="window"/>      
-      <multiplicity id="100" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="101">    
-    <end type="SOURCE" refId="45" navigable="false">      
-      <attribute id="102" name="m_currentSimulator"/>      
-      <multiplicity id="103" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="104">    
-    <bendpoint x="4903" y="5665"/>    
-    <end type="SOURCE" refId="38" navigable="false">      
-      <attribute id="105" name="m_formOfCells"/>      
-      <multiplicity id="106" minimum="0" maximum="1"/>    
+  <association id="94">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="95" name="m_form">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="96" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="36" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="107">    
-    <end type="SOURCE" refId="50"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <association id="108">    
-    <end type="SOURCE" refId="52" navigable="false">      
-      <attribute id="109" name="m_internalFrameSimulation"/>      
-      <multiplicity id="110" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="34" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="111">    
-    <end type="SOURCE" refId="26" navigable="false">      
-      <attribute id="112" name="window"/>      
-      <multiplicity id="113" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="52" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="114">    
-    <end type="SOURCE" refId="30" navigable="false">      
-      <attribute id="115" name="m_window"/>      
-      <multiplicity id="116" minimum="0" maximum="1"/>    
+  <association id="97">    
+    <end type="SOURCE" refId="46" navigable="false">      
+      <attribute id="98" name="m_window">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="99" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="44" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="117">    
-    <end type="SOURCE" refId="28"/>    
-    <end type="TARGET" refId="59"/>  
+  <realization id="100">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="36"/>  
   </realization>  
-  <nesting id="118">    
-    <end type="SOURCE" refId="54"/>    
-    <end type="TARGET" refId="12"/>  
-  </nesting>  
-  <association id="119">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="120" name="window"/>      
-      <multiplicity id="121" minimum="0" maximum="1"/>    
+  <association id="101">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="102" name="m_elementaryRulesWindow">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="103" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="45" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="122">    
-    <end type="SOURCE" refId="16" navigable="false">      
-      <attribute id="123" name="m_currentSimulator"/>      
-      <multiplicity id="124" minimum="0" maximum="1"/>    
+  <association id="104">    
+    <bendpoint x="4924" y="5665"/>    
+    <end type="SOURCE" refId="56" navigable="false">      
+      <attribute id="105" name="m_formOfCells">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="106" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="107">    
+    <bendpoint x="4458" y="555"/>    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="108" name="m_currentSimulator">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="109" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="125">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="126" name="window"/>      
-      <multiplicity id="127" minimum="0" maximum="1"/>    
+  <association id="110">    
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="111" name="m_window">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="112" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="52" navigable="true"/>    
+    <end type="TARGET" refId="16" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="113">    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="114" name="m_currentSimulator">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="115" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="116">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="53"/>  
+  </nesting>  
+  <realization id="117">    
+    <end type="SOURCE" refId="50"/>    
+    <end type="TARGET" refId="9"/>  
+  </realization>  
+  <association id="118">    
+    <bendpoint x="5419" y="5665"/>    
+    <end type="SOURCE" refId="56" navigable="false">      
+      <attribute id="119" name="m_cellularAutomaton">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="120" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="59" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="121">    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="122" name="m_matrixCells">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="123" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="124">    
+    <bendpoint x="4437" y="555"/>    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="125" name="m_currentSimulator">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="126" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="127">    
+    <end type="SOURCE" refId="54"/>    
+    <end type="TARGET" refId="12"/>  
+  </nesting>  
   <association id="128">    
-    <end type="SOURCE" refId="33" navigable="false">      
-      <attribute id="129" name="window"/>      
-      <multiplicity id="130" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="49" navigable="false">      
+      <attribute id="129" name="window">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="130" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="52" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="131">    
-    <end type="SOURCE" refId="18" navigable="false">      
-      <attribute id="132" name="window"/>      
-      <multiplicity id="133" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="55" navigable="false">      
+      <attribute id="132" name="window">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="133" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="52" navigable="true"/>    
+    <end type="TARGET" refId="16" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="134">    
-    <end type="SOURCE" refId="39" navigable="false">      
-      <attribute id="135" name="m_form"/>      
-      <multiplicity id="136" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="36" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="137">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="138" name="m_elementaryRulesWindow"/>      
-      <multiplicity id="139" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="45" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="140">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="9"/>  
-  </realization>  
-  <association id="141">    
-    <end type="SOURCE" refId="34" navigable="false">      
-      <attribute id="142" name="m_screen"/>      
-      <multiplicity id="143" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="37" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="144">    
-    <end type="SOURCE" refId="27" navigable="false">      
-      <attribute id="145" name="window"/>      
-      <multiplicity id="146" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="147">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="36"/>  
-  </realization>  
-  <association id="148">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="149" name="m_window"/>      
-      <multiplicity id="150" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="151">    
-    <end type="SOURCE" refId="49" navigable="false">      
-      <attribute id="152" name="window"/>      
-      <multiplicity id="153" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="52" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="154">    
-    <bendpoint x="4924" y="5665"/>    
-    <end type="SOURCE" refId="56" navigable="false">      
-      <attribute id="155" name="m_formOfCells"/>      
-      <multiplicity id="156" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="36" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="157">    
-    <end type="SOURCE" refId="56" navigable="false">      
-      <attribute id="158" name="m_initializeSimulationRule"/>      
-      <multiplicity id="159" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="24" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="160">    
-    <end type="SOURCE" refId="42" navigable="false">      
-      <attribute id="161" name="window"/>      
-      <multiplicity id="162" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="52" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="163">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="164" name="m_window"/>      
-      <multiplicity id="165" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="45" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="166">    
-    <end type="SOURCE" refId="21" navigable="false">      
-      <attribute id="167" name="window"/>      
-      <multiplicity id="168" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="169">    
-    <end type="SOURCE" refId="52" navigable="false">      
-      <attribute id="170" name="m_simulationState"/>      
-      <multiplicity id="171" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="172">    
-    <end type="SOURCE" refId="34" navigable="false">      
-      <attribute id="173" name="m_simulation"/>      
-      <multiplicity id="174" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="56" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="175">    
-    <end type="SOURCE" refId="54" navigable="false">      
-      <attribute id="176" name="m_simulation"/>      
-      <multiplicity id="177" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="38" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="178">    
-    <bendpoint x="4458" y="555"/>    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="179" name="m_currentSimulator"/>      
-      <multiplicity id="180" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="181">    
-    <bendpoint x="4437" y="555"/>    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="182" name="m_currentSimulator"/>      
-      <multiplicity id="183" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="184">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="185" name="m_window"/>      
-      <multiplicity id="186" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="187">    
     <end type="SOURCE" refId="31" navigable="false">      
-      <attribute id="188" name="m_form"/>      
-      <multiplicity id="189" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="36" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="190">    
-    <end type="SOURCE" refId="25" navigable="false">      
-      <attribute id="191" name="m_window"/>      
-      <multiplicity id="192" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="193">    
-    <bendpoint x="5419" y="5665"/>    
-    <end type="SOURCE" refId="56" navigable="false">      
-      <attribute id="194" name="m_cellularAutomaton"/>      
-      <multiplicity id="195" minimum="0" maximum="1"/>    
+      <attribute id="135" name="m_rule">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="136" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="59" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="196">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="197" name="m_simulationState"/>      
-      <multiplicity id="198" minimum="0" maximum="1"/>    
+  <association id="137">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="138" name="window">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="139" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
+    <end type="TARGET" refId="45" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="199">    
+  <association id="140">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="141" name="m_window">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="142" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <nesting id="143">    
     <end type="SOURCE" refId="34"/>    
     <end type="TARGET" refId="37"/>  
   </nesting>  
+  <association id="144">    
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="145" name="m_form">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="146" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="147">    
+    <end type="SOURCE" refId="28"/>    
+    <end type="TARGET" refId="59"/>  
+  </realization>  
+  <association id="148">    
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="149" name="m_window">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="150" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="44" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="151">    
+    <end type="SOURCE" refId="54" navigable="false">      
+      <attribute id="152" name="m_screen">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="153" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="154">    
+    <bendpoint x="4903" y="5665"/>    
+    <end type="SOURCE" refId="38" navigable="false">      
+      <attribute id="155" name="m_formOfCells">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="156" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="36" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="157">    
+    <end type="SOURCE" refId="32"/>    
+    <end type="TARGET" refId="24"/>  
+  </realization>  
+  <association id="158">    
+    <end type="SOURCE" refId="41" navigable="false">      
+      <attribute id="159" name="window">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="160" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="161">    
+    <end type="SOURCE" refId="43" navigable="false">      
+      <attribute id="162" name="m_window">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="163" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="164">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="165" name="m_screen">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="166" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="37" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="167">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="168" name="m_window">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="169" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="45" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="170">    
+    <end type="SOURCE" refId="56" navigable="false">      
+      <attribute id="171" name="m_initializeSimulationRule">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="172" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="173">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="174" name="window">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="175" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="176">    
+    <end type="SOURCE" refId="54" navigable="false">      
+      <attribute id="177" name="m_simulation">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="178" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="38" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="179">    
+    <end type="SOURCE" refId="35" navigable="false">      
+      <attribute id="180" name="window">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="181" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="182">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="183" name="m_window">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="184" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="185">    
+    <end type="SOURCE" refId="52" navigable="false">      
+      <attribute id="186" name="m_internalFrameSimulation">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="187" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="34" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="188">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="189" name="m_simulation">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="190" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="56" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="191">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="192" name="m_window">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="193" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
