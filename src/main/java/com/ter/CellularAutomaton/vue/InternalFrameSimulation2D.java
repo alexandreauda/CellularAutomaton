@@ -4,7 +4,11 @@ package com.ter.CellularAutomaton.vue;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
@@ -47,6 +51,17 @@ public class InternalFrameSimulation2D extends JInternalFrame {
 		this.setResizable(false);
 		this.pack();
 		this.setSize(m_width + this.getInsets().left +  + this.getInsets().right, m_height + this.getInsets().bottom +  + this.getInsets().top);
+		
+		ImageIcon icon;
+		try {
+			icon = new ImageIcon(ImageIO.read(new File("Files/Images/Favicon/small_penrosecolor.png")));
+			this.setFrameIcon(icon);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 		this.setVisible(true);
 	}
 	

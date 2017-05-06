@@ -8,8 +8,12 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.KeyStroke;
+
+import com.ter.CellularAutomaton.controller.Cell1D;
 import com.ter.CellularAutomaton.controller.CloseElementaryRulesWindowEvent;
+import com.ter.CellularAutomaton.controller.CloseLocalElementaryRulesWindowEvent;
 import com.ter.CellularAutomaton.controller.OKElementaryRules1DEvent;
+import com.ter.CellularAutomaton.controller.OKLocalElementaryRules1DEvent;
 import com.ter.CellularAutomaton.controller.QuitEvent;
 
 import javax.swing.JPanel;
@@ -26,7 +30,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JSeparator;
 
 
-public class ElementaryRulesWindow extends JFrame implements KeyListener {
+public class LocalElementaryRulesWindow extends JFrame implements KeyListener {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -57,16 +61,21 @@ public class ElementaryRulesWindow extends JFrame implements KeyListener {
 	private final JLabel m_labelRadius = new JLabel("Radius (must be equal or greater than 1):");
 	private final JFormattedTextField m_formattedTextFieldRadius = new JFormattedTextField(1);//By default, the radius is 1.
 	private final JLabel m_labelRules = new JLabel("Rules (0 to ?):");
-	private final JFormattedTextField m_formattedTextFieldRules = new JFormattedTextField();
+	private final JFormattedTextField m_formattedTextFieldRules = new JFormattedTextField(0);
 	private final JButton m_buttonOk = new JButton("OK");
 	private final JButton m_buttonPersonalize = new JButton("Personalize");
 	private JSeparator m_separatorBetweenAlphabetAndRadius;
 	private JSeparator m_separatorBetweenRadiusAndRules;
 	private JSeparator m_separatorBetweenRulesAndPanelControl;
 	
-	private MainWindow1D m_currentSimulator;
+	private InternalFrameSimulation1D m_currentInternalFrameSimulation1D;
+	private Cell1D m_currentCell;
 	
 	/******GETTERS******/
+	public Cell1D getm_currentCell() {
+		return m_currentCell;
+	}
+	
 	public JFormattedTextField getm_formattedTextFieldRadius() {
 		return m_formattedTextFieldRadius;
 	}
@@ -79,9 +88,10 @@ public class ElementaryRulesWindow extends JFrame implements KeyListener {
 	/**
 	 * Create the application.
 	 */
-	public ElementaryRulesWindow(MainWindow1D currentSimulator) {
+	public LocalElementaryRulesWindow(InternalFrameSimulation1D currentInternalFrameSimulation1D, Cell1D currentCell) {
 		
-		m_currentSimulator = currentSimulator;// Initialize attribute with current simulator
+		m_currentInternalFrameSimulation1D = currentInternalFrameSimulation1D;// Initialize attribute with current InternalFrameSimulation1D
+		m_currentCell = currentCell;// Initialize attribute with current Cell
 		
 		buildComponentWindow();// Build component of window.
 		
@@ -100,7 +110,7 @@ public class ElementaryRulesWindow extends JFrame implements KeyListener {
 	 * Initialize the contents of the frame.
 	 */
 	private void buildComponentWindow() {
-		this.setTitle("Elementary Rules Window");//Set the title of window
+		this.setTitle("Local Elementary Rules Window");//Set the title of window
 		this.setSize(550,320);//Set size of window
 		this.setLocationRelativeTo(null);//Center the location of window
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//Set Default Close Operation to DISPOSE_ON_CLOSE
@@ -271,7 +281,7 @@ public class ElementaryRulesWindow extends JFrame implements KeyListener {
 
 	//add listeners for tab File in MenuBar
 	private void addListenerFile (){
-		m_menuBarFileItem1.addActionListener(new CloseElementaryRulesWindowEvent(this));
+		m_menuBarFileItem1.addActionListener(new CloseLocalElementaryRulesWindowEvent(this));
 		m_menuBarFileItem2.addActionListener(new QuitEvent());
 	}
 	
@@ -279,7 +289,7 @@ public class ElementaryRulesWindow extends JFrame implements KeyListener {
 	
 	/******Listeners panel Control******/
 	private void addListenerOnComponentsOfControlPanel(){
-		m_buttonOk.addActionListener(new OKElementaryRules1DEvent(this,m_currentSimulator));//add listener of button OK
+		m_buttonOk.addActionListener(new OKLocalElementaryRules1DEvent(this,m_currentInternalFrameSimulation1D,m_currentCell));//add listener of button OK
 		m_formattedTextFieldRules.addKeyListener(this);
 	}
 

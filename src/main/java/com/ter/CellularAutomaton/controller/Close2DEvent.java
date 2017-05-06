@@ -28,6 +28,8 @@ public class Close2DEvent implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		this.window.setm_isRun(false);
+		this.window.setm_threadSimulation(null);
 		this.window.dispose();
 		
 	}

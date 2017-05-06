@@ -32,7 +32,9 @@ public class Switch2DTo1DSimulationEvent implements ActionListener {
 		this.m_window2D.setm_isRun(false);
 		this.m_window2D.dispose();//Close the current MainWindow2D
 		this.m_window2D.setm_threadSimulation(null);
-		MainWindow1D window1D = new MainWindow1D();//Create a new MainWindow1D
+		MainWindow1D newSimulatorWindow = new MainWindow1D(true);
+		newSimulatorWindow.setm_threadSimulation(new Thread(new RunApplication1D(newSimulatorWindow)));//Create a new thread.
+		newSimulatorWindow.getm_threadSimulation().start();//Start the new thread therefore the Mainwindow1D call method runSimulation() and the simulation start update.
 	}
 
 	

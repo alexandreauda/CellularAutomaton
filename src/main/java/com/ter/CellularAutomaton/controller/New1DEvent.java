@@ -17,8 +17,9 @@ public class New1DEvent implements ActionListener {
 	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		MainWindow1D newSimulatorWindow = new MainWindow1D();
-		
+		MainWindow1D newSimulatorWindow = new MainWindow1D(true);
+		newSimulatorWindow.setm_threadSimulation(new Thread(new RunApplication1D(newSimulatorWindow)));//Create a new thread.
+		newSimulatorWindow.getm_threadSimulation().start();//Start the new thread therefore the Mainwindow1D call method runSimulation() and the simulation start update.
 	}
 
 }

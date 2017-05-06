@@ -10,8 +10,12 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
@@ -53,7 +57,7 @@ public class InternalFrameSimulation1D extends JInternalFrame {
 		m_refreshRate = 30;
 		m_millis = 1000/m_refreshRate;
 		
-		m_simulation = new Simulation1D(m_width, m_height, formOfCells, colorOfCells, initializeSimulationRule);
+		m_simulation = new Simulation1D(m_width, m_height, 0, 0, formOfCells, colorOfCells, initializeSimulationRule);
 		
 		m_screen = new Screen(this);
 		m_scrollPane = new JScrollPane(m_screen);
@@ -62,12 +66,22 @@ public class InternalFrameSimulation1D extends JInternalFrame {
 		m_backgroundColor=backgroundColor;
 		this.setBackground(m_backgroundColor);
 		
-		this.setLocation(53, 11);
+		this.setLocation(53, 11);//Set initial location of internalFrame
 		this.isClosable();
 		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		this.setResizable(true);
+		this.setResizable(true);//The internalFrame can be closed
 		this.pack();
 		this.setSize(m_width + this.getInsets().left +  + this.getInsets().right, m_height + this.getInsets().bottom +  + this.getInsets().top);
+
+		ImageIcon icon;
+		try {
+			icon = new ImageIcon(ImageIO.read(new File("Files/Images/Favicon/small_penrosecolor.png")));
+			this.setFrameIcon(icon);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		
 		addListenerInternalFrameSimulation1D(mainWindow1D);
 		
@@ -75,6 +89,14 @@ public class InternalFrameSimulation1D extends JInternalFrame {
 	}
 	
 	/******GETTERS******/
+	public JScrollPane getm_scrollPane() {
+		return m_scrollPane;
+	}
+	
+	public Screen getm_screen() {
+		return m_screen;
+	}
+	
 	public Simulation1D getm_simulation() {
 		return m_simulation;
 	}

@@ -5,19 +5,18 @@ import java.awt.event.ActionListener;
 
 import com.ter.CellularAutomaton.vue.MainWindow1D;
 
-public class Close1DEvent implements ActionListener {
-
-
+public class RadioButtonGridYesEvent implements ActionListener {
+	
 	/******ATTRIBUTES******/
-	private MainWindow1D window;
+	private MainWindow1D m_window;
 	
 	
 	/**
 	 * ****CONSTRUCTOR*****.
 	 */
-	public Close1DEvent(MainWindow1D window) {
+	public RadioButtonGridYesEvent(MainWindow1D window) {
 		super();
-		this.window = window;
+		this.m_window = window;
 		
 	}
 
@@ -28,11 +27,6 @@ public class Close1DEvent implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.window.setm_isRun(false);
-		this.window.setm_threadSimulation(null);
-		this.window.dispose();
-		
+		this.m_window.setm_gridSimulation(true);
 	}
-
-	
 }

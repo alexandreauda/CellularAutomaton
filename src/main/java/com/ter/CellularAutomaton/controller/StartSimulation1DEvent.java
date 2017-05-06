@@ -28,9 +28,6 @@ public class StartSimulation1DEvent implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.m_window.setm_threadSimulation(null);
 		this.m_window.setm_simulationState(SimulationState.RUN);
-		this.m_window.setm_threadSimulation(new Thread(new RunApplication1D(m_window)));
-		this.m_window.getm_threadSimulation().start();
 	}
 }

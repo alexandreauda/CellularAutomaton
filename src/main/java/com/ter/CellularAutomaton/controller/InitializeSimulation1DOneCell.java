@@ -6,7 +6,7 @@ public class InitializeSimulation1DOneCell implements IInitializeSimulationRules
 
 	@Override
 	public void initializeSimulation(Simulation1D simulation) {
-		simulation.getCellInSimulation(simulation.getm_nbCellWidth()/2, 0).setm_state(1);//Set attribute m_state randomly of cells in first line of the simulation
+		simulation.getCellInSimulation(simulation.getm_nbCellWidth()/2, 0).setm_state(1);//Set attribute m_state of the center cell in first line of the simulation
 	}
 
 }

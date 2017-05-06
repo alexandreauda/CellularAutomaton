@@ -5,19 +5,17 @@ import java.awt.event.ActionListener;
 
 import com.ter.CellularAutomaton.vue.MainWindow1D;
 
-public class Close1DEvent implements ActionListener {
-
-
+public class EraseSimulation1DEvent implements ActionListener  {
 	/******ATTRIBUTES******/
-	private MainWindow1D window;
+	private MainWindow1D m_mainWindow1D;
 	
 	
 	/**
 	 * ****CONSTRUCTOR*****.
 	 */
-	public Close1DEvent(MainWindow1D window) {
+	public EraseSimulation1DEvent(MainWindow1D window) {
 		super();
-		this.window = window;
+		this.m_mainWindow1D = window;
 		
 	}
 
@@ -28,11 +26,6 @@ public class Close1DEvent implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		this.window.setm_isRun(false);
-		this.window.setm_threadSimulation(null);
-		this.window.dispose();
-		
+		this.m_mainWindow1D.getm_internalFrameSimulation().getm_simulation().resetSimulation();
 	}
-
-	
 }
