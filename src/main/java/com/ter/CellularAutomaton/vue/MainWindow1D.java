@@ -30,6 +30,7 @@ import com.ter.CellularAutomaton.controller.ExportGIFFormat1DEvent;
 import com.ter.CellularAutomaton.controller.ExportJPGFormat1DEvent;
 import com.ter.CellularAutomaton.controller.ExportPNGFormat1DEvent;
 import com.ter.CellularAutomaton.controller.New1DEvent;
+import com.ter.CellularAutomaton.controller.NonUniformCellularAutomatonSetting1DEvent;
 import com.ter.CellularAutomaton.controller.OpenFileEvent;
 import com.ter.CellularAutomaton.controller.PauseSimulation1DEvent;
 import com.ter.CellularAutomaton.controller.QuitEvent;
@@ -46,6 +47,7 @@ import com.ter.CellularAutomaton.model.SimulationState;
 import com.ter.CellularAutomaton.vue.IForm;
 import com.ter.CellularAutomaton.controller.IInitializeSimulationRules1D;
 import com.ter.CellularAutomaton.controller.InitializeSimulation1DOneCell;
+import com.ter.CellularAutomaton.controller.MenubarNonUniformRulesElementary1DEvent;
 import com.ter.CellularAutomaton.controller.MenubarRulesElementary1DEvent;
 import com.ter.CellularAutomaton.vue.InternalFrameSimulation1D;
 import com.ter.CellularAutomaton.vue.RectangleForm1D;
@@ -78,6 +80,9 @@ public class MainWindow1D extends JFrame implements WindowListener {
 	
 	/** The menu rules. */
 	private JMenu m_menuRules = new JMenu("Rules");
+	
+	/** The menu Non Uniform rules. */
+	private JMenu m_menuNonUniformRules = new JMenu("Non Uniform Rules");
 
 	/** The menu run. */
 	private JMenu m_menuRun = new JMenu("Run");
@@ -171,6 +176,19 @@ public class MainWindow1D extends JFrame implements WindowListener {
 
 	/** The menu bar rules item 4. */
 	private JMenuItem m_menuBarRulesItem4 = new JMenuItem("Script");
+	
+	/** The menu bar Non Uniform rules item 1. */
+	// In rules menu
+	private JMenuItem m_menuBarNonUniformRulesItem1 = new JMenuItem("Elementary");
+
+	/** The menu bar Non Uniform rules item 2. */
+	private JMenuItem m_menuBarNonUniformRulesItem2 = new JMenuItem("Additive");
+
+	/** The menu bar Non Uniform rules item 3. */
+	private JMenuItem m_menuBarNonUniformRulesItem3 = new JMenuItem("Pattern");
+
+	/** The menu bar Non Uniform rules item 4. */
+	private JMenuItem m_menuBarNonUniformRulesItem4 = new JMenuItem("Script");
 
 	/** The menu bar run item 1. */
 	// In run menu
@@ -255,8 +273,8 @@ public class MainWindow1D extends JFrame implements WindowListener {
 	private JPanel m_panelChooseCellularAutomaton;
 	private JPanel m_panelUniform;
 	private GroupLayout m_GroupLayoutPanelTypeCellularAutomaton;
-	private JComboBox m_comboBoxUniform;
-	private JButton m_buttonCellularAutomatonSetting;
+	private JButton m_buttonNonUniformCellularAutomatonSetting;
+	private JButton m_buttonUniformCellularAutomatonSetting;
 	private JToolBar m_toolBarSimulationTools;
 	private JPanel m_panelSimulationTools;
 	private JButton m_buttonLauncher;
@@ -548,6 +566,7 @@ public class MainWindow1D extends JFrame implements WindowListener {
 		m_menuFile.setMnemonic('F');
 		m_menuEdit.setMnemonic('E');
 		m_menuRules.setMnemonic('R');
+		m_menuNonUniformRules.setMnemonic('N');
 		m_menuRun.setMnemonic('U');
 		m_menuOption.setMnemonic('O');
 		m_menuView.setMnemonic('V');
@@ -568,6 +587,9 @@ public class MainWindow1D extends JFrame implements WindowListener {
 
 
 		this.constructTabRulesMenuBar();//Construction of the tab "Rules" of menuBar
+		
+		
+		constructTabNonUniformRulesMenuBar();//Construction of the tab "Non Uniform Rules" of menuBar
 		
 		
 		this.constructTabRunMenuBar();//Construction of the tab "Run" of menuBar
@@ -668,6 +690,23 @@ public class MainWindow1D extends JFrame implements WindowListener {
 		this.m_menuBar.add(m_menuRules);//the Rules tab is added to MenuBar
 
 	}
+	
+	/**
+	 * Construct tab Non Uniform rules menu bar.
+	 */
+	private void constructTabNonUniformRulesMenuBar(){
+		//Construction of the tab "Rules" of menuBar
+		this.m_menuNonUniformRules.add(m_menuBarNonUniformRulesItem1);//Adding a tab "Elementary" in MenuBar
+		this.m_menuNonUniformRules.addSeparator();//Adding a separator in tab Rules of the MenuBar
+		this.m_menuNonUniformRules.add(m_menuBarNonUniformRulesItem2);//Adding a tab "Additive" in MenuBar
+		this.m_menuNonUniformRules.addSeparator();//Adding a separator in tab Rules of the MenuBar
+		this.m_menuNonUniformRules.add(m_menuBarNonUniformRulesItem3);//Adding a tab "Pattern" in MenuBar
+		this.m_menuNonUniformRules.addSeparator();//Adding a separator in tab Rules of the MenuBar
+		this.m_menuNonUniformRules.add(m_menuBarNonUniformRulesItem4);//Adding a tab "Script" in MenuBar
+		this.m_menuBar.add(m_menuNonUniformRules);//the Rules tab is added to MenuBar
+
+	}
+	
 
 	/**
 	 * Construct tab run menu bar.
@@ -775,6 +814,7 @@ public class MainWindow1D extends JFrame implements WindowListener {
 		//add all the accelerators for the items
 		this.initAcceleratorFile(); //accelerator of tab File
 		this.initAcceleratorRules(); //accelerator of tab Rules
+		this.initAcceleratorNonUniformRules(); //accelerator of tab NonUniform Rules
 		this.initAcceleratorHelp();//accelerator of tab Help
 	}
 
@@ -798,6 +838,14 @@ public class MainWindow1D extends JFrame implements WindowListener {
 		m_menuBarRulesItem3.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.CTRL_MASK)); //add accelerators of Pattern in tab Rules
 		m_menuBarRulesItem4.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_MASK)); //add accelerators of Script in tab Rules
 	}
+	
+	private void initAcceleratorNonUniformRules(){
+		//add all the accelerators for the items of tab Rules
+		m_menuBarNonUniformRulesItem1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, KeyEvent.CTRL_MASK)); //add accelerators of Elementary in tab Rules
+		m_menuBarNonUniformRulesItem2.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyEvent.CTRL_MASK + KeyEvent.SHIFT_MASK)); //add accelerators of Additive in tab Rules
+		m_menuBarNonUniformRulesItem3.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.CTRL_MASK + KeyEvent.SHIFT_MASK)); //add accelerators of Pattern in tab Rules
+		m_menuBarNonUniformRulesItem4.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_MASK + KeyEvent.SHIFT_MASK)); //add accelerators of Script in tab Rules
+	}
 
 	private void initAcceleratorHelp(){
 		//add all the accelerators for the items of tab Help
@@ -811,6 +859,7 @@ public class MainWindow1D extends JFrame implements WindowListener {
 	private void addListenerMenuBar (){
 		this.addListenerFile(); //add listener of tab File
 		this.addListenerRules(); //add listener of tab Rules
+;		this.addListenerNonUniformRules(); //add listener of tab Non Uniform Rules
 		this.addListenerHelp(); //add listener of tab Help
 	}
 
@@ -831,10 +880,15 @@ public class MainWindow1D extends JFrame implements WindowListener {
 	private void addListenerRules (){
 		m_menuBarRulesItem1.addActionListener(new MenubarRulesElementary1DEvent(this));//Add ActionListener on tab "Elementary" in tab "Rules"
 	}
+	
+	//Listener of tab Non Uniform Rules
+		private void addListenerNonUniformRules (){
+			m_menuBarNonUniformRulesItem1.addActionListener(new MenubarNonUniformRulesElementary1DEvent(this));//Add ActionListener on tab "Elementary" in tab "Non Uniform Rules"
+		}
 
 	//Listener of tab Help
 	private void addListenerHelp (){
-		m_menuBarHelpItem2.addActionListener(new CreditsEvent());
+		m_menuBarHelpItem2.addActionListener(new CreditsEvent());//Add ActionListener on tab "Credits" in tab "Help"
 	}
 	
 	/******Build Windows******/
@@ -899,7 +953,7 @@ public class MainWindow1D extends JFrame implements WindowListener {
 	public void buildPanelChooseCellularAutomaton(){
 		//Build the panel ChooseCellularAutomaton
 		m_panelChooseCellularAutomaton = new JPanel();
-		m_panelChooseCellularAutomaton.setBorder(BorderFactory.createTitledBorder("Cellular Automaton"));
+		m_panelChooseCellularAutomaton.setBorder(BorderFactory.createTitledBorder("Uniform Cellular Automaton"));
 		m_panelChooseCellularAutomaton.setLayout(new BorderLayout(0, 0));
 		
 		buildComponentChooseCellularAutomaton();//Build the component of the panel ChooseCellularAutomaton
@@ -907,14 +961,14 @@ public class MainWindow1D extends JFrame implements WindowListener {
 	
 	public void buildComponentChooseCellularAutomaton(){
 		//Build the component of the panel ChooseCellularAutomaton
-		m_buttonCellularAutomatonSetting = new JButton("Cellular Automaton Setting");
-		m_panelChooseCellularAutomaton.add(m_buttonCellularAutomatonSetting, BorderLayout.CENTER);
+		m_buttonUniformCellularAutomatonSetting = new JButton("Uniform Rules");
+		m_panelChooseCellularAutomaton.add(m_buttonUniformCellularAutomatonSetting, BorderLayout.CENTER);
 	}
 	
 	public void buildPanelUniform(){
 		//Build the panel Uniform
 		m_panelUniform = new JPanel();
-		m_panelUniform.setBorder(BorderFactory.createTitledBorder("Uniform / Non-Uniform"));
+		m_panelUniform.setBorder(BorderFactory.createTitledBorder("Non Uniform Cellular Automaton"));
 		m_panelUniform.setLayout(new BorderLayout(0, 0));
 		
 		buildComponentUniform();//Build the component of the panel Uniform
@@ -922,8 +976,8 @@ public class MainWindow1D extends JFrame implements WindowListener {
 	
 	public void buildComponentUniform(){
 		//Build the component of the panel Uniform
-		m_comboBoxUniform = new JComboBox();
-		m_panelUniform.add(m_comboBoxUniform, BorderLayout.CENTER);
+		m_buttonNonUniformCellularAutomatonSetting = new JButton("Non Uniform Rules");
+		m_panelUniform.add(m_buttonNonUniformCellularAutomatonSetting, BorderLayout.CENTER);
 	}
 	
 	public void buildGroupLayoutPanelTypeCellularAutomaton(){
@@ -1345,11 +1399,16 @@ public class MainWindow1D extends JFrame implements WindowListener {
 	
 	/******Listeners TypeCellularAutomaton Tools******/
 	private void addListenerTypeCellularAutomatonTools(){
-		this.addListenerCellularAutomatonSetting();//add listener of button Launcher
+		this.addListenerUniformCellularAutomatonSetting();//add listener of button UniformCellularAutomatonSetting
+		this.addListenerNonUniformCellularAutomatonSetting();//add listener of button NonUniformCellularAutomatonSetting
 	}
 	
-	private void addListenerCellularAutomatonSetting(){
-		m_buttonCellularAutomatonSetting.addActionListener(new CellularAutomatonSetting1DEvent(this));
+	private void addListenerUniformCellularAutomatonSetting(){
+		m_buttonUniformCellularAutomatonSetting.addActionListener(new CellularAutomatonSetting1DEvent(this));
+	}
+	
+	private void addListenerNonUniformCellularAutomatonSetting(){
+		m_buttonNonUniformCellularAutomatonSetting.addActionListener(new NonUniformCellularAutomatonSetting1DEvent(this));
 	}
 	
 	

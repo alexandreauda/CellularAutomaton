@@ -134,6 +134,28 @@ public class Simulation1D {
 		m_initializeSimulationRule.initializeSimulation(this);
 	}
 	
+	//For each cell of Simulation, set the radius and rules of the cell  with the Radius and the Rules specify in parameter.
+		public void initRadiusAndRulesCellLocally(int x1, int x2, int localRadius, int localRule){
+			// For each cell of the region area.
+			for(int x = x1;x < x2;x++) {
+				for (int y = 0; y < m_nbCellHeight; y++) {
+					m_matrixCells.get(x).get(y).setm_radius(localRadius);//Set the radius of the cell with the Radius specify in parameter.
+					m_matrixCells.get(x).get(y).setm_rules(localRule);//Set the rules of the cell with the Rule specify in parameter.
+				}
+			}
+		}
+		
+		//For each cell of Simulation, set the radius and rules of the cell  with the Radius and the Rules specify in parameter.
+				public void initRadiusAndRulesCellLocally(int x1, int x2, int y1, int y2, int localRadius, int localRule){
+					// For each cell of the region area.
+					for(int x = x1;x < x2;x++) {
+						for (int y = y1; y < y2; y++) {
+							m_matrixCells.get(x).get(y).setm_radius(localRadius);//Set the radius of the cell with the Radius specify in parameter.
+							m_matrixCells.get(x).get(y).setm_rules(localRule);//Set the rules of the cell with the Rule specify in parameter.
+						}
+					}
+				}
+	
 	//For each cell of Simulation, set the radius and rules of the cell  with the global Radius and the global Rules of Simulation.
 	public void initRadiusAndRulesCellWithGlobalRadiusAndRulesSimulation(){
 		// For each cell.
