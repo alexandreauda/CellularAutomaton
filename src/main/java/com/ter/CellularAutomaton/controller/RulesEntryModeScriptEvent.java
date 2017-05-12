@@ -3,20 +3,20 @@ package com.ter.CellularAutomaton.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import com.ter.CellularAutomaton.vue.RulesEntryModeWindow;
+import com.ter.CellularAutomaton.vue.UniformRulesEntryModeWindow;
 
 public class RulesEntryModeScriptEvent implements ActionListener {
 
 
 	/******ATTRIBUTES******/
-	private RulesEntryModeWindow m_window;
+	private UniformRulesEntryModeWindow m_window;
 	
 	
 	
 	/**
 	 * ****CONSTRUCTOR*****.
 	 */
-	public RulesEntryModeScriptEvent(RulesEntryModeWindow window) {
+	public RulesEntryModeScriptEvent(UniformRulesEntryModeWindow window) {
 		super();
 		this.m_window = window;
 		

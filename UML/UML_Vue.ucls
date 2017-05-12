@@ -42,18 +42,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="com.ter.CellularAutomaton.vue.InternalFrameSimulation1D.Screen" 
-    project="CellularAutomaton" 
-    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/InternalFrameSimulation1D.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="117" width="178" x="1076" y="3896"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="6" language="java" name="com.ter.CellularAutomaton.vue.Simulation1D" project="CellularAutomaton" 
+  <class id="5" language="java" name="com.ter.CellularAutomaton.vue.Simulation1D" project="CellularAutomaton" 
     file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/Simulation1D.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="459" width="306" x="1294" y="3896"/>    
@@ -63,7 +52,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="com.ter.CellularAutomaton.vue.CreditsWindow" project="CellularAutomaton" 
+  <class id="6" language="java" name="com.ter.CellularAutomaton.vue.CreditsWindow" project="CellularAutomaton" 
     file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/CreditsWindow.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="189" width="250" x="1513" y="-229"/>    
@@ -73,7 +62,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="com.ter.CellularAutomaton.vue.StayOpenCheckBoxMenuItem" 
+  <class id="7" language="java" name="com.ter.CellularAutomaton.vue.StayOpenCheckBoxMenuItem" 
     project="CellularAutomaton" 
     file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/StayOpenCheckBoxMenuItem.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -84,7 +73,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="com.ter.CellularAutomaton.vue.MainWindow1D" project="CellularAutomaton" 
+  <class id="8" language="java" name="com.ter.CellularAutomaton.vue.MainWindow1D" project="CellularAutomaton" 
     file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/MainWindow1D.java" binary="false" 
     corner="BOTTOM_RIGHT">    
     <position height="2997" width="402" x="1076" y="558"/>    
@@ -94,17 +83,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="com.ter.CellularAutomaton.vue.RectangleForm" project="CellularAutomaton" 
-    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/RectangleForm.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
-    <position height="99" width="155" x="1640" y="3896"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="11" language="java" name="com.ter.CellularAutomaton.vue.InternalFrameSimulation1D" 
+  <class id="9" language="java" name="com.ter.CellularAutomaton.vue.InternalFrameSimulation1D" 
     project="CellularAutomaton" 
     file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/InternalFrameSimulation1D.java" binary="false" 
     corner="BOTTOM_RIGHT">    
@@ -115,9 +94,10 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="com.ter.CellularAutomaton.vue.RulesEntryModeWindow" project="CellularAutomaton" 
-    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/RulesEntryModeWindow.java" binary="false" 
-    corner="BOTTOM_RIGHT">    
+  <class id="10" language="java" name="com.ter.CellularAutomaton.vue.UniformRulesEntryModeWindow" 
+    project="CellularAutomaton" 
+    file="/CellularAutomaton/src/main/java/com/ter/CellularAutomaton/vue/UniformRulesEntryModeWindow.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
     <position height="747" width="227" x="1246" y="-229"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -125,60 +105,64 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="13">    
-    <end type="SOURCE" refId="12" navigable="false">      
-      <attribute id="14" name="m_currentSimulator"/>      
-      <multiplicity id="15" minimum="0" maximum="1"/>    
+  <association id="11">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="12" name="m_currentSimulator">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="13" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="16">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="5"/>  
-  </nesting>  
-  <realization id="17">    
-    <end type="SOURCE" refId="10"/>    
-    <end type="TARGET" refId="2"/>  
-  </realization>  
-  <association id="18">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="19" name="m_screen"/>      
-      <multiplicity id="20" minimum="0" maximum="1"/>    
+  <association id="14">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="15" name="m_simulation">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="16" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="5" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="21">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="22" name="m_internalFrameSimulation"/>      
-      <multiplicity id="23" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="11" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="24">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="25" name="m_currentSimulator"/>      
-      <multiplicity id="26" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="27">    
-    <end type="SOURCE" refId="6" navigable="false">      
-      <attribute id="28" name="m_formOfCells"/>      
-      <multiplicity id="29" minimum="0" maximum="1"/>    
+  <association id="17">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="18" name="m_formOfCells">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="19" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="30">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="31" name="m_simulation"/>      
-      <multiplicity id="32" minimum="0" maximum="1"/>    
+  <association id="20">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="21" name="m_internalFrameSimulation">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="22" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="23">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="24" name="m_currentSimulator">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="25" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

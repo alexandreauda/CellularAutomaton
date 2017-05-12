@@ -19,6 +19,7 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import com.ter.CellularAutomaton.controller.CellularAutomatonSetting1DEvent;
+import com.ter.CellularAutomaton.controller.ChooseColorGridEvent;
 import com.ter.CellularAutomaton.controller.Close1DEvent;
 import com.ter.CellularAutomaton.controller.CloseAllEvent;
 import com.ter.CellularAutomaton.controller.ComboBoxFormCellsEvent;
@@ -261,6 +262,7 @@ public class MainWindow1D extends JFrame implements WindowListener {
 	/** Utilities */
 	private String[] m_stringInitialPositionCells = { "One Cell", "Three Cells", "Randomly" };
 	private String[] m_stringFormCells = { "Rectangle", "Rectangle 3D Raised", "Rectangle 3D Sunk", "Upward Triangle", "Downward Triangle", "Circle" };
+	private Color m_colorGrid;
 	
 	
 	/** Graphic Component */
@@ -311,6 +313,7 @@ public class MainWindow1D extends JFrame implements WindowListener {
 	private ButtonGroup m_radioButtonGrid;
 	private JRadioButton m_radioButtonGridNo;
 	private JRadioButton m_radioButtonGridYes;
+	private JButton m_buttonColorGrid;
 	private InternalFrameSimulation1D m_internalFrameSimulation;
 	
 	/**Others */
@@ -357,7 +360,8 @@ public class MainWindow1D extends JFrame implements WindowListener {
 		//Set the window visible
 		this.setVisible(true);
 		
-		m_simulationState = SimulationState.RUN;
+		m_colorGrid = Color.RED;
+		m_simulationState = SimulationState.PAUSE;
 		m_isRun = true;
 		m_gridSimulation = false;
 		this.addWindowListener(this);//Add WindowListener on MainWindow
@@ -399,7 +403,8 @@ public class MainWindow1D extends JFrame implements WindowListener {
 		//Set the window visible
 		this.setVisible(true);
 		
-		m_simulationState = SimulationState.RUN;
+		m_colorGrid = Color.RED;
+		m_simulationState = SimulationState.PAUSE;
 		m_isRun = true;
 		m_gridSimulation = false;
 		
@@ -481,8 +486,16 @@ public class MainWindow1D extends JFrame implements WindowListener {
 		return m_modeForm;
 	}
 	
+	public SimulationState getm_simulationState() {
+		return m_simulationState;
+	}
+	
 	public boolean getm_gridSimulation() {
 		return m_gridSimulation;
+	}
+	
+	public Color getm_colorGrid() {
+		return m_colorGrid;
 	}
 
 	
@@ -518,6 +531,10 @@ public class MainWindow1D extends JFrame implements WindowListener {
 	
 	public void setm_gridSimulation(boolean gridSimulation) {
 		this.m_gridSimulation = gridSimulation;
+	}
+	
+	public void setm_colorGrid(Color colorGrid) {
+		this.m_colorGrid = colorGrid;
 	}
 	
 	
@@ -962,6 +979,7 @@ public class MainWindow1D extends JFrame implements WindowListener {
 	public void buildComponentChooseCellularAutomaton(){
 		//Build the component of the panel ChooseCellularAutomaton
 		m_buttonUniformCellularAutomatonSetting = new JButton("Uniform Rules");
+		m_buttonUniformCellularAutomatonSetting.setToolTipText("Choose the global rule of the simulation");
 		m_panelChooseCellularAutomaton.add(m_buttonUniformCellularAutomatonSetting, BorderLayout.CENTER);
 	}
 	
@@ -977,6 +995,7 @@ public class MainWindow1D extends JFrame implements WindowListener {
 	public void buildComponentUniform(){
 		//Build the component of the panel Uniform
 		m_buttonNonUniformCellularAutomatonSetting = new JButton("Non Uniform Rules");
+		m_buttonNonUniformCellularAutomatonSetting.setToolTipText("Choose a local rule in the simulation");
 		m_panelUniform.add(m_buttonNonUniformCellularAutomatonSetting, BorderLayout.CENTER);
 	}
 	
@@ -1015,16 +1034,22 @@ public class MainWindow1D extends JFrame implements WindowListener {
 		m_panelSimulationTools.setBorder(BorderFactory.createTitledBorder("Simulation Tools"));
 		
 		m_buttonLauncher = new JButton(new ImageIcon(pathDirectory+"button_laucher.png"));
+		m_buttonLauncher.setToolTipText("Launch the simulation");
 		
 		m_buttonPause = new JButton(new ImageIcon(pathDirectory+"button_pause.png"));
+		m_buttonPause.setToolTipText("Pause the simulation");
 		
 		m_buttonErase = new JButton(new ImageIcon(pathDirectory+"button_erase.png"));
+		m_buttonErase.setToolTipText("Clear simulation");
 		
 		m_buttonUndo = new JButton(new ImageIcon(pathDirectory+"button_undo.png"));
+		m_buttonUndo.setToolTipText("Undo");
 		
 		m_buttonRedo = new JButton(new ImageIcon(pathDirectory+"button_redo.png"));
+		m_buttonRedo.setToolTipText("Redo");
 		
 		m_buttonReload = new JButton(new ImageIcon(pathDirectory+"button_reload.png"));
+		m_buttonReload.setToolTipText("Refresh simulation");
 		
 		m_panelSimulationTools.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		m_panelSimulationTools.add(m_buttonLauncher);
@@ -1232,7 +1257,7 @@ public class MainWindow1D extends JFrame implements WindowListener {
 	/******Build Panel Grid******/
 	public void buildPanelGrid(){
 		m_panelGrid = new JPanel();//Create the panel TypeOfSimulator
-		m_panelGrid.setBounds(13, 588, 158, 55);
+		m_panelGrid.setBounds(13, 588, 158, 90);
 		m_panelGrid.setBorder(BorderFactory.createTitledBorder("Grid On Simulation"));
 				
 		buildComponentLateralToolsGrid();//Create components of panel TypeOfSimulator in the LateralTools
@@ -1322,6 +1347,7 @@ public class MainWindow1D extends JFrame implements WindowListener {
 	//Build components for TypeOfSimulator in LateralTools
 	public void buildComponentLateralToolsTypeOfSimulator(){
 		m_buttonTypeOfSimulator = new JButton("Switch to 2D");
+		m_buttonTypeOfSimulator.setToolTipText("Switch to 2D simulation");
 		
 		buildGroupLayoutComponentTypeOfSimulator();
 	}
@@ -1356,19 +1382,26 @@ public class MainWindow1D extends JFrame implements WindowListener {
 	/******Components of Panel Grid in LateralTools******/
 	//Build components for Grid in LateralTools
 	public void buildComponentLateralToolsGrid(){
+		m_panelGrid.setLayout(null);
 		m_radioButtonGridNo = new JRadioButton("No");
+		m_radioButtonGridNo.setBounds(18, 21, 50, 23);
+		m_radioButtonGridNo.setToolTipText("Disable the grid on simulation");
 		m_radioButtonGridNo.setSelected(true);//Set a CheckBox "All" to true by default
 		m_panelGrid.add(m_radioButtonGridNo);
 		
-		Component horizontalStrut = Box.createHorizontalStrut(30);
-		m_panelGrid.add(horizontalStrut);
-		
 		m_radioButtonGridYes = new JRadioButton("yes");
+		m_radioButtonGridYes.setBounds(90, 21, 50, 23);
+		m_radioButtonGridYes.setToolTipText("Enable the grid on simulation");
 		m_panelGrid.add(m_radioButtonGridYes);
 		
 		m_radioButtonGrid = new ButtonGroup();
 		m_radioButtonGrid.add(m_radioButtonGridNo);
 		m_radioButtonGrid.add(m_radioButtonGridYes);
+		
+		m_buttonColorGrid = new JButton("Color of grid");
+		m_buttonColorGrid.setToolTipText("Choose color of the grid");
+		m_buttonColorGrid.setBounds(10, 47, 136, 32);
+		m_panelGrid.add(m_buttonColorGrid);
 		
 		buildGroupLayoutComponentGrid();
 	}
@@ -1456,6 +1489,7 @@ public class MainWindow1D extends JFrame implements WindowListener {
 		addListenerComboBoxInitialPositionCells();//add listener of ComboBox InitialPositionCells
 		addListenerComboBoxFormCells();//add listener of ComboBox FormCells
 		addListenerRadioButtonGrid();//add listener of Radio Button Grid
+		addListenerColorGrid();//add listener of Button Color Grid
 	}
 	
 	private void addListenerSwitchTo2D(){
@@ -1479,6 +1513,10 @@ public class MainWindow1D extends JFrame implements WindowListener {
 		m_radioButtonGridYes.addActionListener(new RadioButtonGridYesEvent(this));
 	}
 	
+	private void addListenerColorGrid(){
+		m_buttonColorGrid.addActionListener(new ChooseColorGridEvent(this));
+	}
+	
 	
 	
 
@@ -1490,7 +1528,7 @@ public class MainWindow1D extends JFrame implements WindowListener {
 					m_internalFrameSimulation.startUpdate();//The simulation of the window start
 			}
 			else if(m_simulationState == SimulationState.PAUSE){
-					System.out.println("Pause");
+				m_internalFrameSimulation.startUpdate();//The simulation of the window start
 			}
 			else{
 				//TODO

@@ -32,7 +32,7 @@ public class UpwardTriangleForm1D implements IForm {
 		int[] y={ordinateY * Cell1D.CELL_SIZE + Cell1D.CELL_SIZE, ordinateY * Cell1D.CELL_SIZE, ordinateY * Cell1D.CELL_SIZE + Cell1D.CELL_SIZE};
 		if(m_window.getm_gridSimulation()){
 			g.fillPolygon(x,y,3);//Draw a upward triangle witch represent the cell
-			g.setColor(Color.RED);
+			g.setColor(m_window.getm_colorGrid());
 			g.drawPolygon(x,y,3);
 		}
 		else{

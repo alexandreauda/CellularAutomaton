@@ -30,7 +30,7 @@ public class Rectangle3DRaisedForm1D implements IForm {
 	public void draw(Graphics g,  int abscissaX, int ordinateY) {
 		if(m_window.getm_gridSimulation()){
 			g.fill3DRect(abscissaX * Cell1D.CELL_SIZE, ordinateY * Cell1D.CELL_SIZE, Cell1D.CELL_SIZE, Cell1D.CELL_SIZE, true);//Draw a rectangle 3D raised witch represent the cell
-			g.setColor(Color.RED);
+			g.setColor(m_window.getm_colorGrid());
 			g.draw3DRect(abscissaX * Cell1D.CELL_SIZE, ordinateY * Cell1D.CELL_SIZE, Cell1D.CELL_SIZE, Cell1D.CELL_SIZE, true);//Draw a rectangle 3D raised witch represent the cell
 		}
 		else{

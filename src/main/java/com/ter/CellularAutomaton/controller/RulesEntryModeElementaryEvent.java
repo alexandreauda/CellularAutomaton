@@ -5,13 +5,13 @@ import java.awt.event.ActionListener;
 
 import com.ter.CellularAutomaton.vue.ElementaryRulesWindow;
 import com.ter.CellularAutomaton.vue.MainWindow1D;
-import com.ter.CellularAutomaton.vue.RulesEntryModeWindow;
+import com.ter.CellularAutomaton.vue.UniformRulesEntryModeWindow;
 
 public class RulesEntryModeElementaryEvent implements ActionListener {
 
 
 	/******ATTRIBUTES******/
-	private RulesEntryModeWindow m_window;
+	private UniformRulesEntryModeWindow m_window;
 	private ElementaryRulesWindow m_elementaryRulesWindow;
 	MainWindow1D m_currentSimulator;
 	
@@ -19,7 +19,7 @@ public class RulesEntryModeElementaryEvent implements ActionListener {
 	/**
 	 * ****CONSTRUCTOR*****.
 	 */
-	public RulesEntryModeElementaryEvent(RulesEntryModeWindow window, MainWindow1D currentSimulator) {
+	public RulesEntryModeElementaryEvent(UniformRulesEntryModeWindow window, MainWindow1D currentSimulator) {
 		super();
 		this.m_window = window;
 		this.m_currentSimulator = currentSimulator;

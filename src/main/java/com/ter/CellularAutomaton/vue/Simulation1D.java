@@ -180,13 +180,20 @@ public class Simulation1D {
 	// Run simulation according to a rule defined by user.
 	public void update() {
 		int stateEvolutionOfCell;
-		// For each cell.
+		//if cursor is smaller than the number of cell in height.
 		if ( m_idOfLines < m_nbCellHeight-1) {
+			// For each cell.
 			for (int x = 0; x < m_nbCellWidth; x++) {
 				stateEvolutionOfCell = m_matrixCells.get(x).get(m_idOfLines).findStateEvolution(this); // Find evolution of state of cell.
 				m_matrixCells.get(x).get(m_idOfLines+1).setm_state(stateEvolutionOfCell); // Set the state of Cell which represent the evolution of current cell to stateEvolutionOfCell (which is  evolution of state of the current cell).
 			}
-			m_idOfLines++;
+			m_idOfLines++;//increment cursor
+		}
+		else{
+			m_nbCellHeight++; //increment the number of cell in height.
+			for(int x = 0; x < m_nbCellWidth; x++){
+				m_matrixCells.get(x).add(new Cell1D(x, m_nbCellHeight-1, 0, m_globalRadius, m_globalRules, m_formOfCells, m_colorOfCells));//Add default cell in arrayList
+			}
 		}
 	}
 
@@ -194,8 +201,8 @@ public class Simulation1D {
 	public void draw(Graphics g) {
 		// For each cell.
 		for(int x = 0;x < m_nbCellWidth;x++) {
-			for (int y = 0; y < m_nbCellHeight; y++) {
-				m_matrixCells.get(x).get(y).draw(g); // Draw cell.
+			for (int y = 1; y < m_nbCellHeight; y++) {
+				m_matrixCells.get(x).get(y-1).draw(g); // Draw cell.
 			}
 		}
 	}

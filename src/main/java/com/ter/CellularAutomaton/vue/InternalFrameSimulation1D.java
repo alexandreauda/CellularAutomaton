@@ -27,6 +27,8 @@ import com.ter.CellularAutomaton.controller.Cell1D;
 import com.ter.CellularAutomaton.controller.IInitializeSimulationRules1D;
 import com.ter.CellularAutomaton.controller.ResizeInternalFrameSimulation1DEvent;
 import com.ter.CellularAutomaton.controller.Switch1DTo2DSimulationEvent;
+import com.ter.CellularAutomaton.model.SimulationState;
+
 import javax.swing.JScrollPane;
 
 public class InternalFrameSimulation1D extends JInternalFrame {
@@ -39,7 +41,8 @@ public class InternalFrameSimulation1D extends JInternalFrame {
 	/******ATTRIBUTES******/
 	// For the logging.
 	private static final Logger logger = LogManager.getLogger(InternalFrameSimulation1D.class.getName()); // TestLog4j1.class.getName() must be change in yourClassName.class.getName().
-
+	private MainWindow1D m_mainWindow1D;
+	
 	private int m_width;
 	private int m_height;
 	private int m_refreshRate; //Updates per seconde
@@ -52,6 +55,7 @@ public class InternalFrameSimulation1D extends JInternalFrame {
 	/******CONSTRUCTOR******/
 	public InternalFrameSimulation1D(String title, IForm formOfCells, ArrayList<Color> colorOfCells, Color backgroundColor, IInitializeSimulationRules1D initializeSimulationRule, MainWindow1D mainWindow1D) {
 		super(title,true,true,true,true);
+		m_mainWindow1D = mainWindow1D;
 		m_width=900;
 		m_height = 530;
 		m_refreshRate = 30;
@@ -89,6 +93,10 @@ public class InternalFrameSimulation1D extends JInternalFrame {
 	}
 	
 	/******GETTERS******/
+	public MainWindow1D getm_mainWindow1D() {
+		return m_mainWindow1D;
+	}
+	
 	public JScrollPane getm_scrollPane() {
 		return m_scrollPane;
 	}
@@ -110,6 +118,9 @@ public class InternalFrameSimulation1D extends JInternalFrame {
 	}
 	
 	/******SETTERS******/
+	public void setm_mainWindow1D(MainWindow1D mainWindow1D) {
+		this.m_mainWindow1D = mainWindow1D;
+	}
 	public void setm_width(int width) {
 		this.m_width = width;
 	}
@@ -138,7 +149,9 @@ public class InternalFrameSimulation1D extends JInternalFrame {
 	public void startUpdate() {
 			m_millis = 1000/m_refreshRate;
 			long before = System.currentTimeMillis();
-			m_simulation.update();//Simulation update
+			if(m_mainWindow1D.getm_simulationState() == SimulationState.RUN){
+				m_simulation.update();//Simulation update
+			}
 
 			m_screen.repaint();
 			long diff = m_millis - (System.currentTimeMillis() - before);

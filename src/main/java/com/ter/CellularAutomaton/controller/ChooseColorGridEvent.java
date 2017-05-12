@@ -3,22 +3,24 @@ package com.ter.CellularAutomaton.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import com.ter.CellularAutomaton.vue.ColorChooserDialogGrid;
 import com.ter.CellularAutomaton.vue.ElementaryRulesWindow;
 import com.ter.CellularAutomaton.vue.MainWindow1D;
-import com.ter.CellularAutomaton.vue.UniformRulesEntryModeWindow;
 
-public class CellularAutomatonSetting1DEvent implements ActionListener {
-	
+public class ChooseColorGridEvent implements ActionListener {
+
+
 	/******ATTRIBUTES******/
-	private MainWindow1D m_window;
+	private ColorChooserDialogGrid m_colorChooserDialogGrid;
+	MainWindow1D m_currentMainWindow;
 	
 	
 	/**
 	 * ****CONSTRUCTOR*****.
 	 */
-	public CellularAutomatonSetting1DEvent(MainWindow1D window) {
+	public ChooseColorGridEvent(MainWindow1D currentMainWindow) {
 		super();
-		this.m_window = window;
+		this.m_currentMainWindow = currentMainWindow;
 		
 	}
 
@@ -29,7 +31,8 @@ public class CellularAutomatonSetting1DEvent implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		UniformRulesEntryModeWindow window = new UniformRulesEntryModeWindow(m_window);
+		m_colorChooserDialogGrid = new ColorChooserDialogGrid(m_currentMainWindow);
+		
 	}
 
 	

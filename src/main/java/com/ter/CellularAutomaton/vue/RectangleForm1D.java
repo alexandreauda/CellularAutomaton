@@ -30,7 +30,7 @@ public class RectangleForm1D implements IForm {
 	public void draw(Graphics g,  int abscissaX, int ordinateY) {
 		if(m_window.getm_gridSimulation()){
 			g.fillRect(abscissaX * Cell1D.CELL_SIZE, ordinateY * Cell1D.CELL_SIZE, Cell1D.CELL_SIZE, Cell1D.CELL_SIZE);//Draw a rectangle witch represent the cell
-			g.setColor(Color.RED);
+			g.setColor(m_window.getm_colorGrid());
 			g.drawRect(abscissaX * Cell1D.CELL_SIZE, ordinateY * Cell1D.CELL_SIZE, Cell1D.CELL_SIZE, Cell1D.CELL_SIZE);
 		}
 		else{

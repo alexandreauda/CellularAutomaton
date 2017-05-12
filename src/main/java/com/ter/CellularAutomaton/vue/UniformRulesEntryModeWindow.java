@@ -7,12 +7,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.KeyStroke;
 
-import com.ter.CellularAutomaton.controller.CloseNonUniformRulesEntryModeWindowEvent;
 import com.ter.CellularAutomaton.controller.CloseRulesEntryModeWindowEvent;
-import com.ter.CellularAutomaton.controller.NonUniformRulesEntryModeAdditiveEvent;
-import com.ter.CellularAutomaton.controller.NonUniformRulesEntryModeElementaryEvent;
-import com.ter.CellularAutomaton.controller.NonUniformRulesEntryModePatternEvent;
-import com.ter.CellularAutomaton.controller.NonUniformRulesEntryModeScriptEvent;
 import com.ter.CellularAutomaton.controller.QuitEvent;
 import com.ter.CellularAutomaton.controller.RulesEntryModeAdditiveEvent;
 import com.ter.CellularAutomaton.controller.RulesEntryModeElementaryEvent;
@@ -25,7 +20,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 
-public class NonUniformRulesEntryModeWindow extends JFrame {
+public class UniformRulesEntryModeWindow extends JFrame {
 
 	/**
 	 * 
@@ -64,7 +59,7 @@ public class NonUniformRulesEntryModeWindow extends JFrame {
 	/**
 	 * Create the application.
 	 */
-	public NonUniformRulesEntryModeWindow(MainWindow1D currentSimulator) {
+	public UniformRulesEntryModeWindow(MainWindow1D currentSimulator) {
 		this.setTitle("Rules entry mode");
 		this.setSize(450, 300);
 		this.setLocationRelativeTo(null);
@@ -149,7 +144,7 @@ public class NonUniformRulesEntryModeWindow extends JFrame {
 
 	//add listeners for tab File in MenuBar
 	private void addListenerFile (){
-		m_menuBarFileItem1.addActionListener(new CloseNonUniformRulesEntryModeWindowEvent(this));
+		m_menuBarFileItem1.addActionListener(new CloseRulesEntryModeWindowEvent(this));
 		m_menuBarFileItem2.addActionListener(new QuitEvent());
 	}
 	
@@ -187,7 +182,7 @@ public class NonUniformRulesEntryModeWindow extends JFrame {
 	//Build the component of Elementary panel
 	private void buildComponentPanelElementary(){		
 		m_buttonElementary = new JButton("Elementary");
-		m_buttonElementary.setToolTipText("Allow to define an elementary local rule");
+		m_buttonElementary.setToolTipText("Allow to define an elementary global rule");
 		m_panelElementary.add(m_buttonElementary, BorderLayout.CENTER);
 	}
 	
@@ -204,7 +199,7 @@ public class NonUniformRulesEntryModeWindow extends JFrame {
 	//Build the component of Additive panel
 	private void buildComponentPanelAdditive(){		
 		m_buttonAdditive = new JButton("Additive");
-		m_buttonAdditive.setToolTipText("Allow to define an additive local rule");
+		m_buttonAdditive.setToolTipText("Allow to define an additive global rule");
 		m_panelAdditive.add(m_buttonAdditive, BorderLayout.CENTER);
 	}
 	
@@ -221,7 +216,7 @@ public class NonUniformRulesEntryModeWindow extends JFrame {
 	//Build the component of Pattern panel
 	private void buildComponentPanelPattern(){		
 		m_buttonPattern = new JButton("Pattern");
-		m_buttonPattern.setToolTipText("Allow to define an local rule by pattern");
+		m_buttonPattern.setToolTipText("Allow to define an global rule by pattern");
 		m_panelPattern.add(m_buttonPattern, BorderLayout.CENTER);
 	}
 	
@@ -238,7 +233,7 @@ public class NonUniformRulesEntryModeWindow extends JFrame {
 	//Build the component of Script panel
 	private void buildComponentPanelScript(){		
 		m_buttonScript = new JButton("Script");
-		m_buttonScript.setToolTipText("Allow to define an local rule by script");
+		m_buttonScript.setToolTipText("Allow to define an global rule by script");
 		m_panelScript.add(m_buttonScript, BorderLayout.CENTER);
 	}
 	
@@ -253,22 +248,22 @@ public class NonUniformRulesEntryModeWindow extends JFrame {
 	
 	//Listener on button m_buttonElementary
 	private void addListenerButtonElementary (){
-		m_buttonElementary.addActionListener(new NonUniformRulesEntryModeElementaryEvent(this,m_currentSimulator));
+		m_buttonElementary.addActionListener(new RulesEntryModeElementaryEvent(this,m_currentSimulator));
 	}
 	
 	//Listener on button m_buttonAdditive
 		private void addListenerButtonAdditive (){
-			m_buttonAdditive.addActionListener(new NonUniformRulesEntryModeAdditiveEvent(this));
+			m_buttonAdditive.addActionListener(new RulesEntryModeAdditiveEvent(this));
 		}
 		
 		//Listener on button m_buttonPattern
 		private void addListenerButtonPattern (){
-			m_buttonPattern.addActionListener(new NonUniformRulesEntryModePatternEvent(this));
+			m_buttonPattern.addActionListener(new RulesEntryModePatternEvent(this));
 		}
 		
 		//Listener on button m_buttonElementary
 		private void addListenerButtonScript (){
-			m_buttonScript.addActionListener(new NonUniformRulesEntryModeScriptEvent(this));
+			m_buttonScript.addActionListener(new RulesEntryModeScriptEvent(this));
 		}
 
 }

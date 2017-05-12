@@ -3,19 +3,19 @@ package com.ter.CellularAutomaton.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import com.ter.CellularAutomaton.vue.RulesEntryModeWindow;
+import com.ter.CellularAutomaton.vue.UniformRulesEntryModeWindow;
 
 public class RulesEntryModePatternEvent implements ActionListener {
 
 
 	/******ATTRIBUTES******/
-	RulesEntryModeWindow m_window;
+	UniformRulesEntryModeWindow m_window;
 	
 	
 	/**
 	 * ****CONSTRUCTOR*****.
 	 */
-	public RulesEntryModePatternEvent(RulesEntryModeWindow window) {
+	public RulesEntryModePatternEvent(UniformRulesEntryModeWindow window) {
 		super();
 		this.m_window = window;
 		

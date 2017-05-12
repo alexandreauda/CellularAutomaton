@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import com.ter.CellularAutomaton.vue.NonUniformRulesEntryModeWindow;
-import com.ter.CellularAutomaton.vue.RulesEntryModeWindow;
+import com.ter.CellularAutomaton.vue.UniformRulesEntryModeWindow;
 
 public class CloseNonUniformRulesEntryModeWindowEvent implements ActionListener {
 
