@@ -33,7 +33,7 @@ public class ResizeInternalFrameSimulation1DEvent implements ComponentListener {
 		if(logger.isDebugEnabled()){
 			logger.debug("Resizing the internal frame");
 		}
-		this.m_mainWindow.setm_isRun(false);
+
 		this.m_mainWindow.setm_simulationState(SimulationState.PAUSE);
 		this.m_mainWindow.getm_internalFrameSimulation().setm_width(this.m_mainWindow.getm_internalFrameSimulation().getWidth());
 		this.m_mainWindow.getm_internalFrameSimulation().setm_height(this.m_mainWindow.getm_internalFrameSimulation().getHeight());
@@ -42,9 +42,6 @@ public class ResizeInternalFrameSimulation1DEvent implements ComponentListener {
 		this.m_mainWindow.getm_internalFrameSimulation().getm_simulation().setm_nbCellHeight(this.m_mainWindow.getm_internalFrameSimulation().getm_height()/Cell1D.CELL_SIZE);
 		
 		this.m_mainWindow.getm_internalFrameSimulation().getm_simulation().initByDefaultSimulation();
-		
-		this.m_mainWindow.setm_simulationState(SimulationState.RUN);
-		this.m_mainWindow.setm_isRun(true);
 	}
 
 	@Override

@@ -2,10 +2,11 @@ package com.ter.CellularAutomaton.vue;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.Serializable;
 
 import com.ter.CellularAutomaton.controller.Cell1D;
 
-public class RectangleForm1D implements IForm {
+public class RectangleForm1D implements IForm, Serializable {
 	
 	
 	/******ATTRIBUTES******/

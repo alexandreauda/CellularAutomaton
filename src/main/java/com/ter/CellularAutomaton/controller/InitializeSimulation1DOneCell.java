@@ -1,8 +1,10 @@
 package com.ter.CellularAutomaton.controller;
 
+import java.io.Serializable;
+
 import com.ter.CellularAutomaton.vue.Simulation1D;
 
-public class InitializeSimulation1DOneCell implements IInitializeSimulationRules1D {
+public class InitializeSimulation1DOneCell implements IInitializeSimulationRules1D, Serializable {
 
 	@Override
 	public void initializeSimulation(Simulation1D simulation) {

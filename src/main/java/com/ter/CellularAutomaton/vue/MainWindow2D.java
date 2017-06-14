@@ -587,7 +587,7 @@ public class MainWindow2D extends JFrame implements WindowListener  {
 
 	private void addListenerFile (){
 		m_menuBarFileItem1.addActionListener(new New2DEvent());
-		m_menuBarFileItem2.addActionListener(new OpenFileEvent());
+		//m_menuBarFileItem2.addActionListener(new OpenFileEvent());
 		m_menuBarFileItem7.addActionListener(new Close2DEvent(this));
 		m_menuBarFileItem8.addActionListener(new CloseAllEvent());
 		m_menuBarFileItem9.addActionListener(new QuitEvent());

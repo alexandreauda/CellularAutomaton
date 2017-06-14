@@ -28,6 +28,8 @@ public class SpeedSimulation1DEvent implements ChangeListener {
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		this.window.getm_internalFrameSimulation().setm_refreshRate(this.window.getm_sliderSpeedSimulation().getValue());//Set the value of the attribute m_refreshRate to the value specified by the slider
+		this.window.getm_labelIndicatorSpeed().setText("" + this.window.getm_sliderSpeedSimulation().getValue());//Change the label indicator of speed
+		this.window.getm_labelIndicatorSpeed().setToolTipText("Indicator of speed: " + this.window.getm_sliderSpeedSimulation().getValue());//Change the label indicator of speed
 	}
 
 }

@@ -14,6 +14,7 @@ import com.ter.CellularAutomaton.controller.CloseElementaryRulesWindowEvent;
 import com.ter.CellularAutomaton.controller.CloseLocalElementaryRulesWindowEvent;
 import com.ter.CellularAutomaton.controller.OKElementaryRules1DEvent;
 import com.ter.CellularAutomaton.controller.OKLocalElementaryRules1DEvent;
+import com.ter.CellularAutomaton.controller.PersonalizeElementaryCells1DEvent;
 import com.ter.CellularAutomaton.controller.QuitEvent;
 
 import javax.swing.JPanel;
@@ -38,6 +39,8 @@ public class LocalElementaryRulesWindow extends JFrame implements KeyListener {
 	private static final long serialVersionUID = 1L;
 
 	/******ATTRIBUTES******/
+	private MainWindow1D m_mainWindow;
+	
 	private JMenuBar m_menuBar = new JMenuBar();
 
 	/** The menu file. */
@@ -106,9 +109,9 @@ public class LocalElementaryRulesWindow extends JFrame implements KeyListener {
 	/**
 	 * Create the application.
 	 */
-	public LocalElementaryRulesWindow(InternalFrameSimulation1D currentInternalFrameSimulation1D) {
-		
-		m_currentInternalFrameSimulation1D = currentInternalFrameSimulation1D;// Initialize attribute with current InternalFrameSimulation1D
+	public LocalElementaryRulesWindow(MainWindow1D mainWindow) {
+		m_mainWindow = mainWindow;
+		m_currentInternalFrameSimulation1D = m_mainWindow.getm_internalFrameSimulation();// Initialize attribute with current InternalFrameSimulation1D
 		
 		buildComponentWindow();// Build component of window.
 		
@@ -118,14 +121,16 @@ public class LocalElementaryRulesWindow extends JFrame implements KeyListener {
 		
 		this.addListenerMenuBar();// We initialize Listener of menuBar.
 		
+		this.addListenerOnComponentsOfRulesSettingPanel();// Initialize Listeners on Components of panel Rules Setting.
+		
 		this.addListenerOnComponentsOfControlPanel();// Initialize Listeners on Components of panel Control.
 		
 		this.setVisible(true);// Set the window visible.
 	}
 	
-	public LocalElementaryRulesWindow(InternalFrameSimulation1D currentInternalFrameSimulation1D, Cell1D currentCell) {
-		
-		m_currentInternalFrameSimulation1D = currentInternalFrameSimulation1D;// Initialize attribute with current InternalFrameSimulation1D
+	public LocalElementaryRulesWindow(MainWindow1D mainWindow, Cell1D currentCell) {
+		m_mainWindow = mainWindow;
+		m_currentInternalFrameSimulation1D = m_mainWindow.getm_internalFrameSimulation();// Initialize attribute with current InternalFrameSimulation1D
 		m_currentCell = currentCell;// Initialize attribute with current Cell
 		
 		buildComponentWindow();// Build component of window.
@@ -135,6 +140,8 @@ public class LocalElementaryRulesWindow extends JFrame implements KeyListener {
 		this.initMenuBar();// We initialize our menuBar.
 		
 		this.addListenerMenuBar();// We initialize Listener of menuBar.
+		
+		this.addListenerOnComponentsOfRulesSettingPanel();// Initialize Listeners on Components of panel Rules Setting.
 		
 		this.addListenerOnComponentsOfControlPanel();// Initialize Listeners on Components of panel Control.
 		
@@ -349,6 +356,15 @@ public class LocalElementaryRulesWindow extends JFrame implements KeyListener {
 		m_menuBarFileItem2.addActionListener(new QuitEvent());
 	}
 	
+	
+	/******Listeners Panel Rules Setting******/
+	private void addListenerOnComponentsOfRulesSettingPanel(){
+		addListenerOnComponentsPersonalizeButton();
+	}
+	
+	private void addListenerOnComponentsPersonalizeButton(){
+		m_buttonPersonalize.addActionListener(new PersonalizeElementaryCells1DEvent(m_mainWindow));
+	}
 	
 	
 	/******Listeners panel Control******/

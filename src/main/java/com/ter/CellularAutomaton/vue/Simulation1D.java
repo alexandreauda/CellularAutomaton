@@ -2,6 +2,7 @@ package com.ter.CellularAutomaton.vue;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import org.apache.logging.log4j.LogManager;
@@ -10,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 import com.ter.CellularAutomaton.controller.Cell1D;
 import com.ter.CellularAutomaton.controller.IInitializeSimulationRules1D;
 
-public class Simulation1D {
+public class Simulation1D implements Serializable {
 
 	/******ATTRIBUTES******/
 	// For the logging.
@@ -173,6 +174,8 @@ public class Simulation1D {
 			for(int x = 0;x < m_nbCellWidth;x++) {
 				for (int y = 0; y < m_nbCellHeight; y++) {
 					m_matrixCells.get(x).get(y).setm_state(0);//Set the m_state to 0 (value by default)
+					m_matrixCells.get(x).get(y).setm_radius(1);//Set the m_radius to 1 (value by default)
+					m_matrixCells.get(x).get(y).setm_rules(0);//Set the m_rules to 0 (value by default)
 				}
 			}
 		}

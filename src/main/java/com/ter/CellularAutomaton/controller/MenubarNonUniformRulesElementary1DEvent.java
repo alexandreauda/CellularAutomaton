@@ -30,7 +30,7 @@ public class MenubarNonUniformRulesElementary1DEvent implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		m_elementaryRulesWindow = new LocalElementaryRulesWindow(m_currentSimulator.getm_internalFrameSimulation());
+		m_elementaryRulesWindow = new LocalElementaryRulesWindow(m_currentSimulator);
 		
 	}
 

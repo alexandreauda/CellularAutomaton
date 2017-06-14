@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import com.ter.CellularAutomaton.vue.ColorChooserDialogGrid;
-import com.ter.CellularAutomaton.vue.ElementaryRulesWindow;
 import com.ter.CellularAutomaton.vue.MainWindow1D;
 
 public class ChooseColorGridEvent implements ActionListener {

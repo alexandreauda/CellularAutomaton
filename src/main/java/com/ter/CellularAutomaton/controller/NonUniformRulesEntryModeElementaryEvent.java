@@ -34,7 +34,7 @@ public class NonUniformRulesEntryModeElementaryEvent implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		this.m_window.dispose();
-		m_localElementaryRulesWindow = new LocalElementaryRulesWindow(m_currentSimulator.getm_internalFrameSimulation());
+		m_localElementaryRulesWindow = new LocalElementaryRulesWindow(m_currentSimulator);
 		
 	}
 

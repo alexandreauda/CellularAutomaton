@@ -47,7 +47,7 @@ public class ColorChooserDialogGrid extends JDialog {
     private static final String m_stringPreviewColorBackground = "Preview Color Background";
 
     public ColorChooserDialogGrid(MainWindow1D window) {
-    	this.setTitle("Test JColorChooser");//Define a title to the window    
+    	this.setTitle("Choose color of grid");//Define a title to the window    
 		this.setSize(450,300);//Initial size of the window
 		this.setLocationRelativeTo(null);//We now ask our window to position itself at the center.
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
