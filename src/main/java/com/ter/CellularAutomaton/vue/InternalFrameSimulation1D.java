@@ -3,13 +3,6 @@ package com.ter.CellularAutomaton.vue;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -17,16 +10,13 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
-import javax.swing.JLabel;
 import javax.swing.WindowConstants;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.ter.CellularAutomaton.controller.Cell1D;
 import com.ter.CellularAutomaton.controller.IInitializeSimulationRules1D;
 import com.ter.CellularAutomaton.controller.ResizeInternalFrameSimulation1DEvent;
-import com.ter.CellularAutomaton.controller.Switch1DTo2DSimulationEvent;
 import com.ter.CellularAutomaton.model.SimulationState;
 
 import javax.swing.JScrollPane;
@@ -139,9 +129,16 @@ public class InternalFrameSimulation1D extends JInternalFrame {
 		this.m_refreshRate = refreshRate;
 	}
 	
-	
 	public void setm_backgroundColor(Color backgroundColor) {
 		this.m_backgroundColor = backgroundColor;
+	}
+	
+	public void setm_screen(Screen screen) {
+		this.m_screen = screen;
+	}
+	
+	public void setm_simulation(Simulation1D simulation) {
+		this.m_simulation = simulation;
 	}
 
 	

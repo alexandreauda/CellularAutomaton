@@ -78,7 +78,7 @@ public class SizeSimulationWindow extends JFrame {
 	public SizeSimulationWindow(MainWindow1D mainWindow1D) {
 		m_mainWindow1D = mainWindow1D;
 		
-		this.setTitle("Elementary Rules Window");//Set the title of window
+		this.setTitle("Size of simulation window");//Set the title of window
 		this.setSize(450,270);//Set size of window
 		this.setLocationRelativeTo(null);//Center the location of window
 		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//Set Default Close Operation to DISPOSE_ON_CLOSE

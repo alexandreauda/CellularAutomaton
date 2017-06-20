@@ -36,6 +36,7 @@ import com.ter.CellularAutomaton.controller.New1DEvent;
 import com.ter.CellularAutomaton.controller.NonUniformCellularAutomatonSetting1DEvent;
 import com.ter.CellularAutomaton.controller.OpenFileEvent;
 import com.ter.CellularAutomaton.controller.PauseSimulation1DEvent;
+import com.ter.CellularAutomaton.controller.PersonalizeElementaryCells1DEvent;
 import com.ter.CellularAutomaton.controller.PrintUISimulatorWindow1DEvent;
 import com.ter.CellularAutomaton.controller.PrintUIWindow1DEvent;
 import com.ter.CellularAutomaton.controller.QuitEvent;
@@ -996,6 +997,7 @@ public class MainWindow1D extends JFrame implements WindowListener, Serializable
 		//add all the accelerators for the items of tab File
 		m_menuBarFileItemNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_MASK)); //add accelerators of New in tab File
 		m_menuBarFileItemOpenFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_MASK)); //add accelerators of Open File in tab File
+		m_menuBarFileItemSaveAs.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_MASK)); //add accelerators of Open File in tab File
 		m_menuBarFileItemPrintChoicePrintAllWindow.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.CTRL_MASK)); //add accelerators of print in tab File
 		m_menuBarFileItemExportChoicePNG.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, KeyEvent.ALT_MASK + KeyEvent.SHIFT_MASK)); //add accelerators of "Export PNG" in tab File
 		m_menuBarFileItemExportChoiceJPG.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_J, KeyEvent.ALT_MASK + KeyEvent.SHIFT_MASK)); //add accelerators of "Export JPG" in tab File
@@ -1894,6 +1896,7 @@ public class MainWindow1D extends JFrame implements WindowListener, Serializable
 	/******Listeners Lateral Tools******/
 	private void addListenerLateralTools(){
 		addListenerSizeOfSimulation();//add listener of Button SizeOfSimulation
+		addListenerColorCells();//add listener of Button Color cells settings
 		addListenerRadioButtonGrid();//add listener of Radio Button Grid
 		addListenerColorGrid();//add listener of Button Color Grid
 		addListenerColorBackground();//add listener of Button Color Background
@@ -1904,6 +1907,10 @@ public class MainWindow1D extends JFrame implements WindowListener, Serializable
 	
 	private void addListenerSizeOfSimulation(){
 		m_buttonSizeOfSimulation.addActionListener(new SizeOfSimulation1DEvent(this));
+	}
+	
+	private void addListenerColorCells(){
+		m_buttonColorCells.addActionListener(new PersonalizeElementaryCells1DEvent(this));
 	}
 	
 	private void addListenerRadioButtonGrid(){

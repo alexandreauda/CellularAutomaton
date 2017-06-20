@@ -1,7 +1,13 @@
 package com.ter.CellularAutomaton.vue;
 
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.text.NumberFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -12,16 +18,29 @@ import javax.swing.KeyStroke;
 import com.ter.CellularAutomaton.controller.Cell1D;
 import com.ter.CellularAutomaton.controller.CloseElementaryRulesWindowEvent;
 import com.ter.CellularAutomaton.controller.CloseLocalElementaryRulesWindowEvent;
+import com.ter.CellularAutomaton.controller.CopyElementaryRulesWindowEvent;
+import com.ter.CellularAutomaton.controller.CopyLocalElementaryRulesWindow;
+import com.ter.CellularAutomaton.controller.CutElementaryRulesWindowEvent;
+import com.ter.CellularAutomaton.controller.CutLocalElementaryRulesWindow;
 import com.ter.CellularAutomaton.controller.OKElementaryRules1DEvent;
 import com.ter.CellularAutomaton.controller.OKLocalElementaryRules1DEvent;
+import com.ter.CellularAutomaton.controller.PasteElementaryRulesWindowEvent;
+import com.ter.CellularAutomaton.controller.PasteLocalElementaryRulesWindow;
 import com.ter.CellularAutomaton.controller.PersonalizeElementaryCells1DEvent;
 import com.ter.CellularAutomaton.controller.QuitEvent;
+import com.ter.CellularAutomaton.controller.ResetElementaryRules1DEvent;
+import com.ter.CellularAutomaton.controller.ResetLocalElementaryRules1DEvent;
+import com.ter.CellularAutomaton.controller.SelectAllElementaryRulesWindowEvent;
+import com.ter.CellularAutomaton.controller.SelectAllLocalElementaryRulesWindow;
+import com.ter.CellularAutomaton.controller.UndoManagerHelper;
 
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
+import javax.swing.ImageIcon;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -30,10 +49,13 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JFormattedTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.undo.UndoManager;
 import javax.swing.JSeparator;
 
 
-public class LocalElementaryRulesWindow extends JFrame implements KeyListener {
+public class LocalElementaryRulesWindow extends JFrame implements KeyListener, FocusListener {
 
 	/** The Constant serialVersionUID. */
 	private static final long serialVersionUID = 1L;
@@ -51,10 +73,44 @@ public class LocalElementaryRulesWindow extends JFrame implements KeyListener {
 	// In file menu
 
 	/** The menu bar file item 1. */
-	private JMenuItem m_menuBarFileItem1 = new JMenuItem("Close");
+	private JMenuItem m_menuBarFileItem1 = new JMenuItem("Close", new ImageIcon("Files/Images/Icons/File_Menu/Close.png"));
 
 	/** The menu bar file item 2. */
 	private JMenuItem m_menuBarFileItem2 = new JMenuItem("Quit");
+	
+	/** The menu Edit. */
+	//Tab in MenuBar
+	private JMenu m_menuEdit = new JMenu("Edit");
+	
+	/** The menu bar edit item 1. */
+	// In edit menu
+	private JMenuItem m_menuBarEditItem1 = new JMenuItem("Undo", new ImageIcon("Files/Images/Icons/Edit_Menu/Undo.png"));
+	
+	/** The menu bar edit item 2. */
+	private JMenuItem m_menuBarEditItem2 = new JMenuItem("Redo", new ImageIcon("Files/Images/Icons/Edit_Menu/Redo.png"));
+
+	/** The menu bar edit item 3. */
+	private JMenuItem m_menuBarEditItem3 = new JMenuItem("Cut", new ImageIcon("Files/Images/Icons/Edit_Menu/Cut.png"));
+
+
+	/** The menu bar file item 1. */
+	private JMenuItem m_menuBarEditItem4 = new JMenuItem("Copy", new ImageIcon("Files/Images/Icons/Edit_Menu/Copy.png"));
+
+	/** The menu bar file item 2. */
+	private JMenuItem m_menuBarEditItem5 = new JMenuItem("Paste", new ImageIcon("Files/Images/Icons/Edit_Menu/Paste.png"));
+
+	/** The menu bar edit item 6. */
+	private JMenuItem m_menuBarEditItem6 = new JMenuItem("Select all");
+	
+	private NumberFormat m_formatForX1;
+	private NumberFormat m_formatForX2;
+	private NumberFormat m_formatForRadius;
+	private NumberFormat m_formatForRules;
+
+	private boolean[] m_isComponentFocus = {false, false, false, false};
+	//private boolean m_isRadiusFocus = false;
+	
+	private UndoManager m_manager = new UndoManager();
 	
 	/** Component of window */
 	private final JPanel m_panelControl = new JPanel();
@@ -66,15 +122,15 @@ public class LocalElementaryRulesWindow extends JFrame implements KeyListener {
 	private final JPanel m_panelLocalRuleArea = new JPanel();
 	JLabel m_labelX1 = new JLabel("X1:");
 	JLabel m_labelX2 = new JLabel("X2:");
-	private final JFormattedTextField m_formattedTextFieldX1 = new JFormattedTextField();
-	private final JFormattedTextField m_formattedTextFieldX2 = new JFormattedTextField();
+	private JFormattedTextField m_formattedTextFieldX1 = new JFormattedTextField();
+	private JFormattedTextField m_formattedTextFieldX2 = new JFormattedTextField();
 	
 	private final JPanel m_panelRulesSetting = new JPanel();
 	private final JLabel m_labelAlphabet = new JLabel("Alphabet (0 to ?):  1");
 	private final JLabel m_labelRadius = new JLabel("Radius (must be equal or greater than 1):");
-	private final JFormattedTextField m_formattedTextFieldRadius = new JFormattedTextField(1);//By default, the radius is 1.
+	private JFormattedTextField m_formattedTextFieldRadius = new JFormattedTextField(1);//By default, the radius is 1.
 	private final JLabel m_labelRules = new JLabel("Rules (0 to ?):");
-	private final JFormattedTextField m_formattedTextFieldRules = new JFormattedTextField(0);
+	private JFormattedTextField m_formattedTextFieldRules = new JFormattedTextField(0);
 	private final JButton m_buttonOk = new JButton("OK");
 	private final JButton m_buttonPersonalize = new JButton("Personalize");
 	private JSeparator m_separatorBetweenAlphabetAndRadius;
@@ -104,6 +160,44 @@ public class LocalElementaryRulesWindow extends JFrame implements KeyListener {
 	public JFormattedTextField getm_formattedTextFieldRules() {
 		return m_formattedTextFieldRules;
 	}
+	
+	public JButton getm_buttonOk() {
+		return m_buttonOk;
+	}
+	
+	public boolean[] getm_isComponentFocus() {
+		return m_isComponentFocus;
+	}
+	
+	
+//	public boolean getm_isRadiusFocus() {
+//		return m_isRadiusFocus;
+//	}
+	
+	public UndoManager getm_manager() {
+		return m_manager;
+	}
+	
+	public JMenuItem getm_menuBarEditItem1() {
+		return m_menuBarEditItem1;
+	}
+	
+	/******SETTERS******/
+	public void setm_formattedTextFieldX1(int newValue) {
+		m_formattedTextFieldX1.setValue(newValue);
+	}
+
+	public void setm_formattedTextFieldX2(int newValue) {
+		m_formattedTextFieldX2.setValue(newValue);
+	}
+	
+	public void setm_formattedTextFieldRadius(int newValue) {
+		m_formattedTextFieldRadius.setValue(newValue);
+	}
+
+	public void setm_formattedTextFieldRules(int newValue) {
+		m_formattedTextFieldRules.setValue(newValue);
+	}
 
 
 	/**
@@ -112,6 +206,8 @@ public class LocalElementaryRulesWindow extends JFrame implements KeyListener {
 	public LocalElementaryRulesWindow(MainWindow1D mainWindow) {
 		m_mainWindow = mainWindow;
 		m_currentInternalFrameSimulation1D = m_mainWindow.getm_internalFrameSimulation();// Initialize attribute with current InternalFrameSimulation1D
+		
+		setUpFormats();
 		
 		buildComponentWindow();// Build component of window.
 		
@@ -132,6 +228,8 @@ public class LocalElementaryRulesWindow extends JFrame implements KeyListener {
 		m_mainWindow = mainWindow;
 		m_currentInternalFrameSimulation1D = m_mainWindow.getm_internalFrameSimulation();// Initialize attribute with current InternalFrameSimulation1D
 		m_currentCell = currentCell;// Initialize attribute with current Cell
+	
+		setUpFormats();
 		
 		buildComponentWindow();// Build component of window.
 		
@@ -201,6 +299,401 @@ public class LocalElementaryRulesWindow extends JFrame implements KeyListener {
 		m_panelLocalRuleArea.add(m_formattedTextFieldX2);
 		
 	}
+	
+	
+
+	//Create and set up number formats. These objects also
+	//parse numbers input by user.
+	private void setUpFormats() {
+		//m_formatForX1 = NumberFormat.getIntegerInstance();
+		//m_formatForX2 = NumberFormat.getIntegerInstance();
+		m_formatForRadius = NumberFormat.getIntegerInstance();
+		m_formatForRules = NumberFormat.getIntegerInstance();
+		
+		m_formattedTextFieldX1 = new JFormattedTextField(m_formatForX1); // Set the format of the JFormattedTextField. 
+		m_formattedTextFieldX1.setValue(new Integer(1)); // By default, the radius is 1.
+
+		m_formattedTextFieldX2 = new JFormattedTextField(m_formatForX2); // Set the format of the JFormattedTextField. 
+		m_formattedTextFieldX2.setValue(new Integer(1)); // By default, the radius is 1.
+
+		m_formattedTextFieldRadius = new JFormattedTextField(m_formatForRadius); // Set the format of the JFormattedTextField. 
+		m_formattedTextFieldRadius.setValue(new Integer(1)); // By default, the radius is 1.
+
+		m_formattedTextFieldRules = new JFormattedTextField(m_formatForRules);
+		m_formattedTextFieldRules.setValue(new Integer(0)); // By default, the rules is 0.
+
+		//m_formattedTextFieldRadius.addPropertyChangeListener("value", this); // Listener of JFormattedTextField.
+		//m_formattedTextFieldRules.addPropertyChangeListener("value", this); // Listener of JFormattedTextField.
+
+		m_formattedTextFieldX1.getDocument().addDocumentListener(new DocumentListener() {
+
+			private static final String invalidInput = "Your input is invalid. It must be a integer.";
+			private static final String validInput = "Your input is valid.";
+
+			@Override
+			public void changedUpdate(DocumentEvent arg0) {
+				m_isComponentFocus[0] = true;
+				for(int i = 1; i<m_isComponentFocus.length; i++){
+					m_isComponentFocus[i] = false;
+				}
+				if(!this.isInteger(m_formattedTextFieldX1.getText())){ // If the text in m_formattedTextFieldRadius is not an Integer
+					m_formattedTextFieldX1.setBackground(new Color(255,0,0)); // Set the background of m_formattedTextFieldRadius to red to tell the user that his input is invalid. 
+					m_formattedTextFieldX1.setToolTipText(invalidInput); // Put an infoBulle to tell the user that his input is invalid.
+				}
+				else{// If the text in m_formattedTextFieldRadius is an Integer
+					m_formattedTextFieldX1.setBackground(new Color(0,255,0)); // Set the background of m_formattedTextFieldRadius to green to tell the user that his input is valid. 
+					m_formattedTextFieldX1.setToolTipText(validInput); // Put an infoBulle to tell the user that his input is valid.
+				}
+
+
+				if(this.isInteger(m_formattedTextFieldX1.getText()) && this.isInteger(m_formattedTextFieldX2.getText()) && this.isInteger(m_formattedTextFieldRadius.getText()) && this.isInteger(m_formattedTextFieldRules.getText())){
+					m_buttonOk.setEnabled(true);
+				}
+				else{
+					m_buttonOk.setEnabled(false);
+				}
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent arg0) {
+				m_isComponentFocus[0] = true;
+				for(int i = 1; i<m_isComponentFocus.length; i++){
+					m_isComponentFocus[i] = false;
+				}
+				if(!this.isInteger(m_formattedTextFieldX1.getText())){ // If the text in m_formattedTextFieldRadius is not an Integer
+					m_formattedTextFieldX1.setBackground(new Color(255,0,0)); // Set the background of m_formattedTextFieldRadius to red to tell the user that his input is invalid. 
+					m_formattedTextFieldX1.setToolTipText(invalidInput); // Put an infoBulle to tell the user that his input is invalid.
+				}
+				else{// If the text in m_formattedTextFieldRadius is an Integer
+					m_formattedTextFieldX1.setBackground(new Color(0,255,0)); // Set the background of m_formattedTextFieldRadius to green to tell the user that his input is valid. 
+					m_formattedTextFieldX1.setToolTipText(validInput); // Put an infoBulle to tell the user that his input is valid.
+				}
+
+				if(this.isInteger(m_formattedTextFieldX1.getText()) && this.isInteger(m_formattedTextFieldX2.getText()) && this.isInteger(m_formattedTextFieldRadius.getText()) && this.isInteger(m_formattedTextFieldRules.getText())){
+					m_buttonOk.setEnabled(true);
+				}
+				else{
+					m_buttonOk.setEnabled(false);
+				}
+
+			}
+			@Override
+			public void removeUpdate(DocumentEvent arg0) {
+				m_isComponentFocus[0] = true;
+				for(int i = 1; i<m_isComponentFocus.length; i++){
+					m_isComponentFocus[i] = false;
+				}
+				if(!this.isInteger(m_formattedTextFieldX1.getText())){ // If the text in m_formattedTextFieldRadius is not an Integer
+					m_formattedTextFieldX1.setBackground(new Color(255,0,0)); // Set the background of m_formattedTextFieldRadius to red to tell the user that his input is invalid. 
+					m_formattedTextFieldX1.setToolTipText(invalidInput); // Put an infoBulle to tell the user that his input is invalid.
+				}
+				else{// If the text in m_formattedTextFieldRadius is an Integer
+					m_formattedTextFieldX1.setBackground(new Color(0,255,0)); // Set the background of m_formattedTextFieldRadius to green to tell the user that his input is valid. 
+					m_formattedTextFieldX1.setToolTipText(validInput); // Put an infoBulle to tell the user that his input is valid.
+				}
+
+
+				if(this.isInteger(m_formattedTextFieldX1.getText()) && this.isInteger(m_formattedTextFieldX2.getText()) && this.isInteger(m_formattedTextFieldRadius.getText()) && this.isInteger(m_formattedTextFieldRules.getText())){
+					m_buttonOk.setEnabled(true);
+				}
+				else{
+					m_buttonOk.setEnabled(false);
+				}
+
+			}
+
+
+			private boolean isInteger(String chaine) {
+				try {
+					Integer.parseInt(chaine);
+				} catch (NumberFormatException e){
+					return false;
+				}
+
+				return true;
+			}
+		});
+
+
+
+		m_formattedTextFieldX2.getDocument().addDocumentListener(new DocumentListener() {
+			private static final String invalidInput = "Your input is invalid. It must be a integer.";
+			private static final String validInput = "Your input is valid.";
+
+			@Override
+			public void changedUpdate(DocumentEvent arg0) {
+				m_isComponentFocus[0] = false;
+				m_isComponentFocus[1] = true;
+				for(int i = 2; i<m_isComponentFocus.length; i++){
+					m_isComponentFocus[i] = false;
+				}
+				if(!this.isInteger(m_formattedTextFieldX2.getText())){ // If the text in m_formattedTextFieldRadius is not an Integer
+					m_formattedTextFieldX2.setBackground(new Color(255,0,0)); // Set the background of m_formattedTextFieldRadius to red to tell the user that his input is invalid. 
+					m_formattedTextFieldX2.setToolTipText(invalidInput); // Put an infoBulle to tell the user that his input is invalid.
+				}
+				else{// If the text in m_formattedTextFieldRadius is an Integer
+					m_formattedTextFieldX2.setBackground(new Color(0,255,0)); // Set the background of m_formattedTextFieldRadius to green to tell the user that his input is valid. 
+					m_formattedTextFieldX2.setToolTipText(validInput); // Put an infoBulle to tell the user that his input is valid.
+				}
+
+
+				if(this.isInteger(m_formattedTextFieldX1.getText()) && this.isInteger(m_formattedTextFieldX2.getText()) && this.isInteger(m_formattedTextFieldRadius.getText()) && this.isInteger(m_formattedTextFieldRules.getText())){
+					m_buttonOk.setEnabled(true);
+				}
+				else{
+					m_buttonOk.setEnabled(false);
+				}
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent arg0) {
+				m_isComponentFocus[0] = false;
+				m_isComponentFocus[1] = true;
+				for(int i = 2; i<m_isComponentFocus.length; i++){
+					m_isComponentFocus[i] = false;
+				}
+				if(!this.isInteger(m_formattedTextFieldX2.getText())){ // If the text in m_formattedTextFieldRadius is not an Integer
+					m_formattedTextFieldX2.setBackground(new Color(255,0,0)); // Set the background of m_formattedTextFieldRadius to red to tell the user that his input is invalid. 
+					m_formattedTextFieldX2.setToolTipText(invalidInput); // Put an infoBulle to tell the user that his input is invalid.
+				}
+				else{// If the text in m_formattedTextFieldRadius is an Integer
+					m_formattedTextFieldX2.setBackground(new Color(0,255,0)); // Set the background of m_formattedTextFieldRadius to green to tell the user that his input is valid. 
+					m_formattedTextFieldX2.setToolTipText(validInput); // Put an infoBulle to tell the user that his input is valid.
+				}
+
+
+				if(this.isInteger(m_formattedTextFieldX1.getText()) && this.isInteger(m_formattedTextFieldX2.getText()) && this.isInteger(m_formattedTextFieldRadius.getText()) && this.isInteger(m_formattedTextFieldRules.getText())){
+					m_buttonOk.setEnabled(true);
+				}
+				else{
+					m_buttonOk.setEnabled(false);
+				}
+
+			}
+			@Override
+			public void removeUpdate(DocumentEvent arg0) {
+				m_isComponentFocus[0] = false;
+				m_isComponentFocus[1] = true;
+				for(int i = 2; i<m_isComponentFocus.length; i++){
+					m_isComponentFocus[i] = false;
+				}
+				if(!this.isInteger(m_formattedTextFieldX2.getText())){ // If the text in m_formattedTextFieldRadius is not an Integer
+					m_formattedTextFieldX2.setBackground(new Color(255,0,0)); // Set the background of m_formattedTextFieldRadius to red to tell the user that his input is invalid. 
+					m_formattedTextFieldX2.setToolTipText(invalidInput); // Put an infoBulle to tell the user that his input is invalid.
+				}
+				else{// If the text in m_formattedTextFieldRadius is an Integer
+					m_formattedTextFieldX2.setBackground(new Color(0,255,0)); // Set the background of m_formattedTextFieldRadius to green to tell the user that his input is valid. 
+					m_formattedTextFieldX2.setToolTipText(validInput); // Put an infoBulle to tell the user that his input is valid.
+				}
+
+				if(this.isInteger(m_formattedTextFieldX1.getText()) && this.isInteger(m_formattedTextFieldX2.getText()) && this.isInteger(m_formattedTextFieldRadius.getText()) && this.isInteger(m_formattedTextFieldRules.getText())){
+					m_buttonOk.setEnabled(true);
+				}
+				else{
+					m_buttonOk.setEnabled(false);
+				}
+
+			}
+
+
+			private boolean isInteger(String chaine) {
+				try {
+					Integer.parseInt(chaine);
+				} catch (NumberFormatException e){
+					return false;
+				}
+
+				return true;
+			}
+		});
+		
+		
+		m_formattedTextFieldRadius.getDocument().addDocumentListener(new DocumentListener() {
+
+			private static final String invalidInput = "Your input is invalid. It must be a integer.";
+			private static final String validInput = "Your input is valid.";
+
+			@Override
+			public void changedUpdate(DocumentEvent arg0) {
+				for(int i = 0; i<2; i++){
+					m_isComponentFocus[i] = false;
+				}
+				m_isComponentFocus[2] = true;
+				m_isComponentFocus[3] = false;
+				
+				if(!this.isInteger(m_formattedTextFieldRadius.getText())){ // If the text in m_formattedTextFieldRadius is not an Integer
+					m_formattedTextFieldRadius.setBackground(new Color(255,0,0)); // Set the background of m_formattedTextFieldRadius to red to tell the user that his input is invalid. 
+					m_formattedTextFieldRadius.setToolTipText(invalidInput); // Put an infoBulle to tell the user that his input is invalid.
+				}
+				else{// If the text in m_formattedTextFieldRadius is an Integer
+					m_formattedTextFieldRadius.setBackground(new Color(0,255,0)); // Set the background of m_formattedTextFieldRadius to green to tell the user that his input is valid. 
+					m_formattedTextFieldRadius.setToolTipText(validInput); // Put an infoBulle to tell the user that his input is valid.
+				}
+
+
+				if(this.isInteger(m_formattedTextFieldRadius.getText()) && this.isInteger(m_formattedTextFieldRules.getText())){
+					m_buttonOk.setEnabled(true);
+				}
+				else{
+					m_buttonOk.setEnabled(false);
+				}
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent arg0) {
+				for(int i = 0; i<2; i++){
+					m_isComponentFocus[i] = false;
+				}
+				m_isComponentFocus[2] = true;
+				m_isComponentFocus[3] = false;
+				if(!this.isInteger(m_formattedTextFieldRadius.getText())){ // If the text in m_formattedTextFieldRadius is not an Integer
+					m_formattedTextFieldRadius.setBackground(new Color(255,0,0)); // Set the background of m_formattedTextFieldRadius to red to tell the user that his input is invalid. 
+					m_formattedTextFieldRadius.setToolTipText(invalidInput); // Put an infoBulle to tell the user that his input is invalid.
+				}
+				else{// If the text in m_formattedTextFieldRadius is an Integer
+					m_formattedTextFieldRadius.setBackground(new Color(0,255,0)); // Set the background of m_formattedTextFieldRadius to green to tell the user that his input is valid. 
+					m_formattedTextFieldRadius.setToolTipText(validInput); // Put an infoBulle to tell the user that his input is valid.
+				}
+
+
+				if(this.isInteger(m_formattedTextFieldRadius.getText()) && this.isInteger(m_formattedTextFieldRules.getText())){
+					m_buttonOk.setEnabled(true);
+				}
+				else{
+					m_buttonOk.setEnabled(false);
+				}
+
+			}
+			@Override
+			public void removeUpdate(DocumentEvent arg0) {
+				for(int i = 0; i<2; i++){
+					m_isComponentFocus[i] = false;
+				}
+				m_isComponentFocus[2] = true;
+				m_isComponentFocus[3] = false;
+				if(!this.isInteger(m_formattedTextFieldRadius.getText())){ // If the text in m_formattedTextFieldRadius is not an Integer
+					m_formattedTextFieldRadius.setBackground(new Color(255,0,0)); // Set the background of m_formattedTextFieldRadius to red to tell the user that his input is invalid. 
+					m_formattedTextFieldRadius.setToolTipText(invalidInput); // Put an infoBulle to tell the user that his input is invalid.
+				}
+				else{// If the text in m_formattedTextFieldRadius is an Integer
+					m_formattedTextFieldRadius.setBackground(new Color(0,255,0)); // Set the background of m_formattedTextFieldRadius to green to tell the user that his input is valid. 
+					m_formattedTextFieldRadius.setToolTipText(validInput); // Put an infoBulle to tell the user that his input is valid.
+				}
+
+
+				if(this.isInteger(m_formattedTextFieldRadius.getText()) && this.isInteger(m_formattedTextFieldRules.getText())){
+					m_buttonOk.setEnabled(true);
+				}
+				else{
+					m_buttonOk.setEnabled(false);
+				}
+
+			}
+
+
+			private boolean isInteger(String chaine) {
+				try {
+					Integer.parseInt(chaine);
+				} catch (NumberFormatException e){
+					return false;
+				}
+
+				return true;
+			}
+		});
+
+
+
+		m_formattedTextFieldRules.getDocument().addDocumentListener(new DocumentListener() {
+			private static final String invalidInput = "Your input is invalid. It must be a integer.";
+			private static final String validInput = "Your input is valid.";
+
+			@Override
+			public void changedUpdate(DocumentEvent arg0) {
+				for(int i = 0; i<3; i++){
+					m_isComponentFocus[i] = false;
+				}
+				m_isComponentFocus[3] = true;
+				if(!this.isInteger(m_formattedTextFieldRules.getText())){ // If the text in m_formattedTextFieldRadius is not an Integer
+					m_formattedTextFieldRules.setBackground(new Color(255,0,0)); // Set the background of m_formattedTextFieldRadius to red to tell the user that his input is invalid. 
+					m_formattedTextFieldRules.setToolTipText(invalidInput); // Put an infoBulle to tell the user that his input is invalid.
+				}
+				else{// If the text in m_formattedTextFieldRadius is an Integer
+					m_formattedTextFieldRules.setBackground(new Color(0,255,0)); // Set the background of m_formattedTextFieldRadius to green to tell the user that his input is valid. 
+					m_formattedTextFieldRules.setToolTipText(validInput); // Put an infoBulle to tell the user that his input is valid.
+				}
+
+
+				if(this.isInteger(m_formattedTextFieldRadius.getText()) && this.isInteger(m_formattedTextFieldRules.getText())){
+					m_buttonOk.setEnabled(true);
+				}
+				else{
+					m_buttonOk.setEnabled(false);
+				}
+			}
+
+			@Override
+			public void insertUpdate(DocumentEvent arg0) {
+				for(int i = 0; i<3; i++){
+					m_isComponentFocus[i] = false;
+				}
+				m_isComponentFocus[3] = true;
+				if(!this.isInteger(m_formattedTextFieldRules.getText())){ // If the text in m_formattedTextFieldRadius is not an Integer
+					m_formattedTextFieldRules.setBackground(new Color(255,0,0)); // Set the background of m_formattedTextFieldRadius to red to tell the user that his input is invalid. 
+					m_formattedTextFieldRules.setToolTipText(invalidInput); // Put an infoBulle to tell the user that his input is invalid.
+				}
+				else{// If the text in m_formattedTextFieldRadius is an Integer
+					m_formattedTextFieldRules.setBackground(new Color(0,255,0)); // Set the background of m_formattedTextFieldRadius to green to tell the user that his input is valid. 
+					m_formattedTextFieldRules.setToolTipText(validInput); // Put an infoBulle to tell the user that his input is valid.
+				}
+
+
+				if(this.isInteger(m_formattedTextFieldRadius.getText()) && this.isInteger(m_formattedTextFieldRules.getText())){
+					m_buttonOk.setEnabled(true);
+				}
+				else{
+					m_buttonOk.setEnabled(false);
+				}
+
+			}
+			@Override
+			public void removeUpdate(DocumentEvent arg0) {
+				for(int i = 0; i<3; i++){
+					m_isComponentFocus[i] = false;
+				}
+				m_isComponentFocus[3] = true;
+				if(!this.isInteger(m_formattedTextFieldRules.getText())){ // If the text in m_formattedTextFieldRadius is not an Integer
+					m_formattedTextFieldRules.setBackground(new Color(255,0,0)); // Set the background of m_formattedTextFieldRadius to red to tell the user that his input is invalid. 
+					m_formattedTextFieldRules.setToolTipText(invalidInput); // Put an infoBulle to tell the user that his input is invalid.
+				}
+				else{// If the text in m_formattedTextFieldRadius is an Integer
+					m_formattedTextFieldRules.setBackground(new Color(0,255,0)); // Set the background of m_formattedTextFieldRadius to green to tell the user that his input is valid. 
+					m_formattedTextFieldRules.setToolTipText(validInput); // Put an infoBulle to tell the user that his input is valid.
+				}
+
+				if(this.isInteger(m_formattedTextFieldRadius.getText()) && this.isInteger(m_formattedTextFieldRules.getText())){
+					m_buttonOk.setEnabled(true);
+				}
+				else{
+					m_buttonOk.setEnabled(false);
+				}
+
+			}
+
+
+			private boolean isInteger(String chaine) {
+				try {
+					Integer.parseInt(chaine);
+				} catch (NumberFormatException e){
+					return false;
+				}
+
+				return true;
+			}
+		});
+
+	}
+
 	
 	
 	/******GroupLayout******/
@@ -302,6 +795,7 @@ public class LocalElementaryRulesWindow extends JFrame implements KeyListener {
 	private void initMenuBar(){
 		//We initialize our menuBar 
 		this.constructTabFileMenuBar();//Construction of the tab "File" of menuBar
+		this.constructTabEditMenuBar();//Construction of the tab "Edit" of menuBar
 		
 		this.setJMenuBar(m_menuBar);//Add menuBar to window
 		
@@ -319,6 +813,22 @@ public class LocalElementaryRulesWindow extends JFrame implements KeyListener {
 		this.m_menuBar.add(m_menuFile);//the File tab is added to MenuBar
 	}
 	
+	/**
+	 * Construct tab Edit menu bar.
+	 */
+	private void constructTabEditMenuBar(){
+		//Construction of the tab "Edit" of menuBar
+		this.m_menuEdit.add(m_menuBarEditItem1); // Adding a tab "Undo" in tab Edit in MenuBar.
+		this.m_menuEdit.add(m_menuBarEditItem2); // Adding a tab "Redo" in tab Edit in MenuBar.
+		this.m_menuEdit.addSeparator(); // Adding a separator in tab Edit of the MenuBar.
+		this.m_menuEdit.add(m_menuBarEditItem3); // Adding a tab "Cut" in tab Edit in MenuBar.
+		this.m_menuEdit.add(m_menuBarEditItem4); // Adding a tab "Copy" in tab Edit in MenuBar.
+		this.m_menuEdit.add(m_menuBarEditItem5); // Adding a tab "Paste" in tab Edit in MenuBar.
+		this.m_menuEdit.addSeparator(); // Adding a separator in tab Edit of the MenuBar.
+		this.m_menuEdit.add(m_menuBarEditItem6); // Adding a tab "Select all" in tab Edit in MenuBar.
+		this.m_menuBar.add(m_menuEdit); // The Edit tab is added to MenuBar.
+	}
+	
 	
 	/******Mnemonic******/
 	/**
@@ -327,6 +837,7 @@ public class LocalElementaryRulesWindow extends JFrame implements KeyListener {
 	private void initMenuMnemonic(){
 		//add all the mnémonic for the MenuBar
 		m_menuFile.setMnemonic('F');
+		m_menuEdit.setMnemonic('E');
 	}
 	
 	/******Accelerator******/
@@ -348,6 +859,7 @@ public class LocalElementaryRulesWindow extends JFrame implements KeyListener {
 	//add listeners MenuBar
 	private void addListenerMenuBar (){
 		this.addListenerFile(); //add listener of tab File
+		this.addListenerEdit(); //add listener of tab Edit
 	}
 
 	//add listeners for tab File in MenuBar
@@ -356,6 +868,13 @@ public class LocalElementaryRulesWindow extends JFrame implements KeyListener {
 		m_menuBarFileItem2.addActionListener(new QuitEvent());
 	}
 	
+	//add listeners for tab File in MenuBar
+		private void addListenerEdit (){
+			m_menuBarEditItem3.addActionListener(new CutLocalElementaryRulesWindow(this));
+			m_menuBarEditItem4.addActionListener(new CopyLocalElementaryRulesWindow(this));
+			m_menuBarEditItem5.addActionListener(new PasteLocalElementaryRulesWindow(this));
+			m_menuBarEditItem6.addActionListener(new SelectAllLocalElementaryRulesWindow(this));
+		}
 	
 	/******Listeners Panel Rules Setting******/
 	private void addListenerOnComponentsOfRulesSettingPanel(){
@@ -370,7 +889,22 @@ public class LocalElementaryRulesWindow extends JFrame implements KeyListener {
 	/******Listeners panel Control******/
 	private void addListenerOnComponentsOfControlPanel(){
 		m_buttonOk.addActionListener(new OKLocalElementaryRules1DEvent(this,m_currentInternalFrameSimulation1D,m_currentCell));//add listener of button OK
+		m_buttonOk.addFocusListener(this);
+		
+		m_formattedTextFieldX1.addKeyListener(this);
+		m_formattedTextFieldX2.addKeyListener(this);
+		m_formattedTextFieldRadius.addKeyListener(this);
 		m_formattedTextFieldRules.addKeyListener(this);
+		
+		m_buttonReset.addActionListener(new ResetLocalElementaryRules1DEvent(this));
+		
+		m_formattedTextFieldX1.getDocument().addUndoableEditListener(m_manager);
+		m_formattedTextFieldX2.getDocument().addUndoableEditListener(m_manager);
+		m_formattedTextFieldRadius.getDocument().addUndoableEditListener(m_manager);
+		m_formattedTextFieldRules.getDocument().addUndoableEditListener(m_manager);
+		
+		m_menuBarEditItem1.addActionListener(UndoManagerHelper.getUndoAction(m_manager));
+		m_menuBarEditItem2.addActionListener(UndoManagerHelper.getRedoAction(m_manager));
 	}
 
 	@Override
@@ -389,6 +923,30 @@ public class LocalElementaryRulesWindow extends JFrame implements KeyListener {
 
 	@Override
 	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void focusGained(FocusEvent arg0) {
+		// TODO Auto-generated method stub
+		if(this.isInteger(m_formattedTextFieldX1.getText()) && this.isInteger(m_formattedTextFieldX2.getText()) && this.isInteger(m_formattedTextFieldRadius.getText()) && this.isInteger(m_formattedTextFieldRules.getText())){
+			m_buttonOk.doClick();
+		}
+	}
+
+	private boolean isInteger(String chaine) {
+		try {
+			Integer.parseInt(chaine);
+		} catch (NumberFormatException e){
+			return false;
+		}
+
+		return true;
+	}
+
+	@Override
+	public void focusLost(FocusEvent arg0) {
 		// TODO Auto-generated method stub
 		
 	}
