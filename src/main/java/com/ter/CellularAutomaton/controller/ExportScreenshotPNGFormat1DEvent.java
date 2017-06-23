@@ -41,6 +41,19 @@ public class ExportScreenshotPNGFormat1DEvent implements ActionListener {
 	/**
 	 * ****CLASS METHODS*****.
 	 */
+	
+	/**
+	 * Set icon on the frame.
+	 */
+	private void setIconWindow() {
+		try {
+			frame = new JFrame();
+			frame.setIconImage(ImageIO.read(new File("Files/Images/Favicon/PenroseColor.png")));
+		}
+		catch (IOException exc) {
+		    exc.printStackTrace();
+		}
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -63,6 +76,7 @@ public class ExportScreenshotPNGFormat1DEvent implements ActionListener {
 			// Disable the Accept All file filter.
 			fileChooser.setAcceptAllFileFilterUsed(false);
 
+			this.setIconWindow();//Set icon on window
 
 			//Show the fileChooser.
 			int userSelection = fileChooser.showSaveDialog(frame);

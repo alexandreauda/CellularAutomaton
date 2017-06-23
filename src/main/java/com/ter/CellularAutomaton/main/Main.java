@@ -1,7 +1,7 @@
 package com.ter.CellularAutomaton.main;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import com.ter.CellularAutomaton.vue.MainWindow1D;
 import com.ter.CellularAutomaton.vue.MainWindow2D;
@@ -14,7 +14,7 @@ import com.ter.CellularAutomaton.vue.MainWindow2D;
 public class Main {
 
 	// For the logging.
-	private static final Logger logger = LogManager.getLogger(Main.class.getName()); // TestLog4j1.class.getName() must be change in yourClassName.class.getName().
+	//private static final Logger logger = LogManager.getLogger(Main.class.getName()); // TestLog4j1.class.getName() must be change in yourClassName.class.getName().
 	
 	/**
 	 * The main method.
@@ -44,12 +44,12 @@ public class Main {
 		
 		
 		// The logging.
-		if(logger.isDebugEnabled()){
-			logger.debug("The main method begin.");
-		}
-		if(logger.isInfoEnabled()){
-			logger.info("The application starts.");
-		}
+//		if(logger.isDebugEnabled()){
+//			logger.debug("The main method begin.");
+//		}
+//		if(logger.isInfoEnabled()){
+//			logger.info("The application starts.");
+//		}
 		
 		// Start the application.
 		

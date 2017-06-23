@@ -12,8 +12,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JInternalFrame;
 import javax.swing.WindowConstants;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import com.ter.CellularAutomaton.controller.IInitializeSimulationRules1D;
 import com.ter.CellularAutomaton.controller.ResizeInternalFrameSimulation1DEvent;
@@ -30,7 +30,7 @@ public class InternalFrameSimulation1D extends JInternalFrame {
 
 	/******ATTRIBUTES******/
 	// For the logging.
-	private static final Logger logger = LogManager.getLogger(InternalFrameSimulation1D.class.getName()); // TestLog4j1.class.getName() must be change in yourClassName.class.getName().
+	//private static final Logger logger = LogManager.getLogger(InternalFrameSimulation1D.class.getName()); // TestLog4j1.class.getName() must be change in yourClassName.class.getName().
 	private MainWindow1D m_mainWindow1D;
 	
 	private int m_width;
@@ -175,9 +175,9 @@ public class InternalFrameSimulation1D extends JInternalFrame {
 				}
 			}
 			catch (Exception e) {
-				if(logger.isErrorEnabled()){
-				logger.error("Thread.sleep issue.");
-			}
+//				if(logger.isErrorEnabled()){
+//				logger.error("Thread.sleep issue.");
+//			}
 			}
 	}
 	

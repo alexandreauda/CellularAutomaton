@@ -5,8 +5,8 @@ import java.awt.Graphics;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import com.ter.CellularAutomaton.controller.Cell1D;
 import com.ter.CellularAutomaton.controller.IInitializeSimulationRules1D;
@@ -15,7 +15,7 @@ public class Simulation1D implements Serializable {
 
 	/******ATTRIBUTES******/
 	// For the logging.
-	private static final Logger logger = LogManager.getLogger(Simulation1D.class.getName()); // TestLog4j1.class.getName() must be change in yourClassName.class.getName().
+	//private static final Logger logger = LogManager.getLogger(Simulation1D.class.getName()); // TestLog4j1.class.getName() must be change in yourClassName.class.getName().
 
 	private ArrayList<ArrayList<Cell1D>> m_matrixCells; // Matrix of cells.
 	private int m_nbCellWidth; // Number of cells in width in the cell matrix.
@@ -48,9 +48,9 @@ public class Simulation1D implements Serializable {
 			return m_matrixCells.get(x).get(y);
 		}
 		catch(ArrayIndexOutOfBoundsException e){
-			if(logger.isFatalEnabled()){
-				logger.fatal("Out of bounds");
-			}
+//			if(logger.isFatalEnabled()){
+//				logger.fatal("Out of bounds");
+//			}
 			e.printStackTrace();
 			return m_matrixCells.get(x).get(y);
 		}

@@ -3,8 +3,8 @@ package com.ter.CellularAutomaton.controller;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import com.ter.CellularAutomaton.model.SimulationState;
 import com.ter.CellularAutomaton.vue.InternalFrameSimulation1D;
@@ -14,7 +14,7 @@ public class ResizeInternalFrameSimulation1DEvent implements ComponentListener {
 	
 	/******ATTRIBUTES******/
 	// For the logging.
-	private static final Logger logger = LogManager.getLogger(ResizeInternalFrameSimulation1DEvent.class.getName()); // TestLog4j1.class.getName() must be change in yourClassName.class.getName().
+	//private static final Logger logger = LogManager.getLogger(ResizeInternalFrameSimulation1DEvent.class.getName()); // TestLog4j1.class.getName() must be change in yourClassName.class.getName().
 
 	private MainWindow1D m_mainWindow;
 
@@ -30,9 +30,9 @@ public class ResizeInternalFrameSimulation1DEvent implements ComponentListener {
 	
 	@Override
 	public void componentResized(ComponentEvent e) {
-		if(logger.isDebugEnabled()){
-			logger.debug("Resizing the internal frame");
-		}
+//		if(logger.isDebugEnabled()){
+//			logger.debug("Resizing the internal frame");
+//		}
 
 		this.m_mainWindow.setm_simulationState(SimulationState.PAUSE);
 		this.m_mainWindow.getm_internalFrameSimulation().setm_width(this.m_mainWindow.getm_internalFrameSimulation().getWidth());

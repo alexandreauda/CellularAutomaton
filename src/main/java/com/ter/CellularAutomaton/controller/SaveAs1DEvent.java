@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
+import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -43,6 +44,20 @@ public class SaveAs1DEvent implements ActionListener, Serializable {
 	/**
 	 * ****CLASS METHODS*****.
 	 */
+	/**
+	 * Set icon on the frame.
+	 */
+	private void setIconWindow() {
+		try {
+			frame = new JFrame();
+			frame.setIconImage(ImageIO.read(new File("Files/Images/Favicon/PenroseColor.png")));
+		}
+		catch (IOException exc) {
+		    exc.printStackTrace();
+		}
+	}
+	
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		//		try {
@@ -67,7 +82,8 @@ public class SaveAs1DEvent implements ActionListener, Serializable {
 
 			// Disable the Accept All file filter.
 			//fileChooser.setAcceptAllFileFilterUsed(false);
-
+			
+			this.setIconWindow();//Set icon on window
 
 			//Show the fileChooser.
 			int userSelection = fileChooser.showSaveDialog(frame);

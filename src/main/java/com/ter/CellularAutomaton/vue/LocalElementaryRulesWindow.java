@@ -4,6 +4,8 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -38,6 +40,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
@@ -221,6 +224,8 @@ public class LocalElementaryRulesWindow extends JFrame implements KeyListener, F
 		
 		this.addListenerOnComponentsOfControlPanel();// Initialize Listeners on Components of panel Control.
 		
+		this.setIconWindow();//Set icon on window
+		
 		this.setVisible(true);// Set the window visible.
 	}
 	
@@ -243,7 +248,22 @@ public class LocalElementaryRulesWindow extends JFrame implements KeyListener, F
 		
 		this.addListenerOnComponentsOfControlPanel();// Initialize Listeners on Components of panel Control.
 		
+		this.setIconWindow();//Set icon on window
+		
 		this.setVisible(true);// Set the window visible.
+	}
+	
+	
+	/**
+	 * Set icon on the frame.
+	 */
+	private void setIconWindow() {
+		try {
+			this.setIconImage(ImageIO.read(new File("Files/Images/Favicon/PenroseColor.png")));
+		}
+		catch (IOException exc) {
+		    exc.printStackTrace();
+		}
 	}
 
 	/**

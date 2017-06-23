@@ -2,6 +2,8 @@ package com.ter.CellularAutomaton.vue;
 
 import java.awt.Font;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -10,6 +12,8 @@ import java.awt.BorderLayout;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.Component;
+
+import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.KeyStroke;
 
@@ -85,7 +89,21 @@ public class SizeSimulationWindow extends JFrame {
 		
 		buildComponentWindow();//Build component of window
 		
+		this.setIconWindow();//Set icon on window
+		
 		this.setVisible(true);
+	}
+	
+	/**
+	 * Set icon on the frame.
+	 */
+	private void setIconWindow() {
+		try {
+			this.setIconImage(ImageIO.read(new File("Files/Images/Favicon/PenroseColor.png")));
+		}
+		catch (IOException exc) {
+		    exc.printStackTrace();
+		}
 	}
 
 	/**

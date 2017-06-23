@@ -7,8 +7,8 @@ import java.awt.event.MouseMotionListener;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import com.ter.CellularAutomaton.vue.IForm;
 import com.ter.CellularAutomaton.vue.Simulation1D;
@@ -23,7 +23,7 @@ public class Cell1D implements Serializable {
 
 	/******ATTRIBUTES******/
 	// For the logging.
-	private static final Logger logger = LogManager.getLogger(Cell1D.class.getName()); // TestLog4j1.class.getName() must be change in yourClassName.class.getName().
+	//private static final Logger logger = LogManager.getLogger(Cell1D.class.getName()); // TestLog4j1.class.getName() must be change in yourClassName.class.getName().
 	
 	private int m_x; // Coordinate on the abscissa.
 	private int m_y; // Coordinate on the ordinate.

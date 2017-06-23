@@ -16,7 +16,10 @@ import com.ter.CellularAutomaton.controller.RulesEntryModeScriptEvent;
 
 import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 
@@ -76,6 +79,8 @@ public class UniformRulesEntryModeWindow extends JFrame {
 		
 		addListenerOnWindow ();//Add Listener on window
 		
+		this.setIconWindow();//Set icon on window
+		
 		this.setVisible(true);
 	}
 
@@ -85,6 +90,18 @@ public class UniformRulesEntryModeWindow extends JFrame {
 	//Build component of window
 	private void buildComponentWindow() {
 		buildPanelMain();//Build the main panel
+	}
+	
+	/**
+	 * Set icon on the frame.
+	 */
+	private void setIconWindow() {
+		try {
+			this.setIconImage(ImageIO.read(new File("Files/Images/Favicon/PenroseColor.png")));
+		}
+		catch (IOException exc) {
+		    exc.printStackTrace();
+		}
 	}
 	
 	/******Menu bar******/

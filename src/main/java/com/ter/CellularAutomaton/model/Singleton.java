@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 
 //We implement the Singleton patern: we regroup the code use to make the connection between java and the database.
@@ -14,7 +14,7 @@ public class Singleton {
 
 	//******ATTRIBUTES******
 	// For the logging.
-	private static final Logger logger = LogManager.getLogger(Singleton.class.getName()); // TestLog4j1.class.getName() must be change in yourClassName.class.getName().
+	//private static final Logger logger = LogManager.getLogger(Singleton.class.getName()); // TestLog4j1.class.getName() must be change in yourClassName.class.getName().
 
 
 	private static String pilote;
@@ -103,20 +103,20 @@ public class Singleton {
 			}  
 			// manage the exceptions
 			catch (SQLException e) {
-				if(logger.isErrorEnabled()){
-					logger.error("SQLException error: SQLState: "+e.getSQLState()+" ErrorCode()"+e.getErrorCode()+" Cause: "+e.getCause()+" Message: "+e.getMessage());
-				}
+//				if(logger.isErrorEnabled()){
+//					logger.error("SQLException error: SQLState: "+e.getSQLState()+" ErrorCode()"+e.getErrorCode()+" Cause: "+e.getCause()+" Message: "+e.getMessage());
+//				}
 			}
 			catch (ClassNotFoundException e) {
-				if(logger.isErrorEnabled()){
-					logger.error("ClassNotFoundException error: Cause: "+e.getCause()+" Message: "+e.getMessage());
-				}
+//				if(logger.isErrorEnabled()){
+//					logger.error("ClassNotFoundException error: Cause: "+e.getCause()+" Message: "+e.getMessage());
+//				}
 			}
 		}
 		else{//else if the object connect is already initialize, we have already connect. Therefore we don't have to connect.
-			if(logger.isWarnEnabled()){
-				logger.warn("Connection SQL existante");
-			}
+//			if(logger.isWarnEnabled()){
+//				logger.warn("Connection SQL existante");
+//			}
 		}
 		return connect;	//return the connection of type Connection which is contain à l'api java
 	}
