@@ -4,4 +4,4 @@ For more information, please refer to the <a href="https://github.com/alexandrea
 
 <img src = "https://github.com/alexandreauda/CellularAutomaton/blob/master/ExportSimulation/NonUniformSimulationPresentation.png" title = "Non-uniform diagram of cellular automaton" alt = "Non-uniform diagram of cellular automaton"><br/>
 
-<div style="text-align:center"><img src = "https://github.com/alexandreauda/CellularAutomaton/blob/master/ExportSimulation/NonUniformSimulationPresentation2.png" title = "Non-uniform diagram of cellular automaton" alt = "Non-uniform diagram of cellular automaton"></div>
+<img align="center" src = "https://github.com/alexandreauda/CellularAutomaton/blob/master/ExportSimulation/NonUniformSimulationPresentation2.png" title = "Non-uniform diagram of cellular automaton" alt = "Non-uniform diagram of cellular automaton">
